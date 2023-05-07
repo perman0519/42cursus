@@ -34,10 +34,10 @@ void	sort(t_list **list_a, t_list **list_b, int size_a)
 
 void	sort_size_more(t_list **list_a, t_list **list_b, int size_a)
 {
-	t_list	*tmp;
+	// t_list	*tmp;
 	int		min_index;
 
-	tmp = *list_b;
+	// tmp = *list_b;
 	min_index = size_a / 2;
 	while (size_a > 3)
 	{
@@ -63,10 +63,10 @@ void	sort_size_more(t_list **list_a, t_list **list_b, int size_a)
 
 void	sort_size5(t_list **list_a, t_list **list_b, int size_a)
 {
-	t_list	*tmp;
+	// t_list	*tmp;
 	int		min_index;
 
-	tmp = *list_b;
+	// tmp = *list_b;
 	while (size_a > 3)
 	{
 		pb(list_a, list_b);

@@ -30,7 +30,7 @@ static int	exception_handling(void *dst, const void *src, size_t len)
 	tmp = dst;
 	if (len == 0)
 		return (1);
-	if (dst == NULL && src == NULL)
+	if (tmp == NULL && src == NULL)
 	{
 		return (1);
 	}

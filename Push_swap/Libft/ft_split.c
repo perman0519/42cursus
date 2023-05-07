@@ -14,9 +14,6 @@
 
 static int	is_check(char s, char c)
 {
-	int	i;
-
-	i = 0;
 	if (s == c)
 		return (1);
 	return (0);
@@ -73,9 +70,7 @@ char	**ft_split(char const *s, char c)
 {
 	char	**arr;
 	int		word_count;
-	int		i;
 
-	i = 0;
 	if (!s)
 		return (NULL);
 	word_count = return_word(s, c);

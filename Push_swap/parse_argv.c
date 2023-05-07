@@ -40,9 +40,7 @@ int	is_one_argv(t_list **list, char **argv, int **int_list)
 	char		**split_string;
 	int			argv_num;
 	long long	doub;
-	int			i;
 
-	i = 0;
 	argv_num = 0;
 	doub = 0;
 	split_string = ft_split(argv[1], ' ');

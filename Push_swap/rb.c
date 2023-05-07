@@ -24,7 +24,7 @@ void	n_rb(t_list **list, int n)
 {
 	while (n > 0)
 	{
-		ra(list);
+		rb(list);
 		n--;
 	}
 }

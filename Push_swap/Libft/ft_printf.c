@@ -20,10 +20,8 @@ static int	ft_putpercent(void);
 int	ft_printf(const char *str, ...)
 {
 	va_list	arg_ptr;
-	int		i;
 	int		count;
 
-	i = 0;
 	count = 0;
 	if (is_null(str))
 		return (6);

@@ -19,6 +19,7 @@ int	greedy(t_list **list_a, t_list **list_b, int *size_a)
 
 	count_ra_rra = 0;
 	rb_count = greedy_pa(list_a, list_b, &count_ra_rra, size_a);
+	n_rb(list_b, rb_count);
 	if (count_ra_rra > 0)
 		n_ra(list_a, count_ra_rra);
 	else
@@ -44,7 +45,24 @@ int	greedy_pa(t_list **list_a, t_list **list_b, int *count_ra_rra, int *size_a)
 	i = 0;
 	min_data = find_min(list_a);
 	max_data = find_max(list_a);
+	list_b_data = tmp ->data;
+	min_index = index_node(list_a, min_data, size_a);
+	if (list_b_data > min_data && list_b_data < max_data)
+		min_index = index_node_middle(list_a, list_b_data, size_a);
+	if ((float)min_index < (float)(*size_a) / 2)
+	{
+		rotate_a = min_index;
+		*count_ra_rra = min_index;
+	}
+	else
+	{
+		rotate_a = (*size_a) - min_index;
+		*count_ra_rra = min_index - (*size_a);
+	}
 	b_index = i;
+	total_count = b_index + rotate_a;
+
+
 	while (1)
 	{
 		list_b_data = tmp ->data;
@@ -55,8 +73,15 @@ int	greedy_pa(t_list **list_a, t_list **list_b, int *count_ra_rra, int *size_a)
 			rotate_a = min_index;
 		else
 			rotate_a = (*size_a) - min_index;
+		if (rotate_a + i < total_count)
+		{
+			b_index = i;
+			if ((float)min_index < (float)(*size_a) / 2)
+				*count_ra_rra = min_index;
+			else
+				*count_ra_rra = min_index - (*size_a);
+		}
 		i++;
-		if ()
 		tmp = tmp ->next;
 		if (tmp ->next == (*list_b)->next)
 			break ;

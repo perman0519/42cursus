@@ -42,17 +42,17 @@ int	main(int argc, char **argv)
 	else
 		ft_printf("No\n");
 	sort(&list_a, &list_b, size_a);
-	tmp = list_a;
-	while (tmp->next != list_a)
-	{
-		ft_printf("%d\n", tmp->data);
-		tmp = tmp->next;
-	}
-	ft_printf("%d\n", tmp->data);
-	if(is_sorted(&list_a))
-		ft_printf("Yes\n");
-	else
-		ft_printf("No\n");
+	// tmp = list_a;
+	// while (tmp->next != list_a)
+	// {
+	// 	ft_printf("%d\n", tmp->data);
+	// 	tmp = tmp->next;
+	// }
+	// ft_printf("%d\n", tmp->data);
+	// if(is_sorted(&list_a))
+	// 	ft_printf("Yes\n");
+	// else
+	// 	ft_printf("No\n");
 }
 
 // t_field *filed_new(int size_a, t_list **list_a, t_list **list_b)

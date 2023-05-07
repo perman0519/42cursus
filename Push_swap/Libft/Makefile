@@ -77,7 +77,7 @@ endif
 all : $(NAME)
 
 ${NAME} : $(OBJ_FILES) $(HEADER)
-				ar -rc $(NAME) $(OBJ_FILES) libftprintf.a
+				ar -rc $(NAME) $(OBJ_FILES)
 
 bonus :
 	make WITH_BONUS=1 all
