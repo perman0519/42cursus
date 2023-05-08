@@ -6,18 +6,11 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:42:15 by junssong          #+#    #+#             */
-/*   Updated: 2023/05/04 17:52:25 by junssong         ###   ########.fr       */
+/*   Updated: 2023/05/08 17:10:25 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	is_ra_min_max(t_list **list_a, int min_data, int max_data)
-{
-	if ((*list_a)->data == min_data && ((*list_a)->prev)->data == max_data)
-		return (1);
-	return (0);
-}
 
 int	index_node_middle(t_list **list_a, int list_b_data, int *size_a)
 {
@@ -68,5 +61,42 @@ int	is_possible_pa(t_list **list_a, int list_b_data, int *size_a)
 		n_ra(list_a, min_index);
 	else
 		n_rra(list_a, *size_a - min_index);
+	return (1);
+}
+
+void	sort_size5(t_list **list_a, t_list **list_b, int size_a)
+{
+	int		min_index;
+
+	while (size_a > 3)
+	{
+		pb(list_a, list_b);
+		size_a--;
+	}
+	sort_size3(list_a);
+	while ((*list_b) != NULL)
+	{
+		make_pa(list_a, list_b, &size_a);
+	}
+	min_index = index_node(list_a, 0, &size_a);
+	while ((*list_a)->data != 0)
+	{
+		if ((float)min_index < (float)size_a / 2)
+			n_ra(list_a, min_index);
+		else
+			n_rra(list_a, size_a - min_index);
+	}
+}
+
+int	make_pa(t_list **list_a, t_list **list_b, int *size_a)
+{
+	int	list_b_data;
+
+	list_b_data = (*list_b)->data;
+	if (is_possible_pa(list_a, list_b_data, size_a))
+	{
+		pa(list_a, list_b);
+		(*size_a)++;
+	}
 	return (1);
 }

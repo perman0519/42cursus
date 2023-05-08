@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 12:46:55 by junssong          #+#    #+#             */
-/*   Updated: 2023/05/04 18:18:52 by junssong         ###   ########.fr       */
+/*   Updated: 2023/05/08 17:48:31 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,19 @@ typedef struct s_list
 
 typedef struct s_field
 {
-	struct s_list	*top_a;
-	struct s_list	*bottom_a;
-	int				size_a;
-	struct s_list	*top_b;
-	struct s_list	*bottom_b;
-	int				size_b;
+	int		alist_min_data;
+	int		alist_max_data;
+	int		min_rotate_a;
+	int		total_count;
+	int		rotate_a;
+	int		rotate_b;
+	int		blist_size;
+	int		blist_data;
+	int		find_index;
+	int		size_a;
+	int		i;
+	int		flag;
+	t_list	*tmp;
 }				t_field;
 
 int		is_one_argv(t_list **list, char **argv, int **int_list);
@@ -59,7 +66,10 @@ void	rrr(t_list **list_a, t_list **list_b);
 
 void	n_rra(t_list **list, int n);
 void	n_ra(t_list **list, int n);
+void	n_rrb(t_list **list, int n);
 void	n_rb(t_list **list, int n);
+void	n_rrr(t_list **list_a, t_list **list_b, int n);
+void	n_rr(t_list **list_a, t_list **list_b, int n);
 
 int		add_list_top(t_list **list, t_list *node);
 t_list	*remove_list_top(t_list **list);
@@ -70,19 +80,21 @@ int		intcmp(int a, int b);
 void	sort(t_list **list_a, t_list **list_b, int size_a);
 void	sort_size2(t_list **list);
 void	sort_size3(t_list **list);
+
 void	sort_size5(t_list **list_a, t_list **list_b, int size_a);
-void	sort_size_more(t_list **list_a, t_list **list_b, int size_a);
-
-int	index_node_middle(t_list **list_a, int list_b_data, int *size_a);
-
+int		index_node_middle(t_list **list_a, int list_b_data, int *size_a);
 int		make_pa(t_list **list_a, t_list **list_b, int *size_a);
 int		is_possible_pa(t_list **list_a, int list_b_data, int *size_a);
+
+void	sort_size_more(t_list **list_a, t_list **list_b, int size_a);
+void	less_3_pb(t_list **list_a, t_list **list_b, int size_a, int min_index);
 
 int		find_min(t_list **list_a);
 int		find_max(t_list **list_a);
 int		index_node(t_list **list_a, int min_data, int *size_a);
 
-int	greedy(t_list **list_a, t_list **list_b, int *size_a);
-int	greedy_pa(t_list **list_a, t_list **list_b, int *count_ra_rra, int *size_a);
+int		greedy(t_list **list_a, t_list **list_b, int *size_a);
+int		greedy_pa(t_list **list_a, t_list **list_b,
+			int *count_ra_rra, int *size_a);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:46:14 by junssong          #+#    #+#             */
-/*   Updated: 2023/05/04 17:08:38 by junssong         ###   ########.fr       */
+/*   Updated: 2023/05/08 16:32:10 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ int	is_not_number(char **split_string)
 	{
 		j = 0;
 		if (((!ft_strncmp(split_string[i], "+", 1)
-					|| !ft_strncmp(split_string[i], "-", 1)) && split_string[i][1] == '\0')
-		|| split_string[i][j] == '\0')
+					|| !ft_strncmp(split_string[i], "-", 1))
+				&& split_string[i][1] == '\0') || split_string[i][j] == '\0')
 			return (1);
 		while (split_string[i][j])
 		{
