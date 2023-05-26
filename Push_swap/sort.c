@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 12:01:17 by junssong          #+#    #+#             */
-/*   Updated: 2023/05/08 17:21:54 by junssong         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:28:56 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 void	sort(t_list **list_a, t_list **list_b, int size_a)
 {
-	ft_printf("%p\n", list_b);
 	if (size_a == 1)
 		return ;
 	else if (size_a == 2)

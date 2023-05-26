@@ -6,43 +6,13 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:14:25 by junssong          #+#    #+#             */
-/*   Updated: 2023/05/08 17:56:27 by junssong         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:00:29 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 int		stack_count(t_list **list);
-
-void	rrr_or_else(t_list **list_a, t_list **list_b,
-			int rb_count, int count_ra_rra)
-{
-	if (-1 * rb_count > -1 * count_ra_rra)
-	{
-		n_rrr(list_a, list_b, -1 * count_ra_rra);
-		n_rrb(list_b, -1 * rb_count - -1 * count_ra_rra);
-	}
-	else
-	{
-		n_rrr(list_a, list_b, -1 * rb_count);
-		n_rra(list_a, -1 * count_ra_rra - -1 * rb_count);
-	}
-}
-
-void	rr_or_else(t_list **list_a, t_list **list_b,
-			int rb_count, int count_ra_rra)
-{
-	if (rb_count > count_ra_rra)
-	{
-		n_rr(list_a, list_b, count_ra_rra);
-		n_rb(list_b, rb_count - count_ra_rra);
-	}
-	else
-	{
-		n_rr(list_a, list_b, rb_count);
-		n_ra(list_a, count_ra_rra - rb_count);
-	}
-}
 
 int	greedy(t_list **list_a, t_list **list_b, int *size_a)
 {
@@ -73,8 +43,7 @@ int	greedy(t_list **list_a, t_list **list_b, int *size_a)
 	return (1);
 }
 
-t_field	make_field(t_list **list_a, t_list **list_b,
-			int *count_ra_rra, int size_a)
+t_field	make_field(t_list **list_a, t_list **list_b, int size_a)
 {
 	t_field	field;
 
@@ -84,84 +53,76 @@ t_field	make_field(t_list **list_a, t_list **list_b,
 	field.flag = 1;
 	field.alist_min_data = find_min(list_a);
 	field.alist_max_data = find_max(list_a);
-	field.blist_data = field.tmp ->data;
+	field.b_data = field.tmp ->data;
 	field.find_index = index_node(list_a, field.alist_min_data, &size_a);
-	if (field.blist_data > field.alist_min_data
-		&& field.blist_data < field.alist_max_data)
-		field.find_index = index_node_middle(list_a, field.blist_data, &size_a);
+	if (field.b_data > field.alist_min_data
+		&& field.b_data < field.alist_max_data)
+		field.find_index = index_node_middle(list_a, field.b_data, &size_a);
 	if ((float)field.find_index < (float)size_a / 2)
-	{
 		field.rotate_a = field.find_index;
-		*count_ra_rra = field.find_index;
-	}
 	else
-	{
 		field.rotate_a = size_a - field.find_index;
-		*count_ra_rra = field.find_index - size_a;
-	}
 	field.rotate_b = field.i;
 	field.total_count = field.rotate_a;
 	return (field);
 }
 
+int	remake_field(t_list **list_a, t_field *field, int *size_a)
+{
+	int	tmp_b_rotate;
+
+	field->b_data = field->tmp ->data;
+	field->find_index = index_node(list_a, field->alist_min_data, size_a);
+	if (field->b_data > field->alist_min_data
+		&& field->b_data < field->alist_max_data)
+		field->find_index = index_node_middle(list_a, field->b_data, size_a);
+	if ((float)field->find_index < (float)(*size_a) / 2)
+		field->rotate_a = field->find_index;
+	else
+		field->rotate_a = (*size_a) - field->find_index;
+	if (field->i > field->blist_size / 2)
+	{
+		field->flag = 0;
+		tmp_b_rotate = field->blist_size - field->i;
+	}
+	else
+		tmp_b_rotate = field->i;
+	return (tmp_b_rotate);
+}
+
+void	change_field(t_field *field, int *size_a,
+				int *count_ra_rra, int tmp_b_rotate)
+{
+	if (field->flag == 0)
+		field->rotate_b = tmp_b_rotate * -1;
+	else
+		field->rotate_b = tmp_b_rotate;
+	if ((float)field->find_index < (float)(*size_a) / 2)
+		*count_ra_rra = field->find_index;
+	else
+		*count_ra_rra = field->find_index - (*size_a);
+	field->total_count = field->rotate_a + tmp_b_rotate;
+}
+
 int	greedy_pa(t_list **list_a, t_list **list_b, int *count_ra_rra, int *size_a)
 {
 	t_field	field;
-	int	j;
+	int		tmp_b_rotate;
 
-	field = make_field(list_a, list_b, count_ra_rra, *size_a);
-
-
+	field = make_field(list_a, list_b, *size_a);
+	if ((float)field.find_index < (float)(*size_a) / 2)
+		*count_ra_rra = field.find_index;
+	else
+		*count_ra_rra = field.find_index - (*size_a);
 	while (field.i < field.blist_size)
 	{
-		field.blist_data = field.tmp ->data;
-		field.find_index = index_node(list_a, field.alist_min_data, size_a);
-		if (field.blist_data > field.alist_min_data && field.blist_data < field.alist_max_data)
-			field.find_index = index_node_middle(list_a, field.blist_data, size_a);
-		if ((float)field.find_index < (float)(*size_a) / 2)
-			field.rotate_a = field.find_index;
-		else
-			field.rotate_a = (*size_a) - field.find_index;
-
-		if (field.i > field.blist_size / 2)
+		tmp_b_rotate = remake_field(list_a, &field, size_a);
+		if (field.rotate_a + tmp_b_rotate < field.total_count)
 		{
-			field.flag = 0;
-			j = field.blist_size - field.i;
-		}
-		else
-			j = field.i;
-
-		if (field.rotate_a + j < field.total_count)
-		{
-			if (field.flag == 0)
-				field.rotate_b = j * -1;
-			else
-				field.rotate_b = j;
-			if ((float)field.find_index < (float)(*size_a) / 2)
-				*count_ra_rra = field.find_index;
-			else
-				*count_ra_rra = field.find_index - (*size_a);
-			field.total_count = field.rotate_a + j;
+			change_field(&field, size_a, count_ra_rra, tmp_b_rotate);
 		}
 		field.i++;
 		field.tmp = field.tmp ->next;
 	}
 	return (field.rotate_b);
-}
-
-int	stack_count(t_list **list)
-{
-	int		i;
-	t_list	*tmp;
-
-	tmp = *list;
-	i = 0;
-	while (1)
-	{
-		i++;
-		tmp = tmp ->next;
-		if (tmp ->next == (*list)->next)
-			break ;
-	}
-	return (i);
 }

@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junssong <junssong@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 12:46:04 by junssong          #+#    #+#             */
-/*   Updated: 2023/04/25 12:46:04 by junssong         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:20:09 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_lstadd_front(t_list **lst, t_list *new)
-{
-	if (!new)
-		return ;
-	new ->next = *lst;
-	new ->prev = (*lst)->prev;
-	*lst = new;
-}
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {

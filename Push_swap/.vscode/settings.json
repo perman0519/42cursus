@@ -5,7 +5,12 @@
     "array": "c",
     "string": "c",
     "string_view": "c",
-    "vector": "c"
+    "vector": "c",
+    "locale": "c",
+    "bonus.h": "c",
+    "cstdlib": "c",
+    "ostream": "c",
+    "new": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "clang",
   "C_Cpp_Runner.cppCompilerPath": "clang++",

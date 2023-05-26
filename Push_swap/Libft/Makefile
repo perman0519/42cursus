@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: junssong <junssong@student.42seoul.>       +#+  +:+       +#+         #
+#    By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/16 13:40:13 by junssong          #+#    #+#              #
-#    Updated: 2023/03/16 14:45:40 by junssong         ###   ########.fr        #
+#    Updated: 2023/05/09 13:28:07 by junssong         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,39 +54,20 @@ SRCS1 = ft_atoi.c \
 		ft_putnbr.c \
 		ft_putstr.c
 
-SRCS2 = ft_lstnew_bonus.c \
-		ft_lstadd_front_bonus.c \
-		ft_lstsize_bonus.c \
-		ft_lstlast_bonus.c \
-		ft_lstadd_back_bonus.c \
-		ft_lstdelone_bonus.c \
-		ft_lstclear_bonus.c \
-		ft_lstiter_bonus.c \
-		ft_lstmap_bonus.c
-
 HEADER = libft.h
-OBJS1 = $(SRCS1:.c=.o)
-OBJS2 = $(SRCS2:.c=.o)
-
-ifdef WITH_BONUS
-	OBJ_FILES = $(OBJS1) $(OBJS2)
-else
-	OBJ_FILES = $(OBJS1)
-endif
+OBJ_FILES = $(SRCS1:.c=.o)
 
 all : $(NAME)
 
 ${NAME} : $(OBJ_FILES) $(HEADER)
 				ar -rc $(NAME) $(OBJ_FILES)
 
-bonus :
-	make WITH_BONUS=1 all
 
 %.o : %.c $(HEADER)
 	cc $(CFLAGS) -c $< -o $@ -I $(HEADER)
 
 clean :
-	rm -rf $(OBJS1) $(OBJS2)
+	rm -rf $(OBJ_FILES)
 
 fclean : clean
 	rm -rf $(NAME)

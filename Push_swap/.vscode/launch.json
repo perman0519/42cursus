@@ -10,14 +10,6 @@
         "9 8 7 6 5 4 3 2 1 0"
       ],
       "cwd": "${workspaceFolder}"
-    },
-    {
-      "name": "C/C++ Runner: Debug Session",
-      "type": "lldb",
-      "request": "launch",
-      "args": [],
-      "cwd": "/Users/junssong/Desktop/42cursus/Push_swap",
-      "program": "/Users/junssong/Desktop/42cursus/Push_swap/build/Debug/outDebug"
     }
   ]
 }

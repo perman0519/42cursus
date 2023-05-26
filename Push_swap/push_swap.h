@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 12:46:55 by junssong          #+#    #+#             */
-/*   Updated: 2023/05/08 17:48:31 by junssong         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:20:18 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_field
 	int		rotate_a;
 	int		rotate_b;
 	int		blist_size;
-	int		blist_data;
+	int		b_data;
 	int		find_index;
 	int		size_a;
 	int		i;
@@ -48,7 +48,6 @@ void	free_split(char **split_string);
 void	sorted_data_list(int *int_list, int argv_num);
 void	change_data_to_index(t_list **list, int *int_list);
 
-void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstnew(int data);
 
@@ -88,6 +87,11 @@ int		is_possible_pa(t_list **list_a, int list_b_data, int *size_a);
 
 void	sort_size_more(t_list **list_a, t_list **list_b, int size_a);
 void	less_3_pb(t_list **list_a, t_list **list_b, int size_a, int min_index);
+int		stack_count(t_list **list);
+void	rr_or_else(t_list **list_a, t_list **list_b,
+			int rb_count, int count_ra_rra);
+void	rrr_or_else(t_list **list_a, t_list **list_b,
+			int rb_count, int count_ra_rra);
 
 int		find_min(t_list **list_a);
 int		find_max(t_list **list_a);

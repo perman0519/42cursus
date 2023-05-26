@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:46:14 by junssong          #+#    #+#             */
-/*   Updated: 2023/05/08 16:32:10 by junssong         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:12:22 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	parse_argv(int argc, t_list **list_a, char **argv)
 		argv_num = is_one_argv(list_a, argv, &int_list);
 	else
 		argv_num = is_more_argv(list_a, argv, &int_list);
+	free(int_list);
 	if (!argv_num)
 	{
 		ft_printf("Error\n");
