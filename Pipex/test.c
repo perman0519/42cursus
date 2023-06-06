@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:00:27 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/06 16:56:12 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/06 19:35:07 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ char	*find_absolute_path(t_param *s_param, char **envp, char **cmd_arg);
 int	main(int argc, char **argv, char **envp)
 {
 	t_param	param;
-	char	*envm[1];
-	int		status;
 
-	envm[0] = NULL;
 	if (argc != 5)
 		return (0);
 	if (!(access(argv[1], F_OK) == 0 && access(argv[1], R_OK) == 0))
@@ -32,41 +29,34 @@ int	main(int argc, char **argv, char **envp)
 	param.cmd2_arg = ft_split(argv[3], ' ');
 	param.apsolute_path = find_absolute_path(&param, envp, param.cmd1_arg);
 	param.fd_file1 = open(argv[1], O_RDONLY);
-	if (param.fd_file1 == -1)
+	param.fd_file2 = open(argv[argc - 1], O_TRUNC | O_CREAT | O_RDWR, 0000644);
+	if (param.fd_file1 < 0 || param.fd_file2 < 0 || pipe(param.pipefd1) < 0)
 	{
-		perror("open error");
+		perror("error");
 		return (1);
 	}
-	if (pipe(param.pipefd1) == -1)
-	{
-		perror("pipe");
-		return (1);
-	}
-	int first_child = fork();
+	param.first_child = fork();
 	if (param.first_child == -1)
 		perror("fork error");
-	ft_printf("%d\n", first_child);
 	dup2(param.fd_file1, 0);
 	close(param.fd_file1);
-	if (first_child == 0)
+	if (param.first_child == 0)
 	{
 		dup2(0, param.pipefd1[0]);
+		close(param.pipefd1[0]);
 		dup2(param.pipefd1[1], STDOUT_FILENO);
-		// close(param.pipefd1[0]);
 		execve(param.apsolute_path, param.cmd1_arg, envp);
 	}
 	else
 	{
-		waitpid(first_child, &status, 0);
-		dup2(param.pipefd1[0], STDIN_FILENO);
-		// dup2(param.pipefd1[1], STDOUT_FILENO);
-		// close(param.pipefd1[0]);
+		dup2(param.pipefd1[0], 0);
+		close(param.pipefd1[1]);
+		dup2(param.fd_file2, 1);
 		ft_free_split(param.cmd1_arg);
 		param.apsolute_path = find_absolute_path(&param, envp, param.cmd2_arg);
-		ft_printf("%s\n", param.apsolute_path);
 		execve(param.apsolute_path, param.cmd2_arg, envp);
 	}
-	// system("leaks pipex");
+	waitpid(param.first_child, NULL, 0);
 }
 
 char	*find_path(t_param *param, char **split_path, char **cmd_arg)
