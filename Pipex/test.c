@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:00:27 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/05 20:15:18 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:56:12 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_param	param;
 	char	*envm[1];
+	int		status;
 
 	envm[0] = NULL;
 	if (argc != 5)
@@ -41,32 +42,31 @@ int	main(int argc, char **argv, char **envp)
 		perror("pipe");
 		return (1);
 	}
-	param.first_child = fork();
+	int first_child = fork();
 	if (param.first_child == -1)
 		perror("fork error");
-	// ft_printf("%d\n", param.first_child);
+	ft_printf("%d\n", first_child);
 	dup2(param.fd_file1, 0);
 	close(param.fd_file1);
-	if (param.first_child == 0)
+	if (first_child == 0)
 	{
-		close(param.pipefd1[0]);
+		dup2(0, param.pipefd1[0]);
 		dup2(param.pipefd1[1], STDOUT_FILENO);
-		// close(param.pipefd1[1]);
+		// close(param.pipefd1[0]);
 		execve(param.apsolute_path, param.cmd1_arg, envp);
 	}
 	else
 	{
-		wait(NULL);
-		ft_printf("%s\n", param.apsolute_path);
+		waitpid(first_child, &status, 0);
 		dup2(param.pipefd1[0], STDIN_FILENO);
-		dup2(param.pipefd1[1], STDOUT_FILENO);
-		close(param.pipefd1[0]);
+		// dup2(param.pipefd1[1], STDOUT_FILENO);
+		// close(param.pipefd1[0]);
 		ft_free_split(param.cmd1_arg);
 		param.apsolute_path = find_absolute_path(&param, envp, param.cmd2_arg);
 		ft_printf("%s\n", param.apsolute_path);
 		execve(param.apsolute_path, param.cmd2_arg, envp);
 	}
-	system("leaks pipex");
+	// system("leaks pipex");
 }
 
 char	*find_path(t_param *param, char **split_path, char **cmd_arg)
