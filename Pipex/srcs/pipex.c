@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:00:27 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/07 16:10:23 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/12 20:27:06 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,24 @@ int	main(int argc, char **argv, char **envp)
 	t_param	param;
 
 	if (argc != 5)
-		return (0);
-	if (set_param(&param, argv, envp) == 1)
 		return (1);
-	param.first_child = fork();
-	if (param.first_child == -1)
-		perror("fork error");
-	dup2(param.fd_file1, 0);
-	close(param.fd_file1);
-	if (param.first_child == 0)
-		do_child(&param, envp);
-	else
-		do_parent(&param, envp);
+	set_param(&param, argv, envp);
+	while (++(param.index) < 2)
+	{
+		param.first_child = fork();
+		if (param.first_child == -1)
+		{
+			perror("fork error");
+			exit(1);
+		}
+		if (param.index == 0 && param.first_child == 0)
+			do_cmd_first(&param, envp);
+		else if (param.index == 1 && param.first_child == 0)
+			do_cmd_last(&param, envp);
+	}
+	close(param.pipefd1[0]);
+	close(param.pipefd1[1]);
+	while (--(param.index) > -1)
+		waitpid(param.first_child, NULL, 0);
+	return (0);
 }
