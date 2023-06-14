@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:27:37 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/13 17:48:44 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:07:39 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,25 @@ int	set_param(t_param *param, char **argv, char **envp, int argc)
 
 	i = -1;
 	param->index = -1;
-	if (ft_strncmp(argv[1], "here_doc", 8) == 0)
-		param->here_doc = 1;
 	param->here_doc = 0;
+	param->fd_file1 = open(argv[1], O_RDONLY);
 	param->cmd_count = argc - 3;
 	param->cmd_absolutepath = \
 		(char **)malloc(sizeof(char *) * param->cmd_count);
 	param->cmd_arg = (char ***)malloc(sizeof(char **) * argc - 3);
 	if (param -> cmd_absolutepath == NULL || param -> cmd_arg == NULL)
 		exit(1);
-	while (++i < argc - 3)
-		set_path(param, argv, envp, i);
-	param->fd_file1 = open(argv[1], O_RDONLY);
+	if (ft_strncmp(argv[1], "here_doc", 8) == 0)
+	{
+		here_doc(param);
+		while (++i < argc - 3)
+			set_path(param, argv, envp, i + 1);
+	}
+	else
+	{
+		while (++i < argc - 3)
+			set_path(param, argv, envp, i);
+	}
 	open_file(param, argv, argc);
 	open_pipe(param, argc);
 	return (0);
@@ -63,12 +70,17 @@ void	open_pipe(t_param *param, int argc)
 
 void	open_file(t_param *param, char **argv, int argc)
 {
-	if (param->fd_file1 < 0)
+	if (param->fd_file1 < 0 && param->here_doc == 0)
 	{
 		put_err(argv[1]);
 		exit(1);
 	}
-	param->fd_file2 = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0644);
+	if (param->here_doc == 1)
+		param->fd_file2 = \
+			open(argv[argc - 1], O_CREAT | O_APPEND | O_WRONLY, 0644);
+	else
+		param->fd_file2 = \
+			open(argv[argc - 1], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (param->fd_file2 < 0)
 	{
 		put_err(argv[argc - 1]);

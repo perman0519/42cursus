@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:00:27 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/13 16:18:23 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/14 14:08:52 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int	main(int argc, char **argv, char **envp)
 	close(param.pipefd1[0]);
 	close(param.pipefd1[1]);
 	while (--(param.index) > -1)
-		waitpid(param.child_pid, NULL, 0);
+		waitpid(-1, NULL, 0);
 	return (0);
 }

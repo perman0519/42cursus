@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:00:27 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/13 17:45:35 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:09:42 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ int	main(int argc, char **argv, char **envp)
 			put_err("fork");
 			exit(1);
 		}
+		ft_putnbr_fd(param.index, 2);
+		if (param.here_doc == 1 && param.child_pid == 0 && param.index == 1)
+			child_here_doc(&param, argv);
 		if (param.index == 0 && param.child_pid == 0)
 			do_cmd_first(&param, envp);
 		else if (param.index == argc - 4 && param.child_pid == 0)

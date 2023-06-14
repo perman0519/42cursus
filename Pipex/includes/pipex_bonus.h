@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 17:42:33 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/13 17:20:09 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/14 14:40:11 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,8 @@ void	do_cmd_last(t_param *param, char **envp);
 void	do_cmd_middle(t_param *param, char **envp);
 void	put_err(char *file);
 void	close_pipe(t_param *param);
+
+void	here_doc(t_param *param);
+void	child_here_doc(t_param *param, char **argv);
 
 #endif
