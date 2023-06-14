@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 17:42:33 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/13 17:20:04 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:09:50 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
+# include <errno.h>
 # include "../libft/libft.h"
 
 typedef struct s_param
@@ -37,5 +38,6 @@ char	*find_absolute_path(char **envp, char **cmd_arg);
 int		set_param(t_param *param, char **argv, char **envp);
 void	do_cmd_first(t_param *param, char **envp);
 void	do_cmd_last(t_param *param, char **envp);
+void	put_err(char *file);
 
 #endif

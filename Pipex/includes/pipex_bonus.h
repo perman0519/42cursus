@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 17:42:33 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/14 14:40:11 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:08:44 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,14 @@ typedef struct s_param
 
 char	*find_absolute_path(char **envp, char **cmd_arg);
 int		set_param(t_param *param, char **argv, char **envp, int argc);
+void	set_path(t_param *param, char **argv, char **envp, int i);
 void	do_cmd_first(t_param *param, char **envp);
 void	do_cmd_last(t_param *param, char **envp);
 void	do_cmd_middle(t_param *param, char **envp);
 void	put_err(char *file);
 void	close_pipe(t_param *param);
 
-void	here_doc(t_param *param);
 void	child_here_doc(t_param *param, char **argv);
+void	is_here_doc(t_param *param, char **argv, char **envp, int argc);
 
 #endif

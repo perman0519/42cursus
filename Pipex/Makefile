@@ -6,14 +6,14 @@
 #    By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 11:08:05 by junssong          #+#    #+#              #
-#    Updated: 2023/06/12 14:35:06 by junssong         ###   ########.fr        #
+#    Updated: 2023/06/14 16:26:49 by junssong         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= pipex
 BONUS_NAME	= pipex_bonus
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -g
+CFLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address
 
 SRCS_DIR	= ./srcs/
 LIBFT_DIR	= ./libft
@@ -25,8 +25,7 @@ INCS		= -I includes
 
 SRC			= pipex.c do_execve.c find_absolute_path.c set_param.c
 BONUS_SRC	= pipex_bonus.c do_execve_bonus.c find_absolute_path_bonus.c \
-			set_param_bonus.c
-
+			set_param_bonus.c here_doc_bonus.c
 SRCS	= $(addprefix $(SRCS_DIR), $(SRC))
 BONUS_SRCS = $(addprefix $(BONUS_DIR), $(BONUS_SRC))
 
@@ -38,11 +37,11 @@ BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 $(NAME) : $(OBJS)
 	make -C $(LIBFT_DIR)
-	$(CC) -o $(NAME) $(OBJS) -L$(LIBFT_DIR) -lft $(INCS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFT_DIR) -lft $(INCS)
 
 $(BONUS_NAME) : $(BONUS_OBJS)
 	make -C $(LIBFT_DIR)
-	$(CC) -o $(BONUS_NAME) $(BONUS_OBJS) -L$(LIBFT_DIR) -lft $(INCS) $(MLX_FLAGS)
+	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_OBJS) -L$(LIBFT_DIR) -lft $(INCS) $(MLX_FLAGS)
 
 all : $(NAME)
 

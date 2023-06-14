@@ -6,21 +6,17 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:27:37 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/14 15:07:39 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:09:59 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
 
-void	set_path(t_param *param, char **argv, char **envp, int i);
 void	open_file(t_param *param, char **argv, int argc);
 void	open_pipe(t_param *param, int argc);
 
 int	set_param(t_param *param, char **argv, char **envp, int argc)
 {
-	int	i;
-
-	i = -1;
 	param->index = -1;
 	param->here_doc = 0;
 	param->fd_file1 = open(argv[1], O_RDONLY);
@@ -30,17 +26,7 @@ int	set_param(t_param *param, char **argv, char **envp, int argc)
 	param->cmd_arg = (char ***)malloc(sizeof(char **) * argc - 3);
 	if (param -> cmd_absolutepath == NULL || param -> cmd_arg == NULL)
 		exit(1);
-	if (ft_strncmp(argv[1], "here_doc", 8) == 0)
-	{
-		here_doc(param);
-		while (++i < argc - 3)
-			set_path(param, argv, envp, i + 1);
-	}
-	else
-	{
-		while (++i < argc - 3)
-			set_path(param, argv, envp, i);
-	}
+	is_here_doc(param, argv, envp, argc);
 	open_file(param, argv, argc);
 	open_pipe(param, argc);
 	return (0);
