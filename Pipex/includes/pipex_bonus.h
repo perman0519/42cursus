@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 17:42:33 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/13 16:19:52 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:20:09 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_param
 	int		(*pipefd)[2];
 	int		cmd_count;
 	int		index;
+	int		here_doc;
 }				t_param;
 
 char	*find_absolute_path(char **envp, char **cmd_arg);
