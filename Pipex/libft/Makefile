@@ -6,7 +6,7 @@
 #    By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/16 13:40:13 by junssong          #+#    #+#              #
-#    Updated: 2023/05/26 12:48:34 by junssong         ###   ########.fr        #
+#    Updated: 2023/06/12 14:48:25 by junssong         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,16 @@ SRCS1 = ft_atoi.c \
 		ft_putstr.c \
 		get_next_line_utils.c \
 		get_next_line.c \
-		ft_free_splits.c
+		ft_free_splits.c\
+		ft_lstnew_bonus.c \
+		ft_lstadd_front_bonus.c \
+		ft_lstsize_bonus.c \
+		ft_lstlast_bonus.c \
+		ft_lstadd_back_bonus.c \
+		ft_lstdelone_bonus.c \
+		ft_lstclear_bonus.c \
+		ft_lstiter_bonus.c \
+		ft_lstmap_bonus.c
 
 HEADER = libft.h
 OBJ_FILES = $(SRCS1:.c=.o)

@@ -6,7 +6,7 @@
 #    By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 11:08:05 by junssong          #+#    #+#              #
-#    Updated: 2023/06/07 16:09:15 by junssong         ###   ########.fr        #
+#    Updated: 2023/06/12 14:35:06 by junssong         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,9 @@ BONUS_DIR	= ./bonus_srcs/
 LIBFT		= $(LIBFT_DIR)libft.a
 INCS		= -I includes
 
-SRC		= pipex.c do_execve.c find_absolute_path.c set_param.c
-BONUS_SRC =  main_bonus.c hook_bonus.c read_map_bonus.c map_error_bonus.c \
-			  dfs_bonus.c print_map_bonus.c \
-			  set_param_bonus.c check_c_e_bonus.c
+SRC			= pipex.c do_execve.c find_absolute_path.c set_param.c
+BONUS_SRC	= pipex_bonus.c do_execve_bonus.c find_absolute_path_bonus.c \
+			set_param_bonus.c
 
 SRCS	= $(addprefix $(SRCS_DIR), $(SRC))
 BONUS_SRCS = $(addprefix $(BONUS_DIR), $(BONUS_SRC))
