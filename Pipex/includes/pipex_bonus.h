@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 17:42:33 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/14 16:08:44 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:39:29 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_param
 	int		cmd_count;
 	int		index;
 	int		here_doc;
+	int		status;
 }				t_param;
 
 char	*find_absolute_path(char **envp, char **cmd_arg);
@@ -46,5 +47,7 @@ void	close_pipe(t_param *param);
 
 void	child_here_doc(t_param *param, char **argv);
 void	is_here_doc(t_param *param, char **argv, char **envp, int argc);
+void	free_all(t_param *param);
+int		return_status(t_param *param);
 
 #endif

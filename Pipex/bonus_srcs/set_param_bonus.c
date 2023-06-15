@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:27:37 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/14 16:09:59 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:39:23 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	set_param(t_param *param, char **argv, char **envp, int argc)
 {
 	param->index = -1;
 	param->here_doc = 0;
+	param->status = 0;
 	param->fd_file1 = open(argv[1], O_RDONLY);
 	param->cmd_count = argc - 3;
 	param->cmd_absolutepath = \

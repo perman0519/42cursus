@@ -6,22 +6,16 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:00:27 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/14 16:34:44 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:48:18 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	check(void)
-{
-	system("leaks -q pipex");
-}
-
 int	main(int argc, char **argv, char **envp)
 {
 	t_param	param;
 
-	atexit(check);
 	if (argc != 5)
 		return (1);
 	set_param(&param, argv, envp);
@@ -42,5 +36,6 @@ int	main(int argc, char **argv, char **envp)
 	close(param.pipefd1[1]);
 	while (--(param.index) > -1)
 		waitpid(-1, NULL, 0);
+	free_all(&param);
 	return (0);
 }

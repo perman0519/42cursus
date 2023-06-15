@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:18:17 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/12 21:19:03 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:11:41 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ static char	*find_path(char **split_path, char **cmd_arg)
 		}
 		i++;
 	}
-	return (NULL);
+	ft_free_split(split_path);
+	return (ft_strdup(cmd_arg[0]));
 }
 
 char	*find_absolute_path(char **envp, char **cmd_arg)

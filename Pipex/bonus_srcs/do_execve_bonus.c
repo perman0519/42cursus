@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:19:35 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/13 16:13:14 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:01:49 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,21 @@ void	close_pipe(t_param *param)
 		close(param->pipefd[i][1]);
 		i++;
 	}
+	i = 0;
+}
+
+void	free_all(t_param *param)
+{
+	int	i;
+
+	i = 0;
+	while (i < param->cmd_count)
+	{
+		ft_free_split(param->cmd_arg[i]);
+		free(param->cmd_absolutepath[i]);
+		i++;
+	}
+	free(param->cmd_arg);
+	free(param->cmd_absolutepath);
+	free(param->pipefd);
 }

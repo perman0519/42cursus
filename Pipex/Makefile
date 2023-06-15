@@ -6,14 +6,14 @@
 #    By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 11:08:05 by junssong          #+#    #+#              #
-#    Updated: 2023/06/14 16:26:49 by junssong         ###   ########.fr        #
+#    Updated: 2023/06/15 15:34:43 by junssong         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= pipex
 BONUS_NAME	= pipex_bonus
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS		= -Wall -Wextra -Werror
 
 SRCS_DIR	= ./srcs/
 LIBFT_DIR	= ./libft

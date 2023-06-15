@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:00:27 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/14 17:01:53 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:48:07 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,10 @@
 
 void	do_child_process(t_param *param, int argc, char **argv, char **envp);
 
-void	check(void)
-{
-	system("leaks -q pipex");
-}
-
 int	main(int argc, char **argv, char **envp)
 {
 	t_param	param;
 
-	atexit(check);
 	if (argc < 5)
 		return (1);
 	set_param(&param, argv, envp, argc);
@@ -37,10 +31,12 @@ int	main(int argc, char **argv, char **envp)
 		}
 		do_child_process(&param, argc, argv, envp);
 	}
-	close_pipe(&param);
+	if (param.child_pid != 0)
+		close_pipe(&param);
 	while (--(param.index) > -1)
-		waitpid(-1, NULL, 0);
-	return (0);
+		waitpid(-1, &param.status, 0);
+	free_all(&param);
+	return (return_status(&param));
 }
 
 void	do_child_process(t_param *param, int argc, char **argv, char **envp)
@@ -53,4 +49,19 @@ void	do_child_process(t_param *param, int argc, char **argv, char **envp)
 		do_cmd_last(param, envp);
 	else if (param->child_pid == 0)
 		do_cmd_middle(param, envp);
+}
+
+int	return_status(t_param *param)
+{
+	int	exit_status;
+
+	if (WIFEXITED(param->status))
+	{
+		exit_status = WEXITSTATUS(param->status);
+	}
+	else if (WIFSIGNALED(param->status))
+	{
+		exit_status = WTERMSIG(param->status);
+	}
+	return (exit_status);
 }

@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 17:42:33 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/14 16:09:50 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/15 17:10:20 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ int		set_param(t_param *param, char **argv, char **envp);
 void	do_cmd_first(t_param *param, char **envp);
 void	do_cmd_last(t_param *param, char **envp);
 void	put_err(char *file);
+void	free_all(t_param *param);
 
 #endif
