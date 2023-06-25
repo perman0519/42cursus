@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:24:17 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/14 18:44:37 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/25 15:17:56 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,12 @@ void	child_here_doc(t_param *param, char **argv)
 	{
 		here_doc = get_next_line(STDIN_FILENO);
 		if (ft_strncmp(here_doc, argv[2], ft_strlen(argv[2])) == 0)
-		{
 			break ;
-		}
 		else
 		{
 			ft_putstr_fd(here_doc, STDOUT_FILENO);
 			free(here_doc);
 		}
 	}
+	free(here_doc);
 }

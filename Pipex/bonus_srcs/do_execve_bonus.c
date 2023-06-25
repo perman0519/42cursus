@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:19:35 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/15 17:01:49 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/25 15:35:31 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	free_all(t_param *param)
 	int	i;
 
 	i = 0;
+	if (param->here_doc == 1)
+		i++;
 	while (i < param->cmd_count)
 	{
 		ft_free_split(param->cmd_arg[i]);
