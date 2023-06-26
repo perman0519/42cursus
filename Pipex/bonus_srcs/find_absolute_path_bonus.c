@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:18:17 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/15 16:03:57 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:15:59 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*find_absolute_path(char **envp, char **cmd_arg)
 	char	**split_path;
 
 	if (access(cmd_arg[0], F_OK | R_OK) == 0)
-		return (cmd_arg[0]);
+		return (ft_strdup(cmd_arg[0]));
 	while (*envp)
 	{
 		if (ft_strncmp(*envp, "PATH=", 5) == 0)

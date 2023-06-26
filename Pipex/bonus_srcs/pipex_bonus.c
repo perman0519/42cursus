@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:00:27 by junssong          #+#    #+#             */
-/*   Updated: 2023/06/25 15:08:49 by junssong         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:17:37 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,10 @@
 
 void	do_child_process(t_param *param, int argc, char **argv, char **envp);
 
-void	check(void)
-{
-	system("leaks pipex_bonus");
-}
-
 int	main(int argc, char **argv, char **envp)
 {
 	t_param	param;
 
-	atexit(check);
 	if (argc < 5)
 		return (1);
 	set_param(&param, argv, envp, argc);
