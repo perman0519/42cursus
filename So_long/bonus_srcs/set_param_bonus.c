@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_param.c                                        :+:      :+:    :+:   */
+/*   set_param_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 18:58:38 by junssong          #+#    #+#             */
-/*   Updated: 2023/05/30 12:36:47 by junssong         ###   ########.fr       */
+/*   Updated: 2023/05/30 12:50:03 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 int	set_param(t_param *par, char *map)
 {

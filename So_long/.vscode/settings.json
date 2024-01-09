@@ -1,9 +1,0 @@
-{
-	"files.associations": {
-		"so_long.h": "c",
-		"fcntl.h": "c",
-		"hook.h": "c",
-		"algorithm": "c",
-		"unistd.h": "c"
-	}
-}

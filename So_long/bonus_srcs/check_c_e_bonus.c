@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_c_e.c                                        :+:      :+:    :+:   */
+/*   check_c_e_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 19:45:59 by junssong          #+#    #+#             */
-/*   Updated: 2023/05/30 11:17:53 by junssong         ###   ########.fr       */
+/*   Updated: 2023/05/30 12:49:43 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 int	check_c_e(t_param *param, int i, int j)
 {
