@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:46:14 by junssong          #+#    #+#             */
-/*   Updated: 2023/05/09 13:12:22 by junssong         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:36:45 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	parse_argv(int argc, t_list **list_a, char **argv)
 		argv_num = is_one_argv(list_a, argv, &int_list);
 	else
 		argv_num = is_more_argv(list_a, argv, &int_list);
-	free(int_list);
 	if (!argv_num)
 	{
 		ft_printf("Error\n");
@@ -33,6 +32,7 @@ int	parse_argv(int argc, t_list **list_a, char **argv)
 	}
 	sorted_data_list(int_list, argv_num);
 	change_data_to_index(list_a, int_list);
+	free(int_list);
 	return (argv_num);
 }
 
@@ -40,30 +40,34 @@ int	is_one_argv(t_list **list, char **argv, int **int_list)
 {
 	char		**split_string;
 	int			argv_num;
-	long long	doub;
 
 	argv_num = 0;
-	doub = 0;
 	split_string = ft_split(argv[1], ' ');
 	if (is_not_number(split_string))
+	{
+		free_split(split_string);
 		return (0);
+	}
 	while (split_string[argv_num] != 0)
 		argv_num++;
 	*int_list = (int *)malloc(sizeof(int) * argv_num);
 	if (!*int_list)
+		free_split(split_string);
+	if (parse_split_string(split_string, list, *int_list) == 0)
+	{
+		free(*int_list);
+		free_split(split_string);
 		return (0);
-	if (parse_split_string(split_string, doub, list, *int_list) == 0)
-		return (0);
+	}
 	free_split(split_string);
 	return (argv_num);
 }
 
-int	parse_split_string(char **split_string, long long doub,
-				t_list **list, int *int_list)
+int	parse_split_string(char **split_string, t_list **list, int *int_list)
 {
-	t_list	*tmp_list;
-	t_list	*index_list;
-	int		i;
+	t_list		*tmp_list;
+	int			i;
+	long long	doub;
 
 	i = 0;
 	while (*split_string)
@@ -74,12 +78,10 @@ int	parse_split_string(char **split_string, long long doub,
 		tmp_list = ft_lstnew((int)doub);
 		int_list[i++] = doub;
 		ft_lstadd_back(list, tmp_list);
-		index_list = *list;
-		while (index_list ->next != *list)
+		if (check_dup(list, tmp_list) == 0)
 		{
-			if (tmp_list ->data == index_list ->data)
-				return (0);
-			index_list = index_list ->next;
+			free_list(list, i);
+			return (0);
 		}
 		split_string++;
 	}
@@ -97,9 +99,7 @@ int	is_not_number(char **split_string)
 	while (split_string[i])
 	{
 		j = 0;
-		if (((!ft_strncmp(split_string[i], "+", 1)
-					|| !ft_strncmp(split_string[i], "-", 1))
-				&& split_string[i][1] == '\0') || split_string[i][j] == '\0')
+		if (check_sign(split_string, i, j))
 			return (1);
 		while (split_string[i][j])
 		{
@@ -117,10 +117,8 @@ int	is_not_number(char **split_string)
 
 int	is_more_argv(t_list **list, char **argv, int **int_list)
 {
-	long long	doub;
 	int			argv_num;
 
-	doub = 0;
 	if (is_not_number(argv + 1))
 		return (0);
 	argv_num = 0;
@@ -131,7 +129,10 @@ int	is_more_argv(t_list **list, char **argv, int **int_list)
 		return (0);
 	*list = NULL;
 	++argv;
-	if (parse_split_string(argv, doub, list, *int_list) == 0)
+	if (parse_split_string(argv, list, *int_list) == 0)
+	{
+		free(*int_list);
 		return (0);
+	}
 	return (argv_num - 1);
 }

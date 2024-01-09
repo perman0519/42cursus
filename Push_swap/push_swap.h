@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 12:46:55 by junssong          #+#    #+#             */
-/*   Updated: 2023/05/09 13:20:18 by junssong         ###   ########.fr       */
+/*   Updated: 2023/05/17 17:36:17 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ typedef struct s_field
 }				t_field;
 
 int		is_one_argv(t_list **list, char **argv, int **int_list);
-int		parse_split_string(char **split_string, long long doub,
-			t_list **list, int *int_list);
+int		parse_split_string(char **split_string, t_list **list, int *int_list);
 int		is_not_number(char **split_string);
 int		is_more_argv(t_list **list, char **argv, int **int_list);
 int		parse_argv(int argc, t_list **list_a, char **argv);
@@ -101,4 +100,7 @@ int		greedy(t_list **list_a, t_list **list_b, int *size_a);
 int		greedy_pa(t_list **list_a, t_list **list_b,
 			int *count_ra_rra, int *size_a);
 
+void	free_list(t_list **list_a, int size_a);
+int		check_dup(t_list **list, t_list *tmp_list);
+int		check_sign(char **split_string, int i, int j);
 #endif

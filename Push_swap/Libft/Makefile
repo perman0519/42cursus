@@ -6,7 +6,7 @@
 #    By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/16 13:40:13 by junssong          #+#    #+#              #
-#    Updated: 2023/05/09 13:28:07 by junssong         ###   ########.fr        #
+#    Updated: 2023/05/09 16:18:01 by junssong         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ SRCS1 = ft_atoi.c \
 HEADER = libft.h
 OBJ_FILES = $(SRCS1:.c=.o)
 
-all : $(NAME)
+all :
+	$(MAKE) -j6 $(NAME)
 
 ${NAME} : $(OBJ_FILES) $(HEADER)
 				ar -rc $(NAME) $(OBJ_FILES)

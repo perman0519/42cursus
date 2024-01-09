@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:54:28 by junssong          #+#    #+#             */
-/*   Updated: 2023/05/03 14:32:09 by junssong         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:55:56 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ void	sa(t_list **list_a)
 	t_list	*tmp;
 	t_list	*last_node;
 
+	if (((*list_a)->next)->next == *list_a)
+	{
+		*list_a = (*list_a)->next;
+		ft_printf("sa\n");
+		return ;
+	}
 	last_node = (*list_a)->prev;
 	if ((*list_a) == NULL || (*list_a)->next == (*list_a))
 		return ;

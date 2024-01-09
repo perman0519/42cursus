@@ -6,7 +6,7 @@
 #    By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/16 13:40:13 by junssong          #+#    #+#              #
-#    Updated: 2023/05/09 14:49:17 by junssong         ###   ########.fr        #
+#    Updated: 2023/05/17 16:18:13 by junssong         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,13 +35,15 @@ SRCS1 = main.c \
 		sort_size5.c \
 		find_min_max.c \
 		sort_size_more.c \
-		rrr_or_rr.c
+		rrr_or_rr.c \
+		check_dup.c
 
-all : $(NAME)
+all :
+	$(MAKE) -j6 $(NAME)
 
 ${NAME} : $(SRCS1)
 				make -C Libft
-				cc $(CFLAGS) -g $^ $(LIBFT) -o $(NAME)
+				cc $(CFLAGS) $^ $(LIBFT) -o $(NAME)
 
 clean :
 	cd Libft; make clean

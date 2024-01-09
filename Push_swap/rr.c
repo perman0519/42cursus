@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:01:45 by junssong          #+#    #+#             */
-/*   Updated: 2023/05/08 14:18:58 by junssong         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:07:47 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 void	rr(t_list **list_a, t_list **list_b)
 {
-	ra(list_a);
-	rb(list_b);
-	return ;
+	(*list_a) = (*list_a)->next;
+	(*list_b) = (*list_b)->next;
+	ft_printf("rr\n");
 }
 
 void	n_rr(t_list **list_a, t_list **list_b, int n)
