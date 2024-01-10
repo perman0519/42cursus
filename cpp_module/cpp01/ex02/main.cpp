@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 16:04:46 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/10 10:56:00 by junssong         ###   ########.fr       */
+/*   Created: 2024/01/10 11:05:07 by junssong          #+#    #+#             */
+/*   Updated: 2024/01/10 11:44:38 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include <iostream>
 #include <string>
 
-class Zombie {
+int main() {
+    std::string str("HI THIS IS BRAIN");
+    std::string *stringPTR = &str;
+    std::string &stringREF = str;
 
-public :
-	~Zombie( void );
-	Zombie ( void );
-	Zombie(std::string name);
-	void	setName(std::string name);
-	void	announce( void );
+    std::cout << &str << std::endl
+              << &stringPTR << std::endl
+              << &stringREF << std::endl;
 
-private :
-	
-	std::string _name;
-	
+    std::cout << str << std::endl
+              << stringPTR << std::endl
+              << stringREF << std::endl;
 
-};
+    return 0;
+}

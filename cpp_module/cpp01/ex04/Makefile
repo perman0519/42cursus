@@ -1,7 +1,7 @@
 CC = c++
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-NAME = zombie00
+NAME = zombie02
 CPP = .cpp
 HPP = .hpp
 SRCDIR = ./

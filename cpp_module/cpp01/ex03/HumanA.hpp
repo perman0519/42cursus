@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 16:04:46 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/10 10:56:00 by junssong         ###   ########.fr       */
+/*   Created: 2024/01/10 11:48:05 by junssong          #+#    #+#             */
+/*   Updated: 2024/01/10 12:01:27 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include <string>
+#include "./Weapon.hpp"
 
-class Zombie {
+class HumanA {
 
-public :
-	~Zombie( void );
-	Zombie ( void );
-	Zombie(std::string name);
-	void	setName(std::string name);
-	void	announce( void );
+public:
+void	attack();
 
-private :
-	
-	std::string _name;
-	
-
+private:
+	std::string	_name;
+	Weapon		_weapon;
 };
