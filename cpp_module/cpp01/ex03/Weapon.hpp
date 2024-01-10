@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:47:36 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/10 12:02:38 by junssong         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:56:31 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ class Weapon {
 	public :
 		Weapon(std::string type);
 		~Weapon(void);
+		
 		std::string getType();
-		std::string setType();
+		void setType(std::string type);
 		
 	private :
 		Weapon(void);

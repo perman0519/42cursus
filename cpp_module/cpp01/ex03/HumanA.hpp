@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:48:05 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/10 12:01:27 by junssong         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:59:10 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@
 class HumanA {
 
 public:
-void	attack();
+	HumanA(std::string name, Weapon &Weapon);
+	~HumanA();
+	void	attack();
 
 private:
+	HumanA();
 	std::string	_name;
-	Weapon		_weapon;
+	Weapon		&_weapon;
 };

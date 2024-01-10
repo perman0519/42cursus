@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 11:48:15 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/10 13:05:17 by junssong         ###   ########.fr       */
+/*   Created: 2024/01/10 12:59:30 by junssong          #+#    #+#             */
+/*   Updated: 2024/01/10 13:19:00 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#include "./Weapon.hpp"
+#include "HumanA.hpp"
+#include <iostream>
 
-class HumanB {
+HumanA::HumanA(std::string name, Weapon &weapon) : _name(name), _weapon(weapon) {
 
-public:
-	HumanB(std::string name);
-	~HumanB();
-	
-	void	setWeapon(Weapon &weapon);
-	void	attack();
+}
 
-private:
-	HumanB();
-	std::string	_name;
-	Weapon		*_weapon;
-};
+HumanA::~HumanA () {
+}
+
+void	HumanA::attack() {
+// <name> attacks with their <weapon type>
+    std::cout << _name
+              << " attacks with their "
+              << _weapon.getType() << std::endl;
+}
