@@ -1,7 +1,7 @@
 CC = c++
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-NAME = brain
+NAME = ex02
 CPP = .cpp
 HPP = .hpp
 SRCDIR = ./
