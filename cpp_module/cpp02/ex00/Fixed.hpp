@@ -26,8 +26,8 @@ public:
     void setRawBits( int const raw );
 
 private:
-    int _value; // An integer to store the fixed-point number _value.
-    static const int fractionalBits = 8;// A static constant integer to store the number of fractional bits.
+    int _value;
+    static const int fractionalBits = 8;
 };
 
 
