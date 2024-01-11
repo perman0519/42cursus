@@ -15,12 +15,12 @@
 #include <string>
 
 int main(int argc, char **argv) {
-    if (argc != 4)
-        return 1;
     std::string fileName(argv[1]);
     std::string str1(argv[2]);
     std::string str2(argv[3]);
     std::fstream og(fileName, std::fstream::in);
+    if (argc != 4 || str1.size() == 0)
+        return 1;
     if (og.is_open()) {
         std::ofstream ogReplace(fileName + std::string(".replace"), std::fstream::out);
         if (!ogReplace.is_open())
