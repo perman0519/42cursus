@@ -45,7 +45,7 @@ Fixed::~Fixed() {
     std::cout << "Destructor called" << std::endl;
 }
 
-int Fixed::getRawBits( void ) const {
+const int Fixed::getRawBits( void ) const {
     return this->_value;
 }
 

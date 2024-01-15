@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 13:55:52 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/11 14:19:02 by junssong         ###   ########.fr       */
+/*   Created: 2024/01/11 21:10:43 by junssong          #+#    #+#             */
+/*   Updated: 2024/01/15 12:37:43 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
-
+#ifndef POINT_HPP
+#define POINT_HPP
 #include <iostream>
+#include "Fixed.hpp"
 
-class Fixed {
+class Point {
 public:
-    Fixed();
-    Fixed(Fixed &fixed);
-    Fixed &operator=(const Fixed &fixed);
-    ~Fixed();
+	Point();
+	Point(const Point &point);
+	Point &operator=(const Point &fixed);
+	~Point();
+	Point(float const x, float const y);
+	const Fixed	&getX(void) const;
+	const Fixed	&getY(void) const;
 
-    const int getRawBits( void ) const;
-    void setRawBits( int const raw );
 
 private:
-    int _value;
-    static const int fractionalBits = 8;
+	Fixed const _x;
+	Fixed const _y;
 };
 
+bool bsp( Point const a, Point const b, Point const c, Point const point);
 
-#endif //FIXED_HPP
+#endif //CPP02_POINT_HPP
