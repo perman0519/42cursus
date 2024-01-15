@@ -53,7 +53,7 @@ const std::string &ClapTrap::getName() const {
 
 void	ClapTrap::attack(const std::string &target) {
 	if (_energyPoints != 0) {
-		std::cout <<"ClapTrap " << this->_name <<
+		std::cout <<"ClapTrap: " << this->_name <<
 					" attacks " << target <<
 					", causing " << this->_attackDamage <<
 					" points of damage! " << std::endl;

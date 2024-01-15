@@ -5,9 +5,17 @@
 #ifndef CPP03_FRAGTRAP_HPP
 #define CPP03_FRAGTRAP_HPP
 
+#include "ClapTrap.hpp"
 
-class FragTrap {
+class FragTrap : public ClapTrap {
+public:
+	FragTrap(std::string name);
+	~FragTrap();
 
+	void	highFivesGuys(void);
+
+private:
+	FragTrap();
 };
 
 

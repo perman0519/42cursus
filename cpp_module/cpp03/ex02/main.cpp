@@ -11,13 +11,18 @@
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main() {
-	ScavTrap scavTrap1(std::string("scavTrap1"));
+	ClapTrap *clapTrap1 = new ScavTrap(std::string("scavTrap1"));
+	FragTrap fragTrap1("fragTrap1");
 
-	scavTrap1.guardGate();
+	clapTrap1->attack("enemy");
 
-	scavTrap1.attack("enemy");
+	fragTrap1.highFivesGuys();
 
-	std::cout << scavTrap1.getName() << std::endl;
+	std::cout << clapTrap1->getName() << std::endl;
+	std::cout << fragTrap1.getName() << std::endl;
+
+	delete(clapTrap1);
 }

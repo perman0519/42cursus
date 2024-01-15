@@ -1,7 +1,7 @@
 CC = c++
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-NAME = ex01
+NAME = ex02
 CPP = .cpp
 HPP = .hpp
 SRCDIR = ./
