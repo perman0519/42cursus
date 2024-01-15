@@ -10,13 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main() {
-	ClapTrap clapTrap1(std::string("clapTrap1"));
-	ClapTrap clapTrap2(std::string("clapTrap2"));
+	ScavTrap scavTrap1(std::string("scavTrap1"));
 
-	clapTrap1.attack(clapTrap2.getName());
-	clapTrap2.takeDamage(clapTrap1.getAttackDamage());
-	clapTrap2.beRepaired(10);
+	scavTrap1.guardGate();
+
+	scavTrap1.attack("enemy");
+
+	std::cout << scavTrap1.getName() << std::endl;
 }
