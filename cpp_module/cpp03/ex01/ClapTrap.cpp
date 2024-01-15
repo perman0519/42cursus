@@ -12,9 +12,11 @@
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() {}
-
-ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+ClapTrap::ClapTrap(std::string name) {
+	this->_name = name;
+	this->_hitPoints = 10;
+	this->_energyPoints = 10;
+	this->_attackDamage = 0;
      std::cout << this->_name << " Constructor called" << std::endl;
 }
 
