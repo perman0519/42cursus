@@ -1,1 +1,1 @@
-# this is my 42scursus git repo.
+# this is my 42cursus git repo.
