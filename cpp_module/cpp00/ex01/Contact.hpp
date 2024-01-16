@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _CONTACT_H_
-#define _CONTACT_H_
+#ifndef CONTACT_H_
+#define CONTACT_H_
 
 #include <string>
 #include <iostream>
-#include <cstdio>
+#include <cstdlib>
 
 class Contact {
 public :

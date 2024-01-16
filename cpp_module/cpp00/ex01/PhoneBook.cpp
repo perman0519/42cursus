@@ -42,7 +42,7 @@ void	PhoneBook::add() {
 		std::getline(std::cin, number);
 		if (checkEmpty(number))
 			return ;
-		if (cstdio::atoi(number.c_str()) == 0)
+		if (std::atoi(number.c_str()) == 0)
 		{
 			std::cout << "wrong number. try again." << std::endl;
 			return ;
@@ -76,7 +76,7 @@ void	PhoneBook::add() {
 		std::getline(std::cin, number);
 		if (checkEmpty(number))
 			return ;
-		if (cstdio::atoi(number.c_str()) == 0)
+		if (std::atoi(number.c_str()) == 0)
 		{
 			std::cout << "wrong number. try again." << std::endl;
 			return ;
@@ -85,7 +85,7 @@ void	PhoneBook::add() {
 		std::getline(std::cin, secret);
 		if (checkEmpty(secret))
 			return ;
-		Contact newContact (firstName, lastName, nickName, cstdio::atoi(number.c_str()), secret);
+		Contact newContact (firstName, lastName, nickName, std::atoi(number.c_str()), secret);
 		this->contactArr[this->contactIndex] = newContact;
 		this->contactIndex++;
 	}
@@ -95,7 +95,7 @@ void	PhoneBook::search() {
 	std::string	searchIndex;
 	std::cout << "Choose index : ";
 	std::getline(std::cin, searchIndex);
-	int searchIndexInt = cstdio::atoi(searchIndex.c_str());
+	int searchIndexInt = std::atoi(searchIndex.c_str());
 	if (!(searchIndexInt > 0 && searchIndexInt <= this->contactCount))
 	{
 		std::cout << "wrong index. try again." << std::endl;
