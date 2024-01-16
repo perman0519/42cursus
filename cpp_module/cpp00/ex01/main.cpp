@@ -28,7 +28,7 @@ int	main()
 		else if  (cin_str.compare("SEARCH") == 0)
 			phoneBook.search();
 		else if  (cin_str.compare("EXIT") == 0)
-			exit(0);
+			return (0);
 		else
 		{
 			std::cout << "\nWrong command. Please try again." << std::endl;
