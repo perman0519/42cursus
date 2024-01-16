@@ -18,11 +18,10 @@ int main(int argc, char **argv) {
 	argv++;
 	if (argc == 1)
 	std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	for (int j = 1; j < argc; j++)
-	{
+	for (int i = 1; i < argc; i++) {
 		tmp = *argv;
-		for (size_t i = 0; i < tmp.length(); i++)
-			std::cout << static_cast<char>(toupper(tmp[i])); //cpp style
+		for (size_t j = 0; j < tmp.length(); j++)
+			std::cout << static_cast<char>(toupper(tmp[j])); //cpp style
 		argv++;
 	}
 	std::cout << std::endl;

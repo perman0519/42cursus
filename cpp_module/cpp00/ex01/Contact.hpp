@@ -17,19 +17,17 @@
 #include <iostream>
 
 class Contact {
-
 public :
-	Contact (void);
+	Contact ();
 	Contact (std::string firstname, std::string lastname, std::string nickname, int number, std::string darkestSecret);
 	~Contact (void);
 
-	//getter
 	std::string	getFirstname(void);
 	std::string	getLastname(void);
 	std::string getNickname(void);
-	int 		getnumber(void);
-	std::string	getDarkestSecret(void);
+	int 		getNumber(void);
 
+	std::string	getDarkestSecret(void);
 private :
 	std::string	_firstName;
 	std::string	_lastName;

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./Account.hpp"
+#include "Account.hpp"
 #include <iostream>
 #include <ctime>
 

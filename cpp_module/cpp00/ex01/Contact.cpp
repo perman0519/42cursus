@@ -10,16 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./Contact.hpp"
+#include "Contact.hpp"
 
 //Construct
-Contact::Contact() {
+Contact::Contact() {}
 
-}
-
-Contact::~Contact() {
-
-}
+Contact::~Contact() {}
 
 Contact::Contact (std::string firstName, std::string lastName, std::string nickName, int number, std::string darkestSecret) {
 	this->_firstName = firstName;
@@ -42,7 +38,7 @@ std::string Contact::getNickname(void) {
 	return this->_nickname;
 }
 
-int			Contact::getnumber(void) {
+int			Contact::getNumber(void) {
 	return this->_number;
 }
 

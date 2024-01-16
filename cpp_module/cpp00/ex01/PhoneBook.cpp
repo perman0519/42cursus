@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./PhoneBook.hpp"
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook() {
 	contactCount = 0;
