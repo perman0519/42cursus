@@ -13,6 +13,7 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 #include <cstdlib>
+#include <cstdio>
 
 int	main()
 {
