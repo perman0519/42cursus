@@ -12,7 +12,7 @@
 
 #include "Contact.hpp"
 
-Contact::Contact() {}s
+Contact::Contact() {}
 
 Contact::~Contact() {}
 
