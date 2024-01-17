@@ -12,18 +12,11 @@
 
 #include "Contact.hpp"
 
-//Construct
-Contact::Contact() {}
+Contact::Contact() {}s
 
 Contact::~Contact() {}
 
-Contact::Contact (std::string firstName, std::string lastName, std::string nickName, int number, std::string darkestSecret) {
-	this->_firstName = firstName;
-	this->_lastName = lastName;
-	this->_number = number;
-	this->_nickname = nickName;
-	this->_darkestSecret = darkestSecret;
-}
+Contact::Contact (std::string firstName, std::string lastName, std::string nickName, int number, std::string darkestSecret) : _firstName(firstName), _lastName(lastName), _nickname(nickName), _number(number), _darkestSecret(darkestSecret) {}
 
 //getter
 std::string	Contact::getFirstname(void) {
