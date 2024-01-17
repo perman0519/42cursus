@@ -16,7 +16,7 @@ int	main()
 {
 	PhoneBook phoneBook;
 	std::cout << "---------------------------------------------" << std::endl;
-	while (1)
+	while (true)
 	{
 		std::cout << "Please enter command : ";
 		std::string cin_str;
