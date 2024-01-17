@@ -15,14 +15,14 @@ all: $(NAME)
 
 # Builds the app
 $(NAME): $(SRC) $(INC)
-	@$(CC) $(SRC) $(CPPFLAGS) -o $@
+	@$ $(CC) $(SRC) $(CPPFLAGS) -o $@
 
 # Cleans complete project
 .PHONY: clean
 clean:
-	@$(RM) $(NAME)
+	@$ $(RM) $(APPNAME)
 
 .PHONY: re
 re:
-	@$(MAKE) clean
-	@$(MAKE) all
+	@$(MAKE) -s clean
+	@$(MAKE) -s all

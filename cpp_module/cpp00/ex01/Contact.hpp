@@ -15,7 +15,6 @@
 
 #include <string>
 #include <iostream>
-#include <cstdlib>
 
 class Contact {
 public :
@@ -27,13 +26,13 @@ public :
 	std::string	getLastname(void);
 	std::string getNickname(void);
 	int 		getNumber(void);
-
 	std::string	getDarkestSecret(void);
+
 private :
 	std::string	_firstName;
 	std::string	_lastName;
-	int			_number;
 	std::string	_nickname;
+	int			_number;
 	std::string	_darkestSecret;
 };
 

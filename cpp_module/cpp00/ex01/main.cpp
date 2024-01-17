@@ -10,10 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
-#include "PhoneBook.hpp"
-#include <cstdlib>
 #include <cstdio>
+#include "PhoneBook.hpp"
 
 int	main()
 {
