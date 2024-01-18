@@ -20,8 +20,6 @@ int main()
     for (int i = 0; i < 10; ++i) {
         zombies[i].announce();
     }
-    for (int i = 0; i < 10; ++i) {
-        zombies[i].~Zombie();
-    }
+    delete [] zombies;
     return 0;
 }

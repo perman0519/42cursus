@@ -11,11 +11,16 @@
 /* ************************************************************************** */
 
 #include "Zombie.h"
+#include <cstdlib>
 
 Zombie* zombieHorde( int N, std::string name ) {
 	Zombie *zombieArr = new Zombie[N];
 	for (int i = 0; i < N; ++i) {
-		zombieArr[i].setName(name);
+		std::string iStr;          // string which will contain the result
+		std::ostringstream convert;   // stream used for the conversion
+		convert << i;      // insert the textual representation of 'Number' in the characters in the stream
+		iStr = convert.str(); // set 'Result' to the contents of the stream
+		zombieArr[i].setName(name + iStr);
 	}
 	return zombieArr;
 }

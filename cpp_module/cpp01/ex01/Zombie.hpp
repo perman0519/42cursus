@@ -12,19 +12,19 @@
 
 #pragma once
 #include <string>
+#include <sstream>
 
 class Zombie {
 
 public :
-	~Zombie( void );
 	Zombie ( void );
 	Zombie(std::string name);
+	~Zombie( void );
+
 	void	setName(std::string name);
 	void	announce( void );
 
 private :
-	
 	std::string _name;
-	
 
 };
