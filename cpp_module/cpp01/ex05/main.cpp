@@ -14,5 +14,10 @@
 
 int main() {
     Harl harl;
-    harl.complain("info");
+    // harl.complain("info");
+
+    // harl.complain("INFO");
+    // harl.complain("DEBUG");
+    harl.complain("WARNING");
+    // harl.complain("ERROR");
 }

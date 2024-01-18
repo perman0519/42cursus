@@ -55,15 +55,19 @@ void Harl::complain( std::string level ) {
         }
         case 0: {
             (this->*f[0])();
+            //[[fallthrough]]
         }
         case 1: {
             (this->*f[1])();
+            //[[fallthrough]]
         }
         case 2: {
             (this->*f[2])();
+            //[[fallthrough]]
         }
         case 3: {
             (this->*f[3])();
+            //[[fallthrough]]
         }
 
         default:
