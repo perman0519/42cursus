@@ -1,5 +1,5 @@
 CC = c++
-CPPFLAGS = -std=c++98 -Wall -Wextra -Werror -Werror
+CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
 NAME = ex06
 CPP = .cpp
 HPP = .hpp
