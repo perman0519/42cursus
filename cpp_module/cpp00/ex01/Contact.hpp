@@ -19,20 +19,20 @@
 class Contact {
 public :
 	Contact ();
-	Contact (std::string firstname, std::string lastname, std::string nickname, int number, std::string darkestSecret);
+	Contact (std::string firstname, std::string lastname, std::string nickname, std::string number, std::string darkestSecret);
 	~Contact (void);
 
 	std::string	getFirstname(void);
 	std::string	getLastname(void);
 	std::string getNickname(void);
-	int 		getNumber(void);
+	std::string getNumber(void);
 	std::string	getDarkestSecret(void);
 
 private :
 	std::string	_firstName;
 	std::string	_lastName;
 	std::string	_nickname;
-	int			_number;
+	std::string	_number;
 	std::string	_darkestSecret;
 };
 

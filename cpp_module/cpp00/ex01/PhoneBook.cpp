@@ -42,16 +42,11 @@ void	PhoneBook::add() {
 		std::getline(std::cin, number);
 		if (checkEmpty(number))
 			return ;
-		if (std::atoi(number.c_str()) == 0)
-		{
-			std::cout << "Wrong number. try again." << std::endl;
-			return ;
-		}
 		std::cout << "secret    : ";
 		std::getline(std::cin, secret);
 		if (checkEmpty(secret))
 			return ;
-		Contact newContact (firstName, lastName, nickName, std::atoi(number.c_str()), secret);
+		Contact newContact (firstName, lastName, nickName, number,secret);
 		this->contactArr[this->contactIndex] = newContact;
 		this->contactIndex++;
 		this->contactCount++;
@@ -76,16 +71,11 @@ void	PhoneBook::add() {
 		std::getline(std::cin, number);
 		if (checkEmpty(number))
 			return ;
-		if (std::atoi(number.c_str()) == 0)
-		{
-			std::cout << "wrong number. try again." << std::endl;
-			return ;
-		}
 		std::cout << "secret    : ";
 		std::getline(std::cin, secret);
 		if (checkEmpty(secret))
 			return ;
-		Contact newContact (firstName, lastName, nickName, std::atoi(number.c_str()), secret);
+		Contact newContact (firstName, lastName, nickName, number, secret);
 		this->contactArr[this->contactIndex] = newContact;
 		this->contactIndex++;
 	}
@@ -93,14 +83,6 @@ void	PhoneBook::add() {
 
 void	PhoneBook::search() {
 	std::string	searchIndex;
-	std::cout << "Choose index : ";
-	std::getline(std::cin, searchIndex);
-	int searchIndexInt = std::atoi(searchIndex.c_str());
-	if (!(searchIndexInt > 0 && searchIndexInt <= this->contactCount))
-	{
-		std::cout << "Wrong index. try again." << std::endl;
-		return ;
-	}
 	std::cout << "---------------------------------------------\n";
 	std::cout << "|     index| firstName|  lastName|  nickname|\n";
 	std::cout << "---------------------------------------------" << std::endl;
@@ -113,6 +95,33 @@ void	PhoneBook::search() {
 		std::cout << "|" << std::endl;
 		std::cout << "---------------------------------------------" << std::endl;
 	}
+	std::cout << "Choose index : ";
+	std::getline(std::cin, searchIndex);
+	int searchIndexInt = std::atoi(searchIndex.c_str());
+	if (!(searchIndexInt > 0 && searchIndexInt <= this->contactCount))
+	{
+		std::cout << "Wrong index. try again." << std::endl;
+		return ;
+	}
+	std::cout << "|     index";
+	coutSearch(searchIndexInt);
+	std::cout << "|" << std::endl;
+	std::cout << "| firstName";
+	coutSearch(this->contactArr[searchIndexInt - 1].getFirstname());
+	std::cout << "|" << std::endl;
+	std::cout << "|  lastName";
+	coutSearch(this->contactArr[searchIndexInt - 1].getLastname());
+	std::cout << "|" << std::endl;
+	std::cout << "|  nickname";
+	coutSearch(this->contactArr[searchIndexInt - 1].getNickname());
+	std::cout << "|" << std::endl;
+	std::cout << "|    number";
+	coutSearch(this->contactArr[searchIndexInt - 1].getNumber());
+	std::cout << "|" << std::endl;
+	std::cout << "|darkSecret";
+	coutSearch(this->contactArr[searchIndexInt - 1].getDarkestSecret());
+	std::cout << "|" << std::endl;
+	std::cout << "---------------------------------------------" << std::endl;
 }
 
 void	PhoneBook::coutSearch(std::string str) {

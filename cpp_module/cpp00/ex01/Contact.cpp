@@ -16,7 +16,7 @@ Contact::Contact() {}
 
 Contact::~Contact() {}
 
-Contact::Contact (std::string firstName, std::string lastName, std::string nickName, int number, std::string darkestSecret) : _firstName(firstName), _lastName(lastName), _nickname(nickName), _number(number), _darkestSecret(darkestSecret) {}
+Contact::Contact (std::string firstName, std::string lastName, std::string nickName, std::string number, std::string darkestSecret) : _firstName(firstName), _lastName(lastName), _nickname(nickName), _number(number), _darkestSecret(darkestSecret) {}
 
 //getter
 std::string	Contact::getFirstname(void) {
@@ -31,7 +31,7 @@ std::string Contact::getNickname(void) {
 	return this->_nickname;
 }
 
-int			Contact::getNumber(void) {
+std::string	Contact::getNumber(void) {
 	return this->_number;
 }
 
