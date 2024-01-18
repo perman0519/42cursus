@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
@@ -19,21 +19,20 @@ int	main()
 	while (true)
 	{
 		std::cout << "Please enter command : ";
-		std::string cin_str;
-		std::getline(std::cin, cin_str);
-		if (cin_str.compare("ADD") == 0)
+		std::string cinStr;
+		std::getline(std::cin, cinStr);
+		if (cinStr.compare("ADD") == 0)
 			phoneBook.add();
-		else if  (cin_str.compare("SEARCH") == 0)
+		else if  (cinStr.compare("SEARCH") == 0)
 			phoneBook.search();
-		else if  (cin_str.compare("EXIT") == 0)
+		else if  (cinStr.compare("EXIT") == 0)
 			std::exit(0);
 		else
 		{
-			std::cout << "\nWrong command. Please try again." << std::endl;
+			std::cout << "Wrong command. Please try again." << std::endl;
 			std::cout << "---------------------------------------------" << std::endl;
 			std::cin.clear();
 			clearerr(stdin);
-			continue ;
 		}
 	}
 }

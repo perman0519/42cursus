@@ -44,7 +44,7 @@ void	PhoneBook::add() {
 			return ;
 		if (std::atoi(number.c_str()) == 0)
 		{
-			std::cout << "wrong number. try again." << std::endl;
+			std::cout << "Wrong number. try again." << std::endl;
 			return ;
 		}
 		std::cout << "secret    : ";
@@ -98,7 +98,7 @@ void	PhoneBook::search() {
 	int searchIndexInt = std::atoi(searchIndex.c_str());
 	if (!(searchIndexInt > 0 && searchIndexInt <= this->contactCount))
 	{
-		std::cout << "wrong index. try again." << std::endl;
+		std::cout << "Wrong index. try again." << std::endl;
 		return ;
 	}
 	std::cout << "---------------------------------------------\n";
@@ -148,7 +148,7 @@ int	PhoneBook::checkEmpty(std::string str) {
 		{
 			if (isspace(str[i]))
 			{
-				std::cout << "wrong input. try again." << std::endl;
+				std::cout << "Wrong input. try again." << std::endl;
 				return (1);
 			}
 		}
