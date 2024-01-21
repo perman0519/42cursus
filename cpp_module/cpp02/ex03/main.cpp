@@ -16,15 +16,10 @@ int main(void) {
     Point P6(-2.0f, 1.00f);
 
     std::cout << bsp(a,b,c,P1) << std::endl;
- 
     std::cout << bsp(a,b,c,P2) << std::endl;
- 
     std::cout << bsp(a,b,c,P3) << std::endl;
-
 	std::cout << bsp(a,b,c,P4) << std::endl;
-
 	std::cout << bsp(a,b,c,P5) << std::endl;
-
 	std::cout << bsp(a,b,c,P6) << std::endl;
     return 0;
 }
