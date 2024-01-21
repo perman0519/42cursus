@@ -9,7 +9,7 @@ INCDIR = ./
 
 SRC = $(wildcard $(SRCDIR)/*$(CPP))
 INC = $(wildcard $(INCDIR)/*$(HPP))
-RM = rm
+RM = rm -rf
 
 all: $(NAME)
 
@@ -17,7 +17,6 @@ all: $(NAME)
 $(NAME): $(SRC) $(INC)
 	@$(CC) $(SRC) $(CPPFLAGS) -o $@
 
-# Cleans complete project
 .PHONY: clean
 clean:
 	@$(RM) $(NAME)
