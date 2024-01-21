@@ -30,7 +30,7 @@ Fixed::Fixed(const int integer) {
 Fixed::Fixed(const float number) {
     std::cout << "Float constructor called" << std::endl;
     float tmp = number * (1 << _fractionalBits);
-    tmp = std::roundf(tmp);
+    tmp = roundf(tmp);
     this->_value = tmp;
 }
 
@@ -45,7 +45,7 @@ Fixed::~Fixed() {
     std::cout << "Destructor called" << std::endl;
 }
 
-const int Fixed::getRawBits( void ) const {
+int Fixed::getRawBits( void ) const {
     return this->_value;
 }
 
