@@ -19,8 +19,7 @@ int main()
     Zombie *zombie = newZombie(name);
     zombie->announce();
     randomChump(std::string("zombie2"));
-    zombie->~Zombie();
-    // delete zombie;
-    //2개 다 됨.
+//    zombie->~Zombie();
+     delete zombie;
     return 0;
 }
