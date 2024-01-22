@@ -24,5 +24,4 @@ class Weapon {
 	private :
 		Weapon(void);
 		std::string _type;
-
 };
