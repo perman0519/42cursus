@@ -25,8 +25,6 @@ float sign (Point p1, Point p2, Point p3)
 }
 
 bool bsp( Point const a, Point const b, Point const c, Point const point) {
-
-
 	float d1, d2, d3;
     bool has_neg, has_pos;
 
@@ -38,4 +36,6 @@ bool bsp( Point const a, Point const b, Point const c, Point const point) {
     has_pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
 	
 	return !(has_neg && has_pos);
+	// Point vec_ab(b.getX() - a.getX(), b.getY() - a.getY());
+	// Point vec_bc(c.getX() - b.getX(), c.getY() - c.getX());
 }
