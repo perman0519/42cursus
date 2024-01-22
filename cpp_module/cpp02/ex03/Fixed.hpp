@@ -19,12 +19,12 @@
 class Fixed {
 public:
     Fixed();
-    Fixed(const int integer);
-    Fixed(const float number);
     Fixed(const Fixed &fixed);
+    Fixed &operator=(const Fixed &fixed);
     ~Fixed();
 
-    Fixed &operator=(const Fixed &fixed);
+    Fixed(const int integer);
+    Fixed(const float number);
 
 	int getRawBits( void ) const;
     void setRawBits( int const raw );
