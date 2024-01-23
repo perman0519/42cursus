@@ -18,6 +18,7 @@
 class ScavTrap : public ClapTrap {
 public:
 	ScavTrap(std::string name);
+	
 	~ScavTrap();
 	ScavTrap(const ScavTrap &scavTrap);
 	ScavTrap &operator=(const ScavTrap &scavTrap);

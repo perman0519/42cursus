@@ -14,8 +14,8 @@
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	ClapTrap::_energyPoints = 50;
-	_hitPoints = 100;
-	_attackDamage = 20;
+	ClapTrap::_hitPoints = 100;
+	ClapTrap::_attackDamage = 20;
 	std::cout << "ScavTrap: " << _name << " Constructor called" << std::endl;
 }
 
@@ -25,7 +25,7 @@ ScavTrap::~ScavTrap() {
 
 ScavTrap::ScavTrap() {}
 
-ScavTrap::ScavTrap(const ScavTrap &scavTrap) {
+ScavTrap::ScavTrap(const ScavTrap &scavTrap) : ClapTrap(scavTrap._name) {
 	std::cout << "ScavTrap: Copy constructor called" << std::endl;
 	*this = scavTrap;
 }

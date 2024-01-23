@@ -14,7 +14,6 @@
 
 int main() {
 	ScavTrap scavTrap1(std::string("scavTrap1"));
-
 	ScavTrap scavTrap2 = scavTrap1;
 
 	scavTrap1.guardGate();
@@ -25,4 +24,6 @@ int main() {
 
 	std::cout << scavTrap1.getName() << std::endl;
 	std::cout << scavTrap2.getName() << std::endl;
+
+	return 0;
 }
