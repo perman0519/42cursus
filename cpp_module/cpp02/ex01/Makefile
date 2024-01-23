@@ -13,11 +13,11 @@ RM = rm -rf
 
 all: $(NAME)
 
-# Builds the app
+
 $(NAME): $(SRC) $(INC)
 	@$(CC) $(SRC) $(CPPFLAGS) -o $@
 
-# Cleans complete project
+
 .PHONY: clean
 clean:
 	@$(RM) $(NAME)
