@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:55:44 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/23 14:09:41 by junssong         ###   ########.fr       */
+/*   Updated: 2024/01/23 14:47:23 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ Fixed Fixed::operator-(const Fixed &fixed) {
     return Fixed(this->toFloat() - fixed.toFloat());
 }
 
-Fixed Fixed::operator*(const Fixed &fixed) {
+Fixed Fixed::operator*(const Fixed &fixed) const {
     return Fixed (this->toFloat() * fixed.toFloat());
 }
 
@@ -122,7 +122,6 @@ Fixed Fixed::operator++(int) {
 Fixed &Fixed::operator--() {
     --this->_value;
     return *this;
-
 }
 
 Fixed Fixed::operator--(int) {

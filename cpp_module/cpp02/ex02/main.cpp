@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:31:25 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/23 14:13:46 by junssong         ###   ########.fr       */
+/*   Updated: 2024/01/23 14:45:32 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int main(void) {
     std::cout << a * b << std::endl;
 
     std::cout << "b * c = " << a * c << std::endl;
+    std::cout << "b * c = " << b * c << std::endl;
     
     return 0;
 }
