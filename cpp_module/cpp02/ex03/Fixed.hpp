@@ -31,17 +31,17 @@ public:
     float toFloat( void ) const;
     int toInt( void ) const;
 
-    bool operator>(const Fixed &fixed);
-    bool operator<(const Fixed &fixed);
-    bool operator>=(const Fixed &fixed);
-    bool operator<=(const Fixed &fixed);
-    bool operator==(const Fixed &fixed);
-    bool operator!=(const Fixed &fixed);
+    bool operator>(const Fixed &fixed) const ;
+    bool operator<(const Fixed &fixed) const ;
+    bool operator>=(const Fixed &fixed) const ;
+    bool operator<=(const Fixed &fixed) const ;
+    bool operator==(const Fixed &fixed) const ;
+    bool operator!=(const Fixed &fixed) const ;
 
-    Fixed operator+(const Fixed &fixed);
-    Fixed operator-(const Fixed &fixed);
-    Fixed operator*(const Fixed &fixed);
-    Fixed operator/(const Fixed &fixed);
+    Fixed operator+(const Fixed &fixed) const ;
+    Fixed operator-(const Fixed &fixed) const ;
+    Fixed operator*(const Fixed &fixed) const ;
+    Fixed operator/(const Fixed &fixed) const ;
 
     Fixed &operator++();
     Fixed operator++(int);
