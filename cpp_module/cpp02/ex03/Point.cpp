@@ -13,19 +13,19 @@
 #include "Point.hpp"
 
 Point::Point() : _x(Fixed(0)), _y(Fixed(0)) {
-	 std::cout << "Default constructor called" << std::endl;
+//	 std::cout << "Default constructor called" << std::endl;
 }
 
 Point::Point(float const x, float const y) : _x(x), _y(y) {
-	 std::cout << "float x, y constructor called" << std::endl;
+//	 std::cout << "float x, y constructor called" << std::endl;
 }
 
 Point::Point(const Point &point) : _x(point._x), _y(point._y) {
-	 std::cout << "Copy constructor called" << std::endl;
+//	 std::cout << "Copy constructor called" << std::endl;
 }
 
 Point& Point::operator=(const Point &point) {
-	 std::cout << "Copy assignment operator called" << std::endl;
+//	 std::cout << "Copy assignment operator called" << std::endl;
 //	(Fixed)this->_x = point._x;
 //	(Fixed)this->_y = point._y;
 	const_cast<Fixed&>(this->_x) = point._x;
@@ -34,13 +34,13 @@ Point& Point::operator=(const Point &point) {
 }
 
 Point::~Point() {
-	 std::cout << "Destructor called" << std::endl;
+//	 std::cout << "Destructor called" << std::endl;
 }
 
-const Fixed	&Point::getX(void) const {
-	return this->_x;
+Fixed	&Point::getX(void) const {
+	return const_cast<Fixed &>(this->_x);
 }
 
-const Fixed	&Point::getY(void) const {
-	return this->_y;
+Fixed	&Point::getY(void) const {
+	return const_cast<Fixed &>(this->_y);
 }

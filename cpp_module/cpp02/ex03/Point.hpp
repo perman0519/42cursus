@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:10:43 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/15 12:37:43 by junssong         ###   ########.fr       */
+/*   Updated: 2024/01/22 21:15:58 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ public:
 	Point &operator=(const Point &fixed);
 	~Point();
 	Point(float const x, float const y);
-	const Fixed	&getX(void) const;
-	const Fixed	&getY(void) const;
-
+	Fixed	&getX(void) const;
+	Fixed	&getY(void) const;
 
 private:
 	Fixed const _x;
@@ -33,4 +32,4 @@ private:
 
 bool bsp( Point const a, Point const b, Point const c, Point const point);
 
-#endif //CPP02_POINT_HPP
+#endif

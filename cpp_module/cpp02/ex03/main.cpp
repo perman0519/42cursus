@@ -7,11 +7,10 @@ int main(void) {
     Point b(-4.0f, 1.0f);
     Point c(2.0f, 7.0f);
 
-
     Point P1(3.0f, 3.0f);
     Point P2(10.0f, 10.0f);
     Point P3(2.0f, 2.00f);
-    Point P4(-1.0f, 4.00f);
+    Point P4(-1.0f, 4.0f);
     Point P5(-1.0f, -1.00f);
     Point P6(-2.0f, 1.00f);
 
