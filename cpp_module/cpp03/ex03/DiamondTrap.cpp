@@ -22,7 +22,7 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
 DiamondTrap::DiamondTrap() {}
 
 DiamondTrap::~DiamondTrap() {
-	std::cout <<  "ClapTrap: " << this->_name << " Destructor called" << std::endl;
+	std::cout <<  "DiamondTrap: " << this->_name << " Destructor called" << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &diamondTrap) : ClapTrap(diamondTrap._name), ScavTrap(diamondTrap._name), FragTrap(diamondTrap._name) {
