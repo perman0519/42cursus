@@ -25,6 +25,18 @@ int main() {
     diamondTrap1->attack("asdf");
 
     diamondTrap1->whoAmI();
+
+	DiamondTrap diamondTrap2("hello world");
+	DiamondTrap diamondTrap3 = diamondTrap2;
+
+	diamondTrap2.whoAmI();
+
+	std::cout << diamondTrap2.getHitPoints() << std::endl;
+	std::cout << diamondTrap3.getHitPoints() << std::endl;
+	diamondTrap2.beRepaired(100);
+	std::cout << diamondTrap2.getHitPoints() << std::endl;
+	std::cout << diamondTrap3.getHitPoints() << std::endl;
+
     delete(scavTrap);
     delete(fragTrap);
 	delete(diamondTrap1);

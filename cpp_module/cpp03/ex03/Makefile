@@ -1,7 +1,7 @@
 CC = c++
-CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
+CPPFLAGS = -std=c++98 -Wall -Wextra -Werror -Wshadow -Wno-shadow
 
-NAME = ex02
+NAME = ex03
 CPP = .cpp
 HPP = .hpp
 SRCDIR = ./
@@ -9,7 +9,7 @@ INCDIR = ./
 
 SRC = $(wildcard $(SRCDIR)/*$(CPP))
 INC = $(wildcard $(INCDIR)/*$(HPP))
-RM = rm -Rf
+RM = rm -rf
 
 all: $(NAME)
 

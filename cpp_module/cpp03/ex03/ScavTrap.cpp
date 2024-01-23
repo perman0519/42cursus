@@ -20,6 +20,24 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	std::cout << "ScavTrap: " << _name << " Constructor called" << std::endl;
 }
 
+ScavTrap::ScavTrap() {}
+
+ScavTrap::ScavTrap(const ScavTrap &scavTrap) {
+	std::cout << "ScavTrap: Copy constructor called" << std::endl;
+	*this = scavTrap;
+}
+
+ScavTrap &ScavTrap::operator=(const ScavTrap &scavTrap) {
+	std::cout << "ScavTrap: Copy assignment operator called" << std::endl;
+	if (this != &scavTrap) {
+		this->_name = scavTrap._name;
+		this->_energyPoints = scavTrap._energyPoints;
+		this->_attackDamage = scavTrap._attackDamage;
+		this->_hitPoints = scavTrap._hitPoints;
+	}
+	return *this;
+}
+
 ScavTrap::~ScavTrap() {
 	std::cout <<  "ScavTrap: " << this->_name << " Destructor called" << std::endl;
 }

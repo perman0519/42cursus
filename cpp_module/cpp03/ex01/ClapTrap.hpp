@@ -26,10 +26,11 @@ public:
 	virtual void	attack(const std::string &target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
-	const std::string &getName() const;
-	const unsigned int &getEnergyPoints() const;
-	const unsigned int &getHitPoints() const;
-	const unsigned int &getAttackDamage() const;
+
+	std::string getName() const;
+	unsigned int getEnergyPoints() const;
+	unsigned int getHitPoints() const;
+	unsigned int getAttackDamage() const;
 
 protected:
 	ClapTrap();

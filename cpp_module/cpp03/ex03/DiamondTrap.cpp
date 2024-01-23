@@ -13,12 +13,34 @@
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(_name), FragTrap(_name), name(name) {
-    this->_attackDamage = FragTrap::_attackDamage;
+	std::cout << "DiamondTrap: name constructor called" << std::endl;
+	this->_attackDamage = FragTrap::_attackDamage;
     this->_hitPoints = FragTrap::_hitPoints;
     this->_energyPoints = ScavTrap::_energyPoints;
 }
 
-DiamondTrap::~DiamondTrap() {}
+DiamondTrap::DiamondTrap() {}
+
+DiamondTrap::~DiamondTrap() {
+	std::cout <<  "ClapTrap: " << this->_name << " Destructor called" << std::endl;
+}
+
+DiamondTrap::DiamondTrap(const DiamondTrap &diamondTrap) {
+	std::cout << "DiamondTrap: Copy constructor called" << std::endl;
+	*this = diamondTrap;
+}
+
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap &diamondTrap) {
+	std::cout << "DiamondTrap: Copy assignment operator called" << std::endl;
+	if (this != &diamondTrap) {
+		this->_name = diamondTrap._name;
+		this->_attackDamage = diamondTrap._attackDamage;
+		this->_hitPoints = diamondTrap._hitPoints;
+		this->_energyPoints = diamondTrap._energyPoints;
+		this->name = diamondTrap.name;
+	}
+	return *this;
+}
 
 void DiamondTrap::whoAmI() {
     std::cout << "This name is " << this->name << ", ClapTrap's name is " << ClapTrap::_name << std::endl;

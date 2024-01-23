@@ -19,14 +19,16 @@
 class DiamondTrap : public ScavTrap, public FragTrap {
 public:
     DiamondTrap(std::string name);
-    DiamondTrap(const DiamondTrap &diamondTrap);
+
     ~DiamondTrap();
+	DiamondTrap(const DiamondTrap &diamondTrap);
     DiamondTrap &operator=(const DiamondTrap &diamondTrap);
-    void whoAmI();
+
+	void whoAmI();
+
 private:
     DiamondTrap();
     std::string name;
 };
-
 
 #endif //CPP03_DIAMONDTRAP_HPP

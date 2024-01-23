@@ -15,9 +15,14 @@
 int main() {
 	ScavTrap scavTrap1(std::string("scavTrap1"));
 
+	ScavTrap scavTrap2 = scavTrap1;
+
 	scavTrap1.guardGate();
 
 	scavTrap1.attack("enemy");
 
+	scavTrap2.attack("powder");
+
 	std::cout << scavTrap1.getName() << std::endl;
+	std::cout << scavTrap2.getName() << std::endl;
 }

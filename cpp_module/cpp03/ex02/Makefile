@@ -9,7 +9,7 @@ INCDIR = ./
 
 SRC = $(wildcard $(SRCDIR)/*$(CPP))
 INC = $(wildcard $(INCDIR)/*$(HPP))
-RM = rm -Rf
+RM = rm -rf
 
 all: $(NAME)
 
