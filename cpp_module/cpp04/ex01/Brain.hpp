@@ -5,8 +5,8 @@
 #ifndef CPP04_BRAIN_HPP
 #define CPP04_BRAIN_HPP
 
-#include "Cat.hpp"
-#include "Dog.hpp"
+#include <string>
+#include <iostream>
 
 class Brain {
 public:
@@ -20,6 +20,5 @@ public:
 private:
 	std::string *ideas;
 };
-
 
 #endif //CPP04_BRAIN_HPP

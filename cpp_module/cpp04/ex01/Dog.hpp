@@ -6,6 +6,7 @@
 #define CPP04_DOG_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal {
 public:
@@ -15,6 +16,9 @@ public:
 	Dog &operator=(const Dog &dog);
 
 	void makeSound() const ;
+
+private:
+	Brain *brain;
 };
 
 #endif //CPP04_DOG_HPP
