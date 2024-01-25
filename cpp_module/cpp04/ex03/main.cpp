@@ -2,18 +2,20 @@
 // Created by Junsang Song on 1/24/24.
 //
 
+#include "AMateria.hpp"
+
 int main () {
-	IMateriaSource *src = newMateriaSource();
-	src->learnMateria(newIce());
-	src->learnMateria(newCure());
-	ICharacter *me = newCharacter("me");
+	IMateriaSource *src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	ICharacter *me = new Character("me");
 	AMateria *tmp;
 
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
-	ICharacter *bob = newCharacter("bob");
+	ICharacter *bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
 
