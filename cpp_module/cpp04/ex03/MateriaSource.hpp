@@ -20,7 +20,7 @@ public:
 	virtual AMateria* createMateria(std::string const & type);
 
 private:
-	AMateria aMaterias[4];
+	AMateria *_materiaSource[4];
 };
 
 

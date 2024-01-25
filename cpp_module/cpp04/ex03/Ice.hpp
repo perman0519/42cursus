@@ -7,7 +7,7 @@
 
 #include "AMateria.hpp"
 
-class Ice : AMateria {
+class Ice : public AMateria {
 /*               AMateria               */
 public:
 //	AMateria(std::string const & type);
@@ -17,13 +17,17 @@ public:
 //
 //	std::string const & getType() const;
 //
-	virtual AMateria* clone() const;
 //	virtual void use(ICharacter& target);
-//
+	Ice();
+	~Ice();
+	Ice(const Ice &ice);
+	Ice &operator=(const Ice &ice);
+	virtual AMateria* clone() const;
+	virtual void use(ICharacter &target);
+
 //protected:
 //	AMateria();
 //	std::string type;
-private:
 };
 
 

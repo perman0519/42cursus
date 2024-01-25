@@ -7,7 +7,7 @@
 
 #include "AMateria.hpp"
 
-class Cure : AMateria {
+class Cure : public AMateria {
 /*                  AMateria                    */
 public:
 //	AMateria(std::string const & type);
@@ -17,11 +17,17 @@ public:
 //
 //	std::string const & getType() const;
 //
-	virtual AMateria* clone() const;
 //	virtual void use(ICharacter& target);
 
+	Cure();
+	~Cure();
+	Cure(const Cure &cure);
+	Cure &operator=(const Cure &cure);
+	virtual void use(ICharacter &target);
+
+	virtual AMateria* clone() const;
+
 //protected:
-//	AMateria();
 //	std::string type;
 };
 

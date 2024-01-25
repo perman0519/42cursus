@@ -6,8 +6,7 @@
 #define CPP04_IMATERIASOURCE_HPP
 
 #include <string>
-
-class AMateria;
+#include "AMateria.hpp"
 
 class IMateriaSource {
 public:

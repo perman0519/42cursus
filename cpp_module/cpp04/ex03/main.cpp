@@ -3,8 +3,17 @@
 //
 
 #include "AMateria.hpp"
+#include "MateriaSource.hpp"
+#include "Cure.hpp"
+#include "Ice.hpp"
+#include "Character.hpp"
+
+void a() {
+	system("leaks a.out");
+};
 
 int main () {
+	atexit(a);
 	IMateriaSource *src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());

@@ -3,14 +3,22 @@
 //
 
 #include "MateriaSource.hpp"
+#include "Cure.hpp"
+#include "Ice.hpp"
 
 MateriaSource::MateriaSource() {
-	for (int i = 0; i < 4; ++i) {
-		this->aMaterias[i] = NULL;
+//	this->_materiaSource = new AMateria[4];
+ 	for (int i = 0; i < 4; ++i) {
+		this->_materiaSource[i] = NULL;
 	}
 }
 
-MateriaSource::~MateriaSource() {}
+MateriaSource::~MateriaSource() {
+	for (int i = 0; i < 4; ++i) {
+		if (this->_materiaSource[i] != NULL)
+			delete this->_materiaSource[i];
+	}
+}
 
 MateriaSource::MateriaSource(const MateriaSource &materiaSource) {
 	*this = materiaSource;
@@ -18,24 +26,30 @@ MateriaSource::MateriaSource(const MateriaSource &materiaSource) {
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &materiaSource) {
 	if (this != &materiaSource) {
-
+		for (int i = 0; i < 4; ++i) {
+			if (materiaSource._materiaSource[i] != NULL)
+				this->learnMateria(materiaSource._materiaSource[i]->clone());
+		}
 	}
 	return *this;
 }
 
 void MateriaSource::learnMateria(AMateria *aMateria) {
 	for (int i = 0; i < 4; ++i) {
-		if (this->aMaterias[i] != NULL) {
-			aMaterias[i] = aMateria;
+		if (this->_materiaSource[i] == NULL) {
+			this->_materiaSource[i] = aMateria;
 			return ;
 		}
 	}
 }
 
 AMateria *MateriaSource::createMateria(const std::string &type) {
+	AMateria *a = NULL;
 	for (int i = 0; i < 4; ++i) {
-		if (this->aMaterias[i] != NULL && (this->aMaterias[i]).getType() == type) {
-
+		if (this->_materiaSource[i] != NULL && (this->_materiaSource[i])->getType() == type) {
+			a = this->_materiaSource[i]->clone();
+			break;
 		}
 	}
+	return a;
 }

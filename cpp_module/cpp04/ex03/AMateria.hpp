@@ -6,24 +6,28 @@
 #define CPP04_AMATERIA_HPP
 
 #include <string>
-#include "IMateriaSource.hpp"
+#include <iostream>
+#include "ICharacter.hpp"
 
-class ICharacter;
+//class ICharacter;
 
-class AMateria : public IMateriaSource {
+/*----------abstract Class-----*/
+class AMateria {
 public:
 	AMateria(std::string const & type);
+
+	AMateria();
 	virtual ~AMateria();
 	AMateria(const AMateria &aMateria);
 	AMateria &operator=(const AMateria &aMateria);
 
 	std::string const & getType() const;
 
+	/*----------abstract Class-----*/
+	virtual void use(ICharacter& target) = 0;
 	virtual AMateria* clone() const = 0;
-	virtual void use(ICharacter& target);
 
 protected:
-	AMateria();
 	std::string _type;
 };
 
