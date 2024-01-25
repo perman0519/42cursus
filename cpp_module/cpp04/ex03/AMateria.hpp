@@ -6,6 +6,7 @@
 #define CPP04_AMATERIA_HPP
 
 #include <string>
+#include "ICharacter.hpp"
 
 class AMateria {
 public:
