@@ -23,15 +23,19 @@ Character::Character(std::string name) : _name(name) {
 	}
 }
 
-Character::Character(const Character &character) {
+Character::Character(const Character &character) : _name(character.getName()) {
 	*this = character;
 }
 
 Character &Character::operator=(const Character &character) {
 	if (this != &character) {
 		for (int i = 0; i < 4; ++i) {
-			if (character._inventory[i] != NULL)
+			if (character._inventory[i] != NULL) {
+				if (this->_inventory[i] != NULL)
+					delete this->_inventory[i];
+				this->_inventory[i] = NULL;
 				equip(character._inventory[i]->clone());
+			}
 		}
 	}
 	return *this;
