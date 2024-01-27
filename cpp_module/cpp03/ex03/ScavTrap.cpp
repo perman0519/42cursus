@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scavTrap.cpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:53:58 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/15 15:54:08 by junssong         ###   ########.fr       */
+/*   Updated: 2024/01/27 18:50:34 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
     this->_name = name;
-	ClapTrap::_energyPoints = 50;
+	ClapTrap::_energyPoints = SCAV_ENERGY_POINTS;
 	_hitPoints = 100;
 	_attackDamage = 20;
 	std::cout << "ScavTrap: " << _name << " Constructor called" << std::endl;
