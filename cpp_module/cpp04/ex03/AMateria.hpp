@@ -24,7 +24,7 @@ public:
 	std::string const & getType() const;
 
 	/*----------abstract Class-----*/
-	virtual void use(ICharacter& target) = 0;
+	virtual void use(ICharacter& target);
 	virtual AMateria* clone() const = 0;
 
 protected:
