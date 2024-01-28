@@ -26,5 +26,5 @@ AMateria &AMateria::operator=(const AMateria &aMateria) {
 std::string const &AMateria::getType() const { return this->_type; }
 
 void AMateria::use(ICharacter &target) {
-
+	target.use(0, target);
 }

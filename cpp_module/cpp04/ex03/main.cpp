@@ -7,6 +7,7 @@
 #include "Cure.hpp"
 #include "Ice.hpp"
 #include "Character.hpp"
+#include "Floor.hpp"
 
 void a() {
 	system("leaks a.out");
@@ -14,6 +15,7 @@ void a() {
 
 int main () {
 	atexit(a);
+	Floor *floor = Floor::getInstance();
 	{
 		IMateriaSource *src = new MateriaSource();
 		src->learnMateria(new Ice());
@@ -36,7 +38,7 @@ int main () {
 
 //		me.unequip(0);
 		you.unequip(0);
-		delete cure;
+//		delete cure;
 		delete src;
 	}
 	{
@@ -61,7 +63,7 @@ int main () {
 
 //		me.unequip(0);
 		you.unequip(0);
-		delete cure;
+//		delete cure;
 		delete src;
 	}
 
@@ -113,6 +115,6 @@ int main () {
 //		delete src;
 //
 //	}
-
+	delete floor;
 	return 0;
 }

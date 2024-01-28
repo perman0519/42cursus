@@ -7,6 +7,7 @@
 
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
+#include "Floor.hpp"
 
 class Character : public ICharacter {
 public:

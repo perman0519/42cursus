@@ -55,6 +55,7 @@ void Character::equip(AMateria *m) {
 void Character::unequip(int idx) {
 	if (idx > 3)
 		return ;
+	Floor::put(this->_inventory[idx]);
 	this->_inventory[idx] = NULL;
 }
 
