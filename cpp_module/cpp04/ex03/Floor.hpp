@@ -20,6 +20,7 @@ private:
 	Floor &operator=(const Floor &floor);
 
 	static AMateria **list;
+	static int		size;
 
 };
 

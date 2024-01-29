@@ -4,30 +4,24 @@
 
 #include "Floor.hpp"
 
-AMateria **Floor::list = new AMateria * [10];
+AMateria **Floor::list = new AMateria * [0];
+int Floor::size = 0;
 
 void Floor::put(AMateria *unequipAMateria) {
-	std::cout << "put unequip" << std::endl;
-	size_t size = sizeof(list) / sizeof(AMateria);
-	std::cout << "sizeof list : " << sizeof(*list) << std::endl;
 	AMateria **tmp = new AMateria *[size + 1];
-	for (size_t i = 0; i < size; ++i) {
+	for (int i = 0; i < Floor::size; ++i) {
 		tmp[i] = Floor::list[i];
 	}
 	tmp[size] = unequipAMateria;
+	Floor::size += 1;
 	delete[] Floor::list;
 	Floor::list = tmp;
-	size_t tmp_size = sizeof(tmp) / sizeof(AMateria);
-	std::cout << "tmp_size : " << tmp_size << std::endl;
 }
 
 Floor::Floor() {}
 
 Floor::~Floor() {
-	std::cout << "delete unequip" << std::endl;
-	size_t size = sizeof(list) / sizeof(AMateria *);
-	std::cout << size << std::endl;
-	for (size_t i = 0; i < size; ++i) {
+	for (int i = 0; i < Floor::size; ++i) {
 		delete Floor::list[i];
 	}
 	delete [] list;

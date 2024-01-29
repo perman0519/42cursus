@@ -36,9 +36,9 @@ int main () {
 		me.use(0, you);
 		you.use(0, me);
 
-//		me.unequip(0);
+		me.unequip(0);
 		you.unequip(0);
-//		delete cure;
+
 		delete src;
 	}
 	{
@@ -61,60 +61,10 @@ int main () {
 		me.use(0, you);
 		you.use(0, me);
 
-//		me.unequip(0);
 		you.unequip(0);
-//		delete cure;
+		me.unequip(0);
 		delete src;
 	}
-
-
-
-//	{
-//		IMateriaSource *src = new MateriaSource();
-//		src->learnMateria(new Ice());
-//		src->learnMateria(new Cure());
-//		ICharacter *me = new Character("me");
-//		AMateria *ice;
-//		AMateria *cure;
-//
-//		ice = src->createMateria("ice");
-//		me->equip(ice);
-//		cure = src->createMateria("cure");
-//		me->equip(cure);
-//		me->unequip(1);
-//		delete cure;
-//		ICharacter *bob = new Character("bob");
-//		me->use(0, *bob);
-//		me->use(1, *bob);
-//		ICharacter *you = me;
-//
-//		std::cout << &me << std::endl;
-//		std::cout << &you << std::endl;
-//		std::cout << &me << std::endl;
-//		std::cout << &you << std::endl;
-//
-//		you->use(0, *me);
-//		delete bob;
-//		delete me;
-//		delete src;
-//	}
-//	{
-//		IMateriaSource *src = new MateriaSource();
-//		src->learnMateria(new Ice());
-//		src->learnMateria(new Cure());
-//		Character me = Character("me");
-//
-//		Character you = Character(me);
-//		AMateria *tmp;
-//		tmp = src->createMateria("ice");
-//		me.equip(tmp);
-////		ICharacter *bob = new Character("bob");
-//		me.use(0, me);
-//		me.unequip(0);
-//		delete tmp;
-//		delete src;
-//
-//	}
 	delete floor;
 	return 0;
 }
