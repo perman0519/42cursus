@@ -9,12 +9,12 @@
 #include "Character.hpp"
 #include "Floor.hpp"
 
-void a() {
-	system("leaks a.out");
-};
+// void a() {
+// 	system("leaks a.out");
+// };
 
 int main () {
-	atexit(a);
+	// atexit(a);
 	Floor *floor = Floor::getInstance();
 	{
 		IMateriaSource *src = new MateriaSource();
