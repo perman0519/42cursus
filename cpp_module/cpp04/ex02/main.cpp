@@ -10,10 +10,16 @@ void a() {
 
 int main() {
 	atexit(a);
-	const Animal *animal = new Cat();
+	const Animal *dog = new Dog();
+	const Animal *cat = new Cat();
+	const Animal *cat2 = cat;
 
-	animal->makeSound();
-	delete animal;
+	dog->makeSound();
+	cat->makeSound();
+	cat2->makeSound();
 
+	delete dog;
+	delete cat;
+	delete cat2;
 	return 0;
 }

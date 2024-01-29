@@ -18,7 +18,7 @@ public:
 	const std::string *getIdeas() const;
 
 private:
-	std::string *ideas;
+	std::string ideas[100];
 };
 
 #endif //CPP04_BRAIN_HPP
