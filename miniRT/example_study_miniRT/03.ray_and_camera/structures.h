@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 13:56:42 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/30 15:02:49 by junssong         ###   ########.fr       */
+/*   Updated: 2024/01/31 13:10:51 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ struct s_ray
 struct s_camera
 {
 	t_point3	orig;  // 카메라 원점(위치)
-	double		viewprot_h; // 뷰포트 세로길이
-	double		viewprot_w; // 뷰포트 가로길이
+	double		viewport_h; // 뷰포트 세로길이
+	double		viewport_w; // 뷰포트 가로길이
 	t_vec3		horizontal; // 수평길이 벡터
 	t_vec3		vertical;  // 수직길이 벡터
 	double		focal_len; // focal length

@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:42:12 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/30 15:37:08 by junssong         ###   ########.fr       */
+/*   Updated: 2024/01/31 13:46:14 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ t_color3    ray_color(t_ray *r)
 
     t = 0.5 * (r->dir.y + 1.0);
     // (1-t) * 흰색 + t * 하늘색
-    return (vplus(vmult(color3(1, 1, 1), 1.0 - t), vmult(color3(0.5, 0.7, 1.0), t)));
+    return (vplus(vmult(color3(1, 1, 1), 1.0 - t), vmult(color3(1, 1, 0), t)));
 }
