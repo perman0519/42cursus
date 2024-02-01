@@ -49,6 +49,10 @@ void Character::equip(AMateria *m) {
 			this->_inventory[i] = m;
 			break;
 		}
+		else {
+			if (this->_inventory[i] == m)
+			return ;
+		}
 	}
 }
 

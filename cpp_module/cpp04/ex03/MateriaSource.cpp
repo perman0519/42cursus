@@ -40,6 +40,10 @@ void MateriaSource::learnMateria(AMateria *aMateria) {
 			this->_materiaSource[i] = aMateria;
 			return ;
 		}
+		else {
+			if (this->_materiaSource[i] == aMateria)
+				return ;
+		}
 	}
 }
 

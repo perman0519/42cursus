@@ -1,6 +1,6 @@
-//
-// Created by Junsang Song on 1/24/24.
-//
+/*
+  Created by Junsang Song on 1/24/24.
+*/
 
 #include "AMateria.hpp"
 #include "MateriaSource.hpp"
@@ -50,6 +50,7 @@ int main () {
 		ice = src->createMateria("ice");
 		cure = src->createMateria("cure");
 		Character me = Character("me");
+		me.equip(ice);
 		me.equip(ice);
 		Character you = Character("you");
 		you.equip(cure);
