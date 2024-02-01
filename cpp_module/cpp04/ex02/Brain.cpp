@@ -6,12 +6,11 @@
 
 Brain::Brain() {
 	std::cout << "Brain: Constructor called" << std::endl;
-	this->ideas = new std::string[100];
+	// this->ideas = new std::string[100];
 }
 
 Brain::~Brain() {
 	std::cout << "Brain: Destructor called" << std::endl;
-	delete [] this->ideas;
 }
 
 Brain::Brain(const Brain &brain) {
@@ -22,7 +21,10 @@ Brain::Brain(const Brain &brain) {
 Brain &Brain::operator=(const Brain &brain) {
 	std::cout << "Brain: Copy assignment Operator called" << std::endl;
 	if (this != &brain) {
-		this->ideas = brain.ideas;
+		for (size_t i = 0; i < 100; i++)
+		{
+			this->ideas[i] = brain.ideas[i];
+		}
 	}
 	return  *this;
 }
