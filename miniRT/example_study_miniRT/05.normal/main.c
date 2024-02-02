@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 13:34:48 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/31 15:47:06 by junssong         ###   ########.fr       */
+/*   Updated: 2024/02/02 11:39:23 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(void)
 	t_sphere	sp;
 
 	//Scene setting;
-	canv = canvas(800, 600);
+	canv = canvas(800, 400);
 	cam = camera(&canv, point3(0, 0, 0));
 	// sp = sphere(point3(-4, 1, -5), 2);
 	sp = sphere(point3(0, 0, -5), 2);

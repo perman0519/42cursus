@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:42:12 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/31 15:47:20 by junssong         ###   ########.fr       */
+/*   Updated: 2024/02/02 12:33:18 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_point3	ray_at(t_ray *ray, double t)
 }
 
 //primary_ray 생성자
-t_ray       ray_primary(t_camera *cam, double u, double v)
+t_ray	ray_primary(t_camera *cam, double u, double v)
 {
 	t_ray   ray;
 
@@ -47,11 +47,12 @@ t_color3	ray_color(t_ray *ray, t_sphere *sphere)
 	t_vec3	n;
 
 	t = hit_sphere(sphere, ray);
-	if (t < 0.0)
+	if (t > 0.0)
 	{
 		//정규화 된 구 표면에서의 법선
 		n = vunit(vminus(ray_at(ray, t), sphere->center));
-		return (vmult(color3(n.x + 1, n.y + 1, n.z + 1), 0.5));
+		// return (vmult(color3(n.x + 1, n.y + 1, n.z + 1), 0.5));
+		return (vmult(color3(n.z * 2, 0, 0), 0.5));
 	}
 	else
 	{
