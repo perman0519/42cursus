@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:42:12 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/31 21:02:53 by junssong         ###   ########.fr       */
+/*   Updated: 2024/02/02 13:47:36 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,12 @@ t_color3	ray_color(t_ray *ray, t_sphere *sphere)
 	// t_vec3			n;
 	t_hit_record	rec;
 
-	rec.tmin = 0;
 	rec.tmax = INFINITY;
-	if (hit_sphere(sphere, ray, &rec))
-		return (vmult(vplus(rec.normal, color3(1, 1, 1)), 0.5));
+	rec.tmin = 0;
+
+    if (hit_sphere(sphere, ray, &rec))
+        // return (vmult(vplus(rec.normal, color3(0, 0, 1)), 0.5));
+        return (vmult(vplus_(rec.normal, 1, 1, 1), 0.5));
 	else
 	{
 		//ray의 방향벡터의 y 값을 기준으로 그라데이션을 주기 위한 계수.

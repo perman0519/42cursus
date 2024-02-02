@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:59:50 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/31 15:41:31 by junssong         ###   ########.fr       */
+/*   Updated: 2024/02/02 10:53:48 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ t_camera	camera(t_canvas *canvas, t_point3 orig)
 	cam.horizontal = vec3(cam.viewport_w, 0, 0);
 	cam.vertical = vec3(0, cam.viewport_h, 0);
 	// 왼쪽 아래 코너점 좌표, origin - horizontal / 2 - vertical / 2 - vec3(0,0,focal_length)
-	cam.left_bottom = vplus(vminus(vminus(cam.orig, vdivide(cam.horizontal, 2)),
+	cam.left_bottom = vminus(vminus(vminus(cam.orig, vdivide(cam.horizontal, 2)),
 								vdivide(cam.vertical, 2)), vec3(0, 0, focal_len));
+	// printf("x: %f, y: %f, z: %f\n", cam.left_bottom.x, cam.left_bottom.y, cam.left_bottom.z);
 	return (cam);
 }

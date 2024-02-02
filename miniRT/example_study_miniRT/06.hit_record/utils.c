@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:20:34 by junssong          #+#    #+#             */
-/*   Updated: 2024/01/31 13:04:22 by junssong         ###   ########.fr       */
+/*   Updated: 2024/02/02 12:35:37 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,24 @@ void        vset(t_vec3 *vec, double x, double y, double z)
 }
 
 // 벡터 길이 제곱
-double      vlength2(t_vec3 vec)
+double	vlength2(t_vec3 vec)
 {
-    return (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+	return (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
 }
 
 // 벡터 길이
-double      vlength(t_vec3 vec)
+double	vlength(t_vec3 vec)
 {
-    return (sqrt(vlength2(vec)));
+	return (sqrt(vlength2(vec)));
 }
 
 // 벡터합
-t_vec3      vplus(t_vec3 vec, t_vec3 vec2)
+t_vec3	vplus(t_vec3 vec, t_vec3 vec2)
 {
-    vec.x += vec2.x;
-    vec.y += vec2.y;
-    vec.z += vec2.z;
-    return (vec);
+	vec.x += vec2.x;
+	vec.y += vec2.y;
+	vec.z += vec2.z;
+	return (vec);
 }
 
 // 벡터합2
