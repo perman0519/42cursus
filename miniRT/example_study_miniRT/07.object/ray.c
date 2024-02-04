@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 14:42:12 by junssong          #+#    #+#             */
-/*   Updated: 2024/02/02 13:47:36 by junssong         ###   ########.fr       */
+/*   Updated: 2024/02/02 14:12:48 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_point3	ray_at(t_ray *ray, double t)
 }
 
 //primary_ray 생성자
-t_ray       ray_primary(t_camera *cam, double u, double v)
+t_ray		ray_primary(t_camera *cam, double u, double v)
 {
 	t_ray   ray;
 
@@ -41,7 +41,7 @@ t_ray       ray_primary(t_camera *cam, double u, double v)
 }
 
 //광선이 최종적으로 얻게된 픽셀의 색상 값을 리턴.
-t_color3	ray_color(t_ray *ray, t_sphere *sphere)
+t_color3	ray_color(t_ray *ray, t_object *world)
 {
 	double			t;
 	// t_vec3			n;
@@ -50,8 +50,7 @@ t_color3	ray_color(t_ray *ray, t_sphere *sphere)
 	rec.tmax = INFINITY;
 	rec.tmin = 0;
 
-    if (hit_sphere(sphere, ray, &rec))
-        // return (vmult(vplus(rec.normal, color3(0, 0, 1)), 0.5));
+    if (hit(world, ray, &rec))
         return (vmult(vplus_(rec.normal, 1, 1, 1), 0.5));
 	else
 	{

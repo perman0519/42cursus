@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 13:34:48 by junssong          #+#    #+#             */
-/*   Updated: 2024/02/02 13:48:45 by junssong         ###   ########.fr       */
+/*   Updated: 2024/02/04 13:27:39 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,18 @@ int	main(void)
 	t_canvas	canv;
 	t_camera	cam;
 	t_ray		ray;
-	t_sphere	sp;
-	// t_sphere	sp2;
-
+	t_object	*world;
 	//Scene setting;
 	canv = canvas(800, 400);
 	cam = camera(&canv, point3(0, 0, 0));
-	// sp = sphere(point3(-4, 1, -5), 2);
-	// sp = sphere(point3(0, 0, -5), 20);
-	sp = sphere(point3(0, 0, 0), 20);
-	// sp2 = sphere(point3(0, -5, -5), 2);
+
+	world = object(SP, sphere(point3(-2, 0, -5), 2));
+	oadd(&world, object(SP, sphere(point3(2, 0, -5), 2)));
+	oadd(&world, object(SP, sphere(point3(0, -1000, 0), 990)));
+
 	// 랜더링
 	// P3 는 색상값이 아스키코드라는 뜻, 그리고 다음 줄은 캔버스의 가로, 세로 픽셀 수, 마지막은 사용할 색상값
-	 printf("P3\n%d %d\n255\n", canv.width, canv.height);
+	printf("P3\n%d %d\n255\n", canv.width, canv.height);
 	j = canv.height - 1;
 	while (j >= 0)
 	{
@@ -51,7 +50,7 @@ int	main(void)
 			v = (double)j / (canv.height - 1);
 			//ray from camera origin to pixel
 			ray = ray_primary(&cam, u, v);
-			pixel_color = ray_color(&ray, &sp);
+			pixel_color = ray_color(&ray, world);
 			write_color(pixel_color);
 			++i;
 		}
