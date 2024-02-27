@@ -3,11 +3,13 @@
 //
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "WrongCat.hpp"
 
 int main() {
 	const Animal *animal = new Animal();
-	const Dog *dog = new Dog();
-	const Cat *cat = new Cat();
+	const Animal *dog = new Dog();
+	const Animal *cat = new Cat();
+	const WrongAnimal *wrongCat = new WrongCat();
 
 	Animal animal1;
 
@@ -19,8 +21,10 @@ int main() {
 	dog->makeSound();
 	cat->makeSound();
 	animal1.makeSound();
+	wrongCat->makeSound();
 
 	delete animal;
 	delete dog;
 	delete cat;
+	delete wrongCat;
 }
