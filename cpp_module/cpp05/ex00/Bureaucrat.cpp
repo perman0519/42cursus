@@ -6,20 +6,20 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:53:31 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/09 12:01:07 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/09 12:22:23 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name)
+Bureaucrat::Bureaucrat(const std::string &name, int grade) :
+	name(name),
+	grade(grade)
 {
 	if (grade > 150)
 		throw GradeTooLowException();
 	else if (grade < 1)
 		throw GradeTooHighException();
-	else
-		this->grade = grade;
 	std::cout << green << "Bureaucrat Constructor" << reset << std::endl;
 }
 
