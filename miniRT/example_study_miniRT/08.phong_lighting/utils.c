@@ -6,25 +6,25 @@
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:20:34 by junssong          #+#    #+#             */
-/*   Updated: 2024/02/02 12:35:37 by junssong         ###   ########.fr       */
+/*   Updated: 2024/02/04 14:04:57 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
 //벡터3 생성자
-t_vec3      vec3(double x, double y, double z)
+t_vec3	vec3(double x, double y, double z)
 {
-    t_vec3 vec;
+	t_vec3	vec;
 
-    vec.x = x;
-    vec.y = y;
-    vec.z = z;
-    return (vec);
+	vec.x = x;
+	vec.y = y;
+	vec.z = z;
+	return (vec);
 }
 
 //포인트3 생성자
-t_point3    point3(double x, double y, double z)
+t_point3	point3(double x, double y, double z)
 {
     t_point3 point;
 

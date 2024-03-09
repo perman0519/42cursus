@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.h                                            :+:      :+:    :+:   */
+/*   anti.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/30 14:57:16 by junssong          #+#    #+#             */
-/*   Updated: 2024/02/04 13:38:31 by junssong         ###   ########.fr       */
+/*   Created: 2024/02/04 19:24:54 by junssong          #+#    #+#             */
+/*   Updated: 2024/02/04 19:24:54 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCENE_H
-# define SCENE_H
+#include <stdlib.h>
+#include "print.h"
 
-# include "structures.h"
-# include "utils.h"
+double	rand_num(int anti)
+{
+	if (anti == 0) // anti 횟수를 변수로 받아와서 anti가 0 이라면 return 0;
+		return (0);
+	else
+		return ((double)rand() / (double)RAND_MAX);
+}
 
-t_canvas	canvas(int  width, int height);
-t_camera	camera(t_canvas *canvas, t_point3 origin);
-
-t_object	*object(t_object_type type, void *element, t_color3 albedo);
-t_sphere	*sphere(t_point3 center, double radius);
-
-t_light		*light_point(t_point3 light_origin, t_color3 light_color, double bright_ratio);
-
-#endif
+double	clamp(double x, double min, double max) {
+	if (x < min) return min;
+	if (x > max) return max;
+	return x;
+}
