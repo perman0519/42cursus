@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:53:31 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/09 20:12:22 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/09 20:36:25 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,16 @@ int Bureaucrat::getGrade() const
 
 void	Bureaucrat::signForm(Form &form)
 {
-	if (form.getSignGrade() > this->grade)
-		std::cout << this->name << " signs " << form.getName() << std::endl;
-	else
-		std::cout << this->name << " cannot sign " << form.getName() << " because " << this->name << "'s grade is too low" << std::endl;
-	form.beSigned(*this);
+	try
+	{
+		form.beSigned(*this);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << this->name << " cannot sign " << form.getName() << " because " << this->name << "'s " << e.what() << std::endl;
+		return ;
+	}
+	std::cout << this->name << " signed " << form.getName() << "." << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)

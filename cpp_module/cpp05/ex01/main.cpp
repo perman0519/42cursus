@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:44:49 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/09 20:12:02 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/09 20:35:49 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int main(void)
 		std::cout << "==test2==" << std::endl;
 		try
 		{
-			Bureaucrat *bureaucrat = new Bureaucrat("jun", 3);
+			Bureaucrat *bureaucrat = new Bureaucrat("jun", 1);
 			Form *form = new Form("form1", 2, 3);
 			bureaucrat->signForm(*form);
 			std::cout << *bureaucrat << std::endl;
