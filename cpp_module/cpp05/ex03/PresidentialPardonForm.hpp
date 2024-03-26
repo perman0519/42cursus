@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/09 21:05:59 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/14 12:25:37 by junssong         ###   ########.fr       */
+/*   Created: 2024/03/24 19:32:06 by junssong          #+#    #+#             */
+/*   Updated: 2024/03/26 11:24:50 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-
 #include "AForm.hpp"
-#include <fstream>
-#include <cstdlib>
-#include <ctime>
+#include "Bureaucrat.hpp"
 
-class RobotomyRequestForm : public AForm
+class PresidentialPardonForm : public AForm
 {
 public :
-	RobotomyRequestForm(const std::string &target);
-	~RobotomyRequestForm();
-	RobotomyRequestForm(const RobotomyRequestForm &other);
-	RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
+	PresidentialPardonForm(const std::string &name);
+	~PresidentialPardonForm();
+	PresidentialPardonForm(const PresidentialPardonForm &other);
+	PresidentialPardonForm &operator=(const PresidentialPardonForm &other);
 
 	void	execute(Bureaucrat const & executor) const;
 
@@ -32,6 +28,7 @@ public :
 	public:
 		const char *what() const throw();
 	};
+
 private :
 	std::string	_target;
 };

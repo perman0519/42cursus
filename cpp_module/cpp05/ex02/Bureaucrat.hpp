@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:31:01 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/14 12:40:08 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/26 11:50:41 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,7 @@ public :
 	int			getGrade() const;
 
 	void		signForm(AForm &form);
-	void		executeForm(AForm &form);
-
-private :
-	Bureaucrat();
-	const std::string	name;
-	int					grade;
+	void		executeForm(AForm const &form);
 
 	class GradeTooHighException : public std::exception
 	{
@@ -49,6 +44,10 @@ private :
 		const char *what() const throw();
 	};
 
+private :
+	Bureaucrat();
+	const std::string	name;
+	int					grade;
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat);

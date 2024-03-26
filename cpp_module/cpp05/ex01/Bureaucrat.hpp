@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:31:01 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/09 20:14:19 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/24 20:12:58 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@ public :
 
 	void		signForm(Form &form);
 
-private :
-	Bureaucrat();
-	const std::string	name;
-	int					grade;
-
 	class GradeTooHighException : public std::exception
 	{
 	public:
@@ -48,6 +43,10 @@ private :
 		const char *what() const throw();
 	};
 
+private :
+	Bureaucrat();
+	const std::string	name;
+	int					grade;
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat);

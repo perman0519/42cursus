@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 21:22:35 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/26 11:23:49 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/26 11:32:56 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) :
-	AForm(target, 145, 137),
+	AForm("ShrubberyCreationForm", 145, 137),
 	_target(target)
 {
 	std::cout << "ShrubberyCreationForm Constructor" << std::endl;

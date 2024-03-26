@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                          :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/09 21:05:59 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/14 12:25:37 by junssong         ###   ########.fr       */
+/*   Created: 2024/03/24 20:52:07 by junssong          #+#    #+#             */
+/*   Updated: 2024/03/26 11:28:38 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-
 #include "AForm.hpp"
-#include <fstream>
-#include <cstdlib>
-#include <ctime>
 
-class RobotomyRequestForm : public AForm
+class Intern
 {
-public :
-	RobotomyRequestForm(const std::string &target);
-	~RobotomyRequestForm();
-	RobotomyRequestForm(const RobotomyRequestForm &other);
-	RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
+public:
+	Intern();
+	~Intern();
+	Intern(const Intern &intern);
+	Intern &operator=(const Intern &intern);
 
-	void	execute(Bureaucrat const & executor) const;
+	AForm	*makeForm(const std::string &name, const std::string &target);
 
-	class SignedFailedException : public std::exception
+	class FormNotFoundException : public std::exception
 	{
 	public:
 		const char *what() const throw();
 	};
-private :
-	std::string	_target;
+
+private:
+	AForm	*robotomy(const std::string& target);
+	AForm	*presidential(const std::string& target);
+	AForm	*shrubbery(const std::string& target);
 };

@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/09 12:03:02 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/24 20:13:07 by junssong         ###   ########.fr       */
+/*   Created: 2024/03/06 19:31:01 by junssong          #+#    #+#             */
+/*   Updated: 2024/03/26 11:51:12 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "iostream"
-#include "string"
-#include "exception"
+#include <exception>
+#include <iostream>
+#include <string>
 
-class Bureaucrat;
+class AForm;
 
-class Form
+class Bureaucrat
 {
-public:
-	Form(const std::string &name, int signGrade, int executionGrade);
-	~Form();
-	Form(const Form &form);
-	Form &operator=(const Form &form);
+public :
+	Bureaucrat(const std::string &name, int grade);
+	~Bureaucrat();
+	Bureaucrat(const Bureaucrat &bureaucrat);
+	Bureaucrat &operator=(const Bureaucrat &bureaucrat);
 
-	int			getSignGrade() const;
-	int			getExecutionGrade() const;
-	bool		getSign() const;
 	std::string	&getName() const;
+	int			getGrade() const;
 
-	void		beSigned(const Bureaucrat &bureaucrat);
+	void		signForm(AForm &form);
+	void		executeForm(AForm const &form);
 
 	class GradeTooHighException : public std::exception
 	{
@@ -45,12 +44,10 @@ public:
 		const char *what() const throw();
 	};
 
-private:
-	Form();
+private :
+	Bureaucrat();
 	const std::string	name;
-	bool				sign;
-	const int			signGrade;
-	const int			executionGrade;
+	int					grade;
 };
 
-std::ostream &operator<<(std::ostream &out, const Form &form);
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat);
