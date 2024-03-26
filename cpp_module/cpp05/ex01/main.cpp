@@ -25,6 +25,8 @@ int main(void)
 			form = new Form("form1", 0, 140);
 			delete bureaucrat;
 			delete form;
+			bureaucrat = NULL;
+			form = NULL;
 		}
 		catch(std::exception &e)
 		{
@@ -50,6 +52,8 @@ int main(void)
 			std::cout << *form << std::endl;
 			delete bureaucrat;
 			delete form;
+			bureaucrat = NULL;
+			form = NULL;
 		}
 		catch(std::exception &e)
 		{
@@ -72,12 +76,18 @@ int main(void)
 			form = new Form("form1", 2, 300);
 			form->beSigned(*bureaucrat);
 			delete bureaucrat;
+			bureaucrat = NULL;
 			delete form;
+			form = NULL;
 		}
 		catch(std::exception &e)
 		{
 			std::cerr << e.what() << std::endl;
 		}
+		if (bureaucrat)
+			delete bureaucrat;
+		if (form)
+			delete form;
 	}
 	return (0);
 }

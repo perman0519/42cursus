@@ -31,7 +31,7 @@ int main(void)
 			jun->executeForm(*form);
 			std::cout << std::endl;
 
-			form2 = intern->makeForm("pre sidential pardon", "Bender");
+			form2 = intern->makeForm("presidential pardon", "Bender");
 			jun->signForm(*form2);
 			jun->executeForm(*form2);
 			std::cout << std::endl;

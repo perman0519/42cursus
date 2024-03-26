@@ -47,7 +47,8 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		throw SignedFailedException();
 	if (executor.getGrade() > this->getExecutionGrade())
 		throw GradeTooLowException();
-	std::ofstream ofs(this->_target + "_shrubbery", std::ios_base::out);
+	std::string fileName = std::string(this->_target + "_shrubbery");
+	std::ofstream ofs(fileName.c_str(), std::ios_base::out);
 	for (size_t i = 1; i < 10; i++)
 	{
 		for (size_t j = 0; j < 10 - i; j++)
