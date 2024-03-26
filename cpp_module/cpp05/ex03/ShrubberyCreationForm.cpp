@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 21:22:35 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/26 11:32:56 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:44:21 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,8 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	if (this->getSign() == false)
-		throw SignedFailedException();
-	if (executor.getGrade() > this->getExecutionGrade())
-		throw GradeTooLowException();
+	check_sign();
+	check_executionGrade(executor);
 	std::string fileName = std::string(this->_target + "_shrubbery");
 	std::ofstream ofs(fileName.c_str(), std::ios_base::out);
 	for (size_t i = 1; i < 10; i++)
@@ -61,9 +59,4 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		}
 		ofs << "\n";
 	}
-}
-
-const char *	ShrubberyCreationForm::SignedFailedException::what() const throw()
-{
-	return ("ShrubberyCreationForm is not signed.");
 }

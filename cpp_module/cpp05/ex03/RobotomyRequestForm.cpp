@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 21:22:35 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/26 11:32:44 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:44:13 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,12 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-	if (this->getSign() == false)
-		throw SignedFailedException();
-	if (executor.getGrade() > this->getExecutionGrade())
-		throw GradeTooLowException();
+	check_sign();
+	check_executionGrade(executor);
 	std::cout << "DDDDddddd..." << std::endl;
 	std::cout << this->_target;
 	if (std::rand() % 2)
 		std::cout << " success!!" << std::endl;
 	else
 		std::cout << " failed.." << std::endl;
-}
-
-const char *	RobotomyRequestForm::SignedFailedException::what() const throw()
-{
-	return ("RobotomyRequestForm is not signed.");
 }

@@ -6,14 +6,14 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 19:35:44 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/26 11:25:09 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:39:52 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target) :
-	AForm(target, 25, 5),
+	AForm("PresidentialPardonForm", 25, 5),
 	_target(target)
 {
 	std::cout << "PresidentialPardonForm Constructor" << std::endl;
@@ -42,14 +42,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-	if (this->getSign() == false)
-		throw SignedFailedException();
-	if (executor.getGrade() > this->getExecutionGrade())
-		throw GradeTooLowException();
+	check_sign();
+	check_executionGrade(executor);
 	std::cout << this->_target << " has been pardoned by Zafod Beeblebrox." << std::endl;
-}
-
-const char *	PresidentialPardonForm::SignedFailedException::what() const throw()
-{
-	return ("PresidentialPardonForm is not signed.");
 }

@@ -27,11 +27,6 @@ public :
 
 	void	execute(Bureaucrat const & executor) const;
 
-	class SignedFailedException : public std::exception
-	{
-	public:
-		const char *what() const throw();
-	};
 private :
 	std::string	_target;
 };

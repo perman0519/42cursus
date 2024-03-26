@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 19:35:44 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/26 11:32:36 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:40:44 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-	if (this->getSign() == false)
-		throw SignedFailedException();
-	if (executor.getGrade() > this->getExecutionGrade())
-		throw GradeTooLowException();
+	check_sign();
+	check_executionGrade(executor);
 	std::cout << this->_target << " has been pardoned by Zafod Beeblebrox." << std::endl;
-}
-
-const char *	PresidentialPardonForm::SignedFailedException::what() const throw()
-{
-	return ("PresidentialPardonForm is not signed.");
 }

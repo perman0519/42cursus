@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:44:49 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/26 12:11:46 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:44:09 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int main(void)
 
 	//test2 : success
 	{
-		std::cout << "==test2==" << std::endl;
+		std::cout << "\n==test2==" << std::endl;
 		Bureaucrat	*bureaucrat = NULL;
 		Form		*form = NULL;
 		try
@@ -67,7 +67,7 @@ int main(void)
 
 	//test3 : grade too low
 	{
-		std::cout << "==test3==" << std::endl;
+		std::cout << "\n==test3==" << std::endl;
 		Bureaucrat	*bureaucrat = NULL;
 		Form		*form = NULL;
 		try

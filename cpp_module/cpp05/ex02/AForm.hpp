@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 20:17:35 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/24 20:11:36 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:39:35 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,21 @@ public:
 		const char *what() const throw();
 	};
 
+	class SignedFailedException : public std::exception
+	{
+	public:
+		const char *what() const throw();
+	};
+
 private:
 	const std::string	name;
 	bool				sign;
 	const int			signGrade;
 	const int			executionGrade;
+
+protected:
+	void	check_executionGrade(Bureaucrat const &bureaucrat) const;
+	void	check_sign()  const;
 
 };
 

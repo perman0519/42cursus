@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:02:51 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/24 16:19:45 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:40:23 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,24 @@ void AForm::beSigned(const Bureaucrat &bureaucrat)
 	this->sign = true;
 }
 
+void AForm::check_executionGrade(Bureaucrat const &bureaucrat) const
+{
+	if (bureaucrat.getGrade() > this->executionGrade)
+		throw GradeTooLowException();
+}
+
+void AForm::check_sign() const
+{
+	if (this->sign == false)
+		throw SignedFailedException();
+}
+
 std::ostream &operator<<(std::ostream &out, const AForm &form)
 {
-	out << "AForm: " << form.getName() << ", sign grade: " << form.getSignGrade() << ", execution grade: " << form.getExecutionGrade() << ", sign status: " << form.getSign() << ".";
+	out << "AForm name: " << form.getName()
+		<< ", sign grade: " << form.getSignGrade()
+		<< ", execution grade: " << form.getExecutionGrade()
+		<< ", sign status: " << std::boolalpha << form.getSign() << std::noboolalpha;
 	return (out);
 }
 
@@ -90,4 +105,9 @@ const char	*AForm::GradeTooHighException::what() const throw()
 const char	*AForm::GradeTooLowException::what() const throw()
 {
 	return "AForm::Grade is too low";
+}
+
+const char *	AForm::SignedFailedException::what() const throw()
+{
+	return ("AForm::Form is not signed.");
 }

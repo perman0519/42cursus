@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:02:51 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/09 20:11:50 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:55:31 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ void Form::beSigned(const Bureaucrat &bureaucrat)
 
 std::ostream &operator<<(std::ostream &out, const Form &form)
 {
-	out << "Form: " << form.getName() << ", sign grade: " << form.getSignGrade() << ", execution grade: " << form.getExecutionGrade() << ", sign status: " << form.getSign() << ".";
+	out << "Form name: " << form.getName()
+		<< ", sign grade: " << form.getSignGrade()
+		<< ", execution grade: " << form.getExecutionGrade()
+		<< ", sign status: " << std::boolalpha << form.getSign() << std::noboolalpha;
 	return (out);
 }
 

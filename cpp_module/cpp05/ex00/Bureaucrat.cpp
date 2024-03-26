@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:53:31 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/09 12:22:23 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:54:05 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int Bureaucrat::getGrade() const
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
 {
-	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
+	out << "bureaucrat name: " << bureaucrat.getName()
+		<< ", bureaucrat grade: " << bureaucrat.getGrade();
 	return (out);
 }
 

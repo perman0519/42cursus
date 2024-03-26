@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:53:31 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/26 11:50:49 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:20:50 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,25 +53,37 @@ int Bureaucrat::getGrade() const
 
 void	Bureaucrat::signForm(AForm &form)
 {
-	if (this->grade < form.getSignGrade())
-		std::cout << this->name << " signs " << form.getName() << std::endl;
-	else
-		std::cout << this->name << " cannot sign " << form.getName() << " because " << this->name << "'s grade is too low" << std::endl;
-	form.beSigned(*this);
+	try
+	{
+		form.beSigned(*this);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << *this << " cannot sign " << form << " because " << e.what() << std::endl;
+		return ;
+	}
+	std::cout << *this << " signed " << form << "." << std::endl;
 }
 
 void	Bureaucrat::executeForm(AForm const &form)
 {
-	if (this->grade < form.getExecutionGrade())
-		std::cout << this->name << " exectued " << form.getName() << std::endl;
-	else
-		std::cout << this->name << " cannot exectued " << form.getName() << " because " << this->name << "'s grade is too low" << std::endl;
-	form.execute(*this);
+	try
+	{
+		form.execute(*this);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << *this << " cannot exectued " << form.getName()
+			<< " because " << e.what() << std::endl;
+		return ;
+	}
+	std::cout << *this << " executed " << form << "." << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
 {
-	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
+	out << "bureaucrat name: " << bureaucrat.getName()
+		<< ", bureaucrat grade: " << bureaucrat.getGrade();
 	return (out);
 }
 

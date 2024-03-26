@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:03:02 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/24 20:13:07 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:51:22 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ public:
 	};
 
 private:
-	Form();
 	const std::string	name;
 	bool				sign;
 	const int			signGrade;

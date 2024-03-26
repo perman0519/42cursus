@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 19:32:06 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/26 11:24:50 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:45:16 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,6 @@ public :
 	PresidentialPardonForm &operator=(const PresidentialPardonForm &other);
 
 	void	execute(Bureaucrat const & executor) const;
-
-	class SignedFailedException : public std::exception
-	{
-	public:
-		const char *what() const throw();
-	};
 
 private :
 	std::string	_target;

@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:44:49 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/26 12:07:33 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:39:00 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,74 +19,47 @@ int main(void)
 {
 	std::cout << "==test ShrubberyCreationForm==" << std::endl;
 	{
-		Bureaucrat *bureaucrat = new Bureaucrat("junssong", 10);
+		Bureaucrat *bureaucrat = new Bureaucrat("junssong", 150);
 		Bureaucrat *bureaucrat2 = new Bureaucrat("hee", 10);
-		AForm *shrubbery = new ShrubberyCreationForm("shrubberyForm");
-		try
-		{
-			bureaucrat->signForm(*shrubbery);
-			shrubbery->execute(*bureaucrat);
+		AForm *shrubbery = new ShrubberyCreationForm("home");
+		std::cout << std::endl;
 
-			ShrubberyCreationForm a("lee");
-			ShrubberyCreationForm b(a);
-			ShrubberyCreationForm c("jun");
-			c = a;
+		// bureaucrat->signForm(*shrubbery);
+		bureaucrat2->signForm(*shrubbery);
+		// bureaucrat->executeForm(*shrubbery);
+		bureaucrat2->executeForm(*shrubbery);
+		std::cout << std::endl;
 
-			std::cout << b.getName() << b.getSignGrade() << std::endl;
-			std::cout << c.getName() << c.getSignGrade() << std::endl;
-			bureaucrat->signForm(b);
-			b.execute(*bureaucrat2);
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << '\n';
-			delete bureaucrat;
-			delete bureaucrat2;
-			delete shrubbery;
-			exit(1);
-		}
 		delete bureaucrat;
 		delete bureaucrat2;
 		delete shrubbery;
 	}
-	std::cout << "==RobotomyRequestForm==" << std::endl;
+	std::cout << "\n==RobotomyRequestForm==" << std::endl;
 	{
 		Bureaucrat *bureaucrat = new Bureaucrat("junssong", 1);
 		RobotomyRequestForm *robotomyRequestForm = new RobotomyRequestForm("robo");
-		try
+		std::cout << std::endl;
+
+		bureaucrat->signForm(*robotomyRequestForm);
+		for(int count = 0; count < 2; count++)
 		{
-			bureaucrat->signForm(*robotomyRequestForm);
-			for(int count = 0; count < 1000; count++)
-			{
-				bureaucrat->executeForm(*robotomyRequestForm);
-			}
+			bureaucrat->executeForm(*robotomyRequestForm);
 		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << '\n';
-			delete(bureaucrat);
-			delete(robotomyRequestForm);
-			exit(1);
-		}
+		std::cout << std::endl;
+
 		delete(bureaucrat);
 		delete(robotomyRequestForm);
 	}
-	std::cout << "==PresidentialPardonForm==" << std::endl;
+	std::cout << "\n==PresidentialPardonForm==" << std::endl;
 	{
-		Bureaucrat *bureaucrat = new Bureaucrat("junssong", 1);
+		Bureaucrat *bureaucrat = new Bureaucrat("junssong", 20);
 		PresidentialPardonForm *presidentialPardonForm = new PresidentialPardonForm("presidentialPardonForm");
-		try
-		{
-			bureaucrat->signForm(*presidentialPardonForm);
-			bureaucrat->executeForm(*presidentialPardonForm);
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << '\n';
-			delete bureaucrat;
-			delete presidentialPardonForm;
-			exit(1);
-		}
+		std::cout << std::endl;
+
+		bureaucrat->signForm(*presidentialPardonForm);
+		bureaucrat->executeForm(*presidentialPardonForm);
+		std::cout << std::endl;
+
 		delete bureaucrat;
 		delete presidentialPardonForm;
 	}
