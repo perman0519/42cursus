@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:31:01 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/26 11:50:41 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/27 13:11:49 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ public :
 
 	void		signForm(AForm &form);
 	void		executeForm(AForm const &form);
+	void		incrementGrade();
+	void		decrementGrade();
 
 	class GradeTooHighException : public std::exception
 	{

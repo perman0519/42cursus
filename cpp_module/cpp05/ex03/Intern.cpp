@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 20:55:38 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/26 11:54:03 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:30:24 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,11 @@ AForm*	Intern::makeForm(const std::string &name, const std::string &target)
 			form = (this->*f[level_i])(target);
 			break;
 		default:
+			std::cerr << "Form not found" << std::endl;
 			throw FormNotFoundException();
 			break;
 	}
+	std::cout << "Intern creates " << *form << std::endl;
 	return (form);
 }
 

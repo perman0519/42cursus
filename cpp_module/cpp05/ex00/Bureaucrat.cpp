@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:53:31 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/26 14:54:05 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:30:50 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ Bureaucrat::~Bureaucrat()
 	std::cout << red << "Bureaucrat Destructor" << reset <<std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat)
+Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat) :
+	name(bureaucrat.name),
+	grade(bureaucrat.grade)
 {
 	*this = bureaucrat;
 }
@@ -48,6 +50,20 @@ std::string &Bureaucrat::getName() const
 int Bureaucrat::getGrade() const
 {
 	return (this->grade);
+}
+
+void	Bureaucrat::incrementGrade()
+{
+	if (this->grade - 1 < 1)
+		throw GradeTooHighException();
+	this->grade--;
+}
+
+void	Bureaucrat::decrementGrade()
+{
+	if (this->grade + 1 > 150)
+		throw GradeTooLowException();
+	this->grade++;
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)

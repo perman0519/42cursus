@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:44:49 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/26 14:50:59 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/27 13:11:11 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int main(void)
 		try
 		{
 			bureaucrat = new Bureaucrat("jun", 1);
+			std::cout << *bureaucrat << std::endl;
+			bureaucrat->decrementGrade();
 			std::cout << *bureaucrat << std::endl;
 			delete bureaucrat;
 		}

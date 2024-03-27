@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:44:49 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/26 14:44:09 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/27 13:10:00 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int main(void)
 			bureaucrat->signForm(*form);
 			std::cout << *bureaucrat << std::endl;
 			std::cout << *form << std::endl;
+
+			bureaucrat->decrementGrade();
 			delete bureaucrat;
 			delete form;
 			bureaucrat = NULL;

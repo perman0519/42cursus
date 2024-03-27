@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:31:01 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/24 20:12:14 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/27 13:10:53 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ public :
 
 	std::string	&getName() const;
 	int			getGrade() const;
+
+	void		incrementGrade();
+	void		decrementGrade();
 
 	class GradeTooHighException : public std::exception
 	{

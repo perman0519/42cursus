@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:53:31 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/26 15:41:32 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/27 13:11:57 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,20 @@ std::string &Bureaucrat::getName() const
 int Bureaucrat::getGrade() const
 {
 	return (this->grade);
+}
+
+void	Bureaucrat::incrementGrade()
+{
+	if (this->grade - 1 < 1)
+		throw GradeTooHighException();
+	this->grade--;
+}
+
+void	Bureaucrat::decrementGrade()
+{
+	if (this->grade + 1 > 150)
+		throw GradeTooLowException();
+	this->grade++;
 }
 
 void	Bureaucrat::signForm(AForm &form)

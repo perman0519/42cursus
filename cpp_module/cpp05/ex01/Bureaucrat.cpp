@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:53:31 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/26 14:53:50 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:29:33 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,20 @@ void	Bureaucrat::signForm(Form &form)
 		return ;
 	}
 	std::cout << *this << " signed " << form << "." << std::endl;
+}
+
+void	Bureaucrat::incrementGrade()
+{
+	if (this->grade - 1 < 1)
+		throw GradeTooHighException();
+	this->grade--;
+}
+
+void	Bureaucrat::decrementGrade()
+{
+	if (this->grade + 1 > 150)
+		throw GradeTooLowException();
+	this->grade++;
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat)
