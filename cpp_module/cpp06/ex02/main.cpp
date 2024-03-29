@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/29 10:29:31 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/29 13:09:38 by junssong         ###   ########.fr       */
+/*   Created: 2024/03/29 12:51:27 by junssong          #+#    #+#             */
+/*   Updated: 2024/03/29 12:56:02 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Base.hpp"
 
-#include <iostream>
-#include "Data.hpp"
-
-typedef unsigned long uintptr_t;
-
-class Serializer
+int main()
 {
-	public:
-		static uintptr_t	serialize(Data* ptr);
-		static Data*		deserialize(uintptr_t raw);
+	std::srand(std::time(NULL));
 
-	private:
-		Serializer();
-		Serializer(const Serializer &serializer);
-		~Serializer();
-		Serializer &operator=(const Serializer &serializer);
-};
+	Base* base = generate();
+	identify(base);
+	identify(*base);
+	Base* base1 = generate();
+	identify(base1);
+	identify(*base1);
+	Base* base2 = generate();
+	identify(base2);
+	identify(*base2);
+
+	delete base;
+	delete base1;
+	delete base2;
+	return (0);
+}

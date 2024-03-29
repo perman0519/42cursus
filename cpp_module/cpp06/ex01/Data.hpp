@@ -6,9 +6,11 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 10:51:43 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/29 10:52:02 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/29 11:20:15 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 struct Data
 {

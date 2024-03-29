@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/29 10:29:31 by junssong          #+#    #+#             */
-/*   Updated: 2024/03/29 13:09:38 by junssong         ###   ########.fr       */
+/*   Created: 2024/03/28 10:55:41 by junssong          #+#    #+#             */
+/*   Updated: 2024/03/28 10:56:06 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "ScalarConverter.hpp"
 
-#include <iostream>
-#include "Data.hpp"
-
-typedef unsigned long uintptr_t;
-
-class Serializer
+int main(int argc, char **argv)
 {
-	public:
-		static uintptr_t	serialize(Data* ptr);
-		static Data*		deserialize(uintptr_t raw);
-
-	private:
-		Serializer();
-		Serializer(const Serializer &serializer);
-		~Serializer();
-		Serializer &operator=(const Serializer &serializer);
-};
+	if (argc != 2)
+	{
+		std::cout << "Error: Invalid number of arguments" << std::endl;
+		return (1);
+	}
+	ScalarConverter sc;
+	sc.convert(argv[1]);
+	return (0);
+}
