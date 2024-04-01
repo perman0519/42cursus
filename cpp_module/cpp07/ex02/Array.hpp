@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 12:19:53 by junssong          #+#    #+#             */
-/*   Updated: 2024/04/01 12:33:06 by junssong         ###   ########.fr       */
+/*   Updated: 2024/04/01 16:45:38 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <string>
+#include <exception>
 
 template <typename T>
 class Array
@@ -25,10 +26,16 @@ class Array
 		Array<T>& operator=(const Array<T>& obj);
 
 		T& operator[](unsigned int index);
-		unsigned int getSize() const;
+		unsigned int size() const;
+
+		class OutofIndex : public std::exception
+		{
+		public:
+			const char *what() const throw();
+		};
 
 	private:
 		Array();
-		T*				_array;
 		unsigned int	_size;
+		T*				_array;
 };

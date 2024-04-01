@@ -1,14 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.cpp                                          :+:      :+:    :+:   */
+/*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 12:26:38 by junssong          #+#    #+#             */
-/*   Updated: 2024/04/01 12:33:13 by junssong         ###   ########.fr       */
+/*   Updated: 2024/04/01 16:45:40 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include "Array.hpp"
 
@@ -17,8 +19,9 @@ Array<T>::Array(unsigned int n) :
 	_size(n)
 {
 	std::cout << "Array constructor called" << std::endl;
-	_array = new T[n];
+	_array = new T[_size];
 }
+
 
 template <typename T>
 Array<T>::~Array()
@@ -29,7 +32,8 @@ Array<T>::~Array()
 
 template <typename T>
 Array<T>::Array(const Array<T>& copy) :
-	_size(copy._size)
+	_size(copy._size),
+	_array(new T[copy._size])
 {
 	std::cout << "Array copy constructor called" << std::endl;
 	*this = copy;
@@ -51,13 +55,19 @@ Array<T>& Array<T>::operator=(const Array<T>& obj)
 template <typename T>
 T& Array<T>::operator[](unsigned int index)
 {
-	if (index >= _size)
-		throw std::exception();
+	if (index < 0 || index >= _size)
+		throw Array::OutofIndex();
 	return (_array[index]);
 }
 
 template <typename T>
-unsigned int Array<T>::getSize() const
+unsigned int Array<T>::size() const
 {
 	return (_size);
+}
+
+template <typename T>
+const char *Array<T>::OutofIndex::what() const throw()
+{
+	return ("Out of index");
 }
