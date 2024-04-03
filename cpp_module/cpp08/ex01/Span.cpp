@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 18:47:26 by junssong          #+#    #+#             */
-/*   Updated: 2024/04/03 11:08:14 by junssong         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:18:27 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Span::~Span()
 }
 
 Span::Span(const Span& span) :
-	vec(new std::vector<int>(0))
+	vec(new std::vector<int>)
 {
 	std::cout << "Span Copy Constructor called." << std::endl;
 	*this = span;
@@ -51,25 +51,22 @@ void	Span::addNumber(int num)
 		throw SpanSizOverflowException();
 	this->addSize++;
 	this->vec->push_back(num);
-	std::sort(this->vec->begin(), this->vec->end());
 }
 
 int	Span::shortestSpan()
 {
-	int span;
+	int span = INT_MAX;
 
+	std::sort(this->vec->begin(), this->vec->end());
 	if (this->addSize < 2)
 		throw NoSpanException();
-	for (unsigned int i = 0; i < this->vec->size() - 1; i++)
+	for (std::vector<int>::iterator it = this->vec->begin(); it != this->vec->end(); it++)
 	{
-		if (i == 0)
-			span = this->vec->at(i + 1) - this->vec->at(i);
-		else if (span > this->vec->at(i + 1) - this->vec->at(i))
-		{
-			int tmpSpan = this->vec->at(i + 1) - this->vec->at(i);
-			if (span > tmpSpan)
-				span = tmpSpan;
-		}
+		if (it == this->vec->begin())
+			continue;
+		int tmpSpan = *(it) - *(it - 1);
+		if (tmpSpan < span)
+			span = tmpSpan;
 	}
 	return (span);
 }
@@ -78,8 +75,9 @@ int	Span::longestSpan()
 {
 	if (this->addSize < 2)
 		throw NoSpanException();
-	return (this->vec->back() - this->vec->front());
-
+	int a = *max_element(this->vec->begin(), this->vec->end());
+	int b = *min_element(this->vec->begin(), this->vec->end());
+	return (a - b);
 }
 
 const char* Span::SpanSizOverflowException::what() const throw()

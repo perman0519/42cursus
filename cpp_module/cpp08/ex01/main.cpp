@@ -6,11 +6,13 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 19:08:24 by junssong          #+#    #+#             */
-/*   Updated: 2024/04/03 11:08:55 by junssong         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:23:44 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <ctime>
+#include <array>
 
 int main()
 {
@@ -24,10 +26,25 @@ int main()
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 
-
+	std::srand(time(NULL));
 	Span sp2 = Span(10000);
-	for (int i = 0; i < 10000; i++)
-		sp2.addNumber(rand());
+	try
+	{
+		std::vector<int> a(5000, 1);
+		std::vector<int> b(5000, 100);
+		sp2.insert(a);
+		sp2.insert(b);
+
+		// int *c = new int[5000];
+		// for (int i = 0; i < 5000; i++)
+		// 	c[i] = 1;
+		// sp2.insert(c);
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+		return 1;
+	}
 	std::cout << sp2.shortestSpan() << std::endl;
 	std::cout << sp2.longestSpan() << std::endl;
 	return 0;
