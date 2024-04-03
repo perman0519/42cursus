@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: junssong <junssong@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 12:19:53 by junssong          #+#    #+#             */
-/*   Updated: 2024/04/01 16:45:38 by junssong         ###   ########.fr       */
+/*   Updated: 2024/04/03 10:17:07 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ class Array
 {
 	public:
 		Array(unsigned int n);
+		Array();
 		~Array();
 		Array(const Array<T>& copy);
 		Array<T>& operator=(const Array<T>& obj);
 
 		T& operator[](unsigned int index);
+		const T& operator[](unsigned int index) const;
 		unsigned int size() const;
 
 		class OutofIndex : public std::exception
@@ -35,7 +37,6 @@ class Array
 		};
 
 	private:
-		Array();
 		unsigned int	_size;
 		T*				_array;
 };

@@ -6,13 +6,21 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 12:26:38 by junssong          #+#    #+#             */
-/*   Updated: 2024/04/01 16:45:40 by junssong         ###   ########.fr       */
+/*   Updated: 2024/04/03 10:20:29 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "Array.hpp"
+
+template <typename T>
+Array<T>::Array() :
+	_size(0)
+{
+	std::cout << "Array constructor called" << std::endl;
+	_array = new T[0];
+}
 
 template <typename T>
 Array<T>::Array(unsigned int n) :
@@ -54,6 +62,14 @@ Array<T>& Array<T>::operator=(const Array<T>& obj)
 
 template <typename T>
 T& Array<T>::operator[](unsigned int index)
+{
+	if (index < 0 || index >= _size)
+		throw Array::OutofIndex();
+	return (_array[index]);
+}
+
+template <typename T>
+const T& Array<T>::operator[](unsigned int index) const
 {
 	if (index < 0 || index >= _size)
 		throw Array::OutofIndex();

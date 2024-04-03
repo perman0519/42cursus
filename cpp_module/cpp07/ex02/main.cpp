@@ -58,20 +58,23 @@ int main(int, char**)
     delete [] mirror;//
 
 
-    Array<float> test(20);
-    float *f = new float[20];
+    Array<float> test(5);
+    float *f = new float[5];
 
-    for (int i = 0; i < 20; i++)
+    for (unsigned int i = 0; i < test.size(); i++)
     {
         const float value = static_cast<float>(rand());
         test[i] = value;
         f[i] = value;
-    }
-    for (size_t i = 0; i < 20; i++)
-    {
         std::cout << test[i] << " " << f[i] << std::endl;
     }
     std::cout << test.size() << std::endl;
     delete [] f;
+
+    const Array<float> test2 = test;
+    for (unsigned int i = 0; i < test2.size(); i++)
+    {
+        std::cout << test2[i] << std::endl;
+    }
     return 0;
 }
