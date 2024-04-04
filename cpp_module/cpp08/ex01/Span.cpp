@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 18:47:26 by junssong          #+#    #+#             */
-/*   Updated: 2024/04/03 16:18:27 by junssong         ###   ########.fr       */
+/*   Updated: 2024/04/04 10:38:58 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Span::Span(unsigned int n) :
 	addSize(0),
 	size(n),
-	vec(new std::vector<int>)
+	vec(new std::vector<unsigned int>)
 {
 	std::cout << "Span Constructor called." << std::endl;
 }
@@ -27,7 +27,7 @@ Span::~Span()
 }
 
 Span::Span(const Span& span) :
-	vec(new std::vector<int>)
+	vec(new std::vector<unsigned int>)
 {
 	std::cout << "Span Copy Constructor called." << std::endl;
 	*this = span;
@@ -38,7 +38,7 @@ Span& Span::operator=(const Span& span)
 	if (this == &span)
 		return (*this);
 	delete this->vec;
-	this->vec = new std::vector<int>(span.vec->size());
+	this->vec = new std::vector<unsigned int>(span.vec->size());
 	std::copy(span.vec->begin(), span.vec->end(), this->vec->begin());
 	this->addSize = span.addSize;
 	this->size = span.size;
@@ -53,6 +53,15 @@ void	Span::addNumber(int num)
 	this->vec->push_back(num);
 }
 
+void	Span::insert(std::vector<unsigned int>& var)
+{
+	if (this->addSize + var.size() > this->size)
+		throw SpanSizOverflowException();
+	this->addSize += var.size();
+	for (std::vector<unsigned int>::iterator it = var.begin(); it != var.end(); it++)
+		this->vec->push_back(*it);
+}
+
 int	Span::shortestSpan()
 {
 	int span = INT_MAX;
@@ -60,7 +69,7 @@ int	Span::shortestSpan()
 	std::sort(this->vec->begin(), this->vec->end());
 	if (this->addSize < 2)
 		throw NoSpanException();
-	for (std::vector<int>::iterator it = this->vec->begin(); it != this->vec->end(); it++)
+	for (std::vector<unsigned int>::iterator it = this->vec->begin(); it != this->vec->end(); it++)
 	{
 		if (it == this->vec->begin())
 			continue;
