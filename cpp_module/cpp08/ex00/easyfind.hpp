@@ -24,5 +24,5 @@ typename T::iterator easyfind(T &container, int n)
 template <typename T>
 typename T::const_iterator easyfind(const T &container, int n)
 {
-	return (std::find(container.cbegin(), container.cend(), n));
+	return (std::find(container.begin(), container.end(), n));
 }

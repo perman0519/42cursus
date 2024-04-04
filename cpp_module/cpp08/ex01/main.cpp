@@ -12,7 +12,6 @@
 
 #include "Span.hpp"
 #include <ctime>
-#include <array>
 
 int main()
 {

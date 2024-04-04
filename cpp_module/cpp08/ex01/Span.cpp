@@ -55,7 +55,7 @@ void	Span::addNumber(int num)
 
 int	Span::shortestSpan()
 {
-	int span = INT_MAX;
+	int span = 2147483647;
 
 	std::sort(this->vec->begin(), this->vec->end());
 	if (this->addSize < 2)
