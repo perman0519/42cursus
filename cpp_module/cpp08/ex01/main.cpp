@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 19:08:24 by junssong          #+#    #+#             */
-/*   Updated: 2024/04/03 16:23:44 by junssong         ###   ########.fr       */
+/*   Updated: 2024/04/04 11:53:58 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int main()
 	Span sp2 = Span(10000);
 	try
 	{
-		std::vector<int> a(5000, 1);
-		std::vector<int> b(5000, 100);
+		std::vector<unsigned int> a(5000, 1);
+		std::vector<unsigned int> b(5000, 100);
 		sp2.insert(a);
 		sp2.insert(b);
 

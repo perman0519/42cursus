@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 16:24:28 by junssong          #+#    #+#             */
-/*   Updated: 2024/04/03 17:26:12 by junssong         ###   ########.fr       */
+/*   Updated: 2024/04/04 10:51:17 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ public:
 	typedef typename std::stack<T>::container_type::iterator iterator;
 	typedef typename std::stack<T>::container_type::const_iterator const_iterator;
 	typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
-	typedef typename std::stack<T>::container_type::reverse_iterator const_reverse_iterator;
+	typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
 
 	iterator	begin()
 	{

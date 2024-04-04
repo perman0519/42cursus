@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 18:47:26 by junssong          #+#    #+#             */
-/*   Updated: 2024/04/04 10:38:58 by junssong         ###   ########.fr       */
+/*   Updated: 2024/04/04 12:22:28 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,6 @@ void	Span::addNumber(int num)
 		throw SpanSizOverflowException();
 	this->addSize++;
 	this->vec->push_back(num);
-}
-
-void	Span::insert(std::vector<unsigned int>& var)
-{
-	if (this->addSize + var.size() > this->size)
-		throw SpanSizOverflowException();
-	this->addSize += var.size();
-	for (std::vector<unsigned int>::iterator it = var.begin(); it != var.end(); it++)
-		this->vec->push_back(*it);
 }
 
 int	Span::shortestSpan()
