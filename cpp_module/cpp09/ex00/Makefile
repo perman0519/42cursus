@@ -1,7 +1,7 @@
 CC = c++
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-NAME = a.out
+NAME = btc
 CPP = .cpp
 HPP = .hpp
 SRCDIR = ./
