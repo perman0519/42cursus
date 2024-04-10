@@ -1,3 +1,8 @@
+#-------------------------------------------
+GREEN		=	"\033[0;32m"
+EOC			=   "\033[0;0m"
+#-------------------------------------------
+
 CC = c++
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
 
@@ -7,22 +12,34 @@ HPP = .hpp
 SRCDIR = ./
 INCDIR = ./
 
-SRC = $(wildcard $(SRCDIR)/*$(CPP))
-INC = $(wildcard $(INCDIR)/*$(HPP))
+SRC = $(wildcard $(SRCDIR)*$(CPP))
+INC = $(wildcard $(INCDIR)*$(HPP))
+OBJ = $(SRC:.cpp=.opp)
 RM = rm -rf
 
 all: $(NAME)
 
 # Builds the app
-$(NAME): $(SRC) $(INC)
-	@$(CC) $(SRC) $(CPPFLAGS) -o $@
+$(NAME): $(OBJ)
+	@$(CC) $(CPPFLAGS) $(OBJ) -o $@
+	@echo $(GREEN) "ex00 made." $(EOC)
 
-# Cleans complete project
-.PHONY: clean
+%.opp : %.cpp
+	@$(CC) $(CPPFLAGS) -c $< -o $@
+
+# Removes object files
 clean:
-	@$(RM) $(NAME)
+	@$(RM) $(OBJ)
+	@echo $(GREEN) "cleaned." $(EOC)
 
-.PHONY: re
+# Removes object files and the app
+fclean	: clean
+	@$(RM) $(NAME)
+	@echo $(GREEN) "f cleaned." $(EOC)
+
+# Re-making the app
 re:
-	@$(MAKE) clean
+	@$(MAKE) fclean
 	@$(MAKE) all
+
+.PHONY: clean  fclean re all
