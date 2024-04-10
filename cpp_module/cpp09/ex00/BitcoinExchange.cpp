@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:15:03 by junssong          #+#    #+#             */
-/*   Updated: 2024/04/10 12:24:19 by junssong         ###   ########.fr       */
+/*   Updated: 2024/04/10 12:31:30 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,14 +101,12 @@ void	BitcoinExchange::help_run(std::string& line)
 				throw FileError();
 			err = NULL;
 			break;
-
 		case 2:
 			month =  (int)std::strtod(ss_str.c_str(), &err);
 			if ((month <= 0 || month >= 13) || *err)
 				throw FileError();
 			err = NULL;
 			break;
-
 		case 3:
 			day =  (int)std::strtod(ss_str.c_str(), &err);
 			if (day <= 0 || *err)
@@ -131,7 +129,6 @@ void	BitcoinExchange::help_run(std::string& line)
 					throw FileError();
 			}
 			break;
-
 		default:
 			break;
 		}
