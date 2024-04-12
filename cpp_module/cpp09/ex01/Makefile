@@ -24,7 +24,7 @@ $(NAME): $(OBJ)
 	@$(CC) $(CPPFLAGS) $(OBJ) -o $@
 	@echo $(GREEN) "ex01 made." $(EOC)
 
-%.opp : %.cpp
+%.opp : %.cpp $(INC)
 	@$(CC) $(CPPFLAGS) -c $< -o $@
 
 # Removes object files
