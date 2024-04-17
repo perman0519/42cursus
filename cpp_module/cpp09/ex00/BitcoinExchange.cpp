@@ -23,7 +23,7 @@ BitcoinExchange::BitcoinExchange(std::fstream &file) :
 	while (std::getline(_file, line))
 	{
 		key = line.substr(0, line.find(','));
-		value = std::strtod(line.substr(line.find(',') + 1).c_str(), &err);
+		value = strtod(line.substr(line.find(',') + 1).c_str(), &err);
 		if (*err)
 			throw FileError();
 		_map[key] = value;
@@ -109,19 +109,19 @@ void	BitcoinExchange::help_run(std::string& line)
 		switch (count)
 		{
 		case 1:
-			year = (int)std::strtod(ss_str.c_str(), &err);
+			year = (int)strtod(ss_str.c_str(), &err);
 			if ((year <= 0 || year >= 9999) || *err)
 				throw FileError();
 			err = NULL;
 			break;
 		case 2:
-			month =  (int)std::strtod(ss_str.c_str(), &err);
+			month =  (int)strtod(ss_str.c_str(), &err);
 			if ((month <= 0 || month >= 13) || *err)
 				throw FileError();
 			err = NULL;
 			break;
 		case 3:
-			day =  (int)std::strtod(ss_str.c_str(), &err);
+			day =  (int)strtod(ss_str.c_str(), &err);
 			if (day <= 0 || *err)
 				throw FileError();
 			if (month == 2)
@@ -150,7 +150,7 @@ void	BitcoinExchange::help_run(std::string& line)
 		throw FileError();
 	str_value = line.substr(line.find(" | ") + 3);
 	err = NULL;
-	value = std::strtod(str_value.c_str(), &err);
+	value = strtod(str_value.c_str(), &err);
 	if (*err)
 		throw FileError();
 	if (value < 0)

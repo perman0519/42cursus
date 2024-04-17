@@ -21,8 +21,6 @@ PmergeMe::PmergeMe(char **argv)
 		if (argvs.find_first_not_of("0123456789") != std::string::npos)
 			throw InvalidInputException();
 		unsigned int num = std::atoi(argv[i]);
-		if (num < 0)
-			throw InvalidInputException();
 		this->vec.push_back(num);
 		this->deque.push_back(num);
 	}
@@ -56,18 +54,21 @@ const dequeT&	PmergeMe::getDeque() const
 
 void PmergeMe::printVec(const vecT& vec) const
 {
-	for (std::vector<unsigned int>::const_iterator it = vec.cbegin(); it != vec.cend(); it++)
-		std::cout << *it << " ";
-	std::cout << std::endl;
+    vecT::const_iterator it = vec.begin();
+    vecT::const_iterator end = vec.end();
+    for (; it != end; ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
 }
 
 void PmergeMe::printDeque(const dequeT& deque) const
 {
-	for (std::deque<unsigned int>::const_iterator it = deque.cbegin(); it != deque.cend(); it++)
-		std::cout << *it << " ";
-	std::cout << std::endl;
+    dequeT::const_iterator it = deque.begin();
+    dequeT::const_iterator end = deque.end();
+    for (; it != end; ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
 }
-
 const char* PmergeMe::InvalidInputException::what() const throw()
 {
 	return ("Error: Invalid Input.");
