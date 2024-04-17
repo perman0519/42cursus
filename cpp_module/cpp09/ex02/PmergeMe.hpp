@@ -21,9 +21,6 @@
 #include <algorithm>
 #include <cmath>
 
-// #define VECTOR 1;
-// #define DEQUE 2;
-
 typedef std::vector<unsigned int>::iterator vecIt;
 typedef std::vector<unsigned int> vecT;
 typedef std::deque<unsigned int>::iterator dequeIt;
