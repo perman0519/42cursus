@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:13:50 by junssong          #+#    #+#             */
-/*   Updated: 2024/04/08 21:21:34 by junssong         ###   ########.fr       */
+/*   Updated: 2024/04/17 20:13:12 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int main(int argc, char **agrv)
 {
 	// atexit(v);
 	if (argc != 2)
+	{
 		std::cerr << "Error: could not open file." << std::endl;
+		exit(1);
+	}
 	std::fstream file(agrv[1], std::ios::in);
 	std::fstream file2("data.csv", std::ios::in);
 	if (!file.is_open() || !file2.is_open())

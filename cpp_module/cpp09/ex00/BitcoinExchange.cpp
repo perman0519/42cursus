@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:15:03 by junssong          #+#    #+#             */
-/*   Updated: 2024/04/10 12:31:30 by junssong         ###   ########.fr       */
+/*   Updated: 2024/04/17 20:11:00 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,19 @@ BitcoinExchange::BitcoinExchange(std::fstream &file) :
 BitcoinExchange::~BitcoinExchange()
 {
 	// std::cout << "bitcoinExchange distructor called." << std::endl;
+}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& copy) :
+	_file(copy._file),
+	_map(copy._map)
+{
+}
+
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& obj)
+{
+	if (this == &obj)
+		return (*this);
+	return (*this);
 }
 
 const char*	BitcoinExchange::FileError::what() const throw()
