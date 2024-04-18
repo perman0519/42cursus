@@ -6,7 +6,7 @@
 /*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:16:14 by junssong          #+#    #+#             */
-/*   Updated: 2024/04/17 19:20:34 by junssong         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:55:53 by junssong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ const char* PmergeMe::InvalidInputException::what() const throw()
 
 void	PmergeMe::comparePairV(int bundle)
 {
-	for (size_t i = 0; i + bundle * 2 < this->vec.size(); i += bundle * 2)
+	for (size_t i = 0; i + bundle * 2 <= this->vec.size(); i += bundle * 2)
 	{
 		if (this->vec[i] < this->vec[i + bundle])
 		{
@@ -92,7 +92,7 @@ void	PmergeMe::comparePairV(int bundle)
 
 void	PmergeMe::comparePairD(int bundle)
 {
-	for (size_t i = 0; i + bundle * 2 < this->deque.size(); i += bundle * 2)
+	for (size_t i = 0; i + bundle * 2 <= this->deque.size(); i += bundle * 2)
 	{
 		if (this->deque[i] < this->deque[i + bundle])
 		{
