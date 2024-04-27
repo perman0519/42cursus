@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  nginx:
+    build: ./nginx
+    container_name: "nginx"
+    ports:
+      - "443:443"
+    env_file: .env
+    networks:
+      - inception_network
+    restart: on-failure
+
+  mariadb:
+    build: ./mariadb
+    container_name: "mariadb"
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - inception_network
+    restart: on-failure
+    args:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    env_file: .env
+
+  # wordpress:
+  #   build: ./wordpress
+  #   container_name: wordpress
+  #   # depends_on:
+  #   #   - mariadb
+  #   volumes:
+  #     - wp-files:/var/www/html
+  #   networks:
+  #     - inception_network
+  #   env_file: .env
+  #   restart: on-failure
+
+volumes:
+  db-data:
+  # wp-files:
+
+networks:
+  inception_network:
+    driver: bridge
