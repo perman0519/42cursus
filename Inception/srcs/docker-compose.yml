@@ -2,48 +2,66 @@ version: '3'
 
 services:
   nginx:
+    depends_on:
+      - wordpress
     build: ./nginx
     container_name: "nginx"
     ports:
       - "443:443"
-    env_file: .env
     networks:
       - inception_network
-    restart: on-failure
+    env_file:
+      - .env
+    restart:  on-failure
+    init: true
+    volumes:
+      - wp:/var/www/html
 
   mariadb:
     build: ./mariadb
     container_name: "mariadb"
     volumes:
-      - db-data:/var/lib/mysql
-    ports:
-      - "3306:3306"
+      - db:/var/lib/mysql
+    expose:
+      - "3306"
     networks:
       - inception_network
+    env_file:
+      - .env
     restart: on-failure
-    args:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    init: true
+
+  wordpress:
+    depends_on:
+      - mariadb
+    build: ./wordpress
+    container_name: wordpress
+    volumes:
+      - wp:/var/www/html
+    expose:
+      - "9000"
+    networks:
+      - inception_network
     env_file: .env
-
-  # wordpress:
-  #   build: ./wordpress
-  #   container_name: wordpress
-  #   # depends_on:
-  #   #   - mariadb
-  #   volumes:
-  #     - wp-files:/var/www/html
-  #   networks:
-  #     - inception_network
-  #   env_file: .env
-  #   restart: on-failure
-
-volumes:
-  db-data:
-  # wp-files:
+    restart: on-failure
+    init: true
 
 networks:
   inception_network:
     driver: bridge
+
+volumes:
+  wp:
+    driver: local
+    name: wp
+    driver_opts:
+      type: none
+      o: bind
+      device: ~/wordpress
+  db:
+    driver: local
+    name: db
+    driver_opts:
+      type: none
+      o: bind
+      device: ~/mariadb

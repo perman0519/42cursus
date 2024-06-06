@@ -1,9 +1,0 @@
-FROM alpine:3.18
-
-RUN apk update && \
-	apk add mariadb mariadb-client openrc && \
-
-ARG MYSQL_ROOT_PASSWORD \
-	MYSQL_DATABASE \
-	DOMAIN \
-	MYSQL_PASSWORD
