@@ -4,36 +4,19 @@ COPY ./conf/run_wordpress.sh /tmp/run_wordpress.sh
 
 # Install necessary packages
 RUN apk update && \
-	apk add --no-cache shadow php php-mbstring php-phar php-fpm php-mysqli php-json php-openssl wget unzip mysql-client
+	apk add --no-cache php php-mbstring php-phar php-fpm php-mysqli wget
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
-
-# Create a new user with a specific UID and GID
 ARG USER_ID=1000
 ARG GROUP_ID=1000
 RUN addgroup -g ${GROUP_ID} nginx \
     && adduser -u ${USER_ID} -D -G nginx nginx
 
-# Set the working directory
-# WORKDIR /
-
-# Copy your application files
-# COPY . .
-
-# Change ownership of the working directory
-# RUN  /var/www/html
-
-# Switch to the new user
-# USER appuser
 COPY ./conf/www.conf /etc/php81/php-fpm.d/www.conf
 RUN chmod 777 /etc/php81/php-fpm.d/www.conf
 EXPOSE 9000
 
-# RUN sh /tmp/run_wordpress.sh
-
-
-# php-fpm81 -F
 ENTRYPOINT [ "sh" ]
 CMD ["/tmp/run_wordpress.sh"]

@@ -57,11 +57,11 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: ~/wordpress
+      device: /home/login/data/wp
   db:
     driver: local
     name: db
     driver_opts:
       type: none
       o: bind
-      device: ~/mariadb
+      device: /home/login/data/db

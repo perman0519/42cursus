@@ -6,14 +6,8 @@ COPY ./conf/mariadb-server.cnf /tmp/mariadb-server.cnf
 EXPOSE 3306
 
 RUN apk update && \
-	apk add --no-cache mariadb mariadb-server-utils openrc
+	apk add --no-cache mariadb mariadb-server-utils
 RUN chmod +x /tmp/mariadb-setup.sh
-# RUN sh /tmp/mariadb-setup.sh
-# RUN sh /tmp/mariadb-setup.sh
-# RUN sh /tmp/mariadb-setup.sh
-# Verify the status of the MariaDB service
-# RUN rc-service mariadb status;
 
-# CMD ["/usr/bin/mysqld", "--user=mysql", "--console"]
 ENTRYPOINT [ "sh" ]
 CMD ["/tmp/mariadb-setup.sh"]
