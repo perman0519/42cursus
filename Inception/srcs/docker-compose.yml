@@ -6,6 +6,7 @@ services:
       - wordpress
     build: ./nginx
     container_name: "nginx"
+    image: "nginx"
     ports:
       - "443:443"
     networks:
@@ -20,6 +21,7 @@ services:
   mariadb:
     build: ./mariadb
     container_name: "mariadb"
+    image: "mariadb"
     volumes:
       - db:/var/lib/mysql
     expose:
@@ -36,6 +38,7 @@ services:
       - mariadb
     build: ./wordpress
     container_name: wordpress
+    image: "wordpress"
     volumes:
       - wp:/var/www/html
     expose:
@@ -48,6 +51,7 @@ services:
 
 networks:
   inception_network:
+    name: inception_network
     driver: bridge
 
 volumes:
