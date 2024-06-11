@@ -5,7 +5,7 @@ all: $(NAME)
 $(NAME):
 	mkdir /home/login/data/wp || true
 	mkdir /home/login/data/db || true
-	docker-compose -f ./srcs/docker-compose.yml up -d
+	docker-compose -f ./srcs/docker-compose.yml up -d --build
 	@docker-compose -f ./srcs/docker-compose.yml logs -f
 
 clean:

@@ -4,9 +4,10 @@ services:
   nginx:
     depends_on:
       - wordpress
-    build: ./nginx
+    build: ./requirements/nginx
     container_name: "nginx"
     image: "nginx"
+    pull_policy: never
     ports:
       - "443:443"
     networks:
@@ -19,9 +20,10 @@ services:
       - wp:/var/www/html
 
   mariadb:
-    build: ./mariadb
+    build: ./requirements/mariadb
     container_name: "mariadb"
     image: "mariadb"
+    pull_policy: never
     volumes:
       - db:/var/lib/mysql
     expose:
@@ -36,9 +38,10 @@ services:
   wordpress:
     depends_on:
       - mariadb
-    build: ./wordpress
+    build: ./requirements/wordpress
     container_name: wordpress
     image: "wordpress"
+    pull_policy: never
     volumes:
       - wp:/var/www/html
     expose:
@@ -51,7 +54,7 @@ services:
 
 networks:
   inception_network:
-    name: inception_network
+    name: inception
     driver: bridge
 
 volumes:
