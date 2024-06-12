@@ -1,4 +1,4 @@
-FROM alpine:3.18
+FROM alpine:3.19
 
 COPY ./conf/run-mariadb.sh /tmp/mariadb-setup.sh
 COPY ./conf/mariadb-server.cnf /tmp/mariadb-server.cnf
