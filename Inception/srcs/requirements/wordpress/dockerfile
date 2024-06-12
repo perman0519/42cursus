@@ -12,9 +12,9 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 RUN addgroup nginx \
     && adduser -D -G nginx nginx
 
-COPY ./conf/www.conf /etc/php81/php-fpm.d/www.conf
+COPY ./conf/www.conf /etc/php82/php-fpm.d/www.conf
 
-RUN chmod +x /etc/php81/php-fpm.d/www.conf
+RUN chmod +x /etc/php82/php-fpm.d/www.conf
 
 EXPOSE 9000
 
