@@ -9,7 +9,6 @@
 [mysqld]
 
 # skip-networking
-# skip-bind-address
 # Galera-related settings
 [galera]
 # Mandatory settings

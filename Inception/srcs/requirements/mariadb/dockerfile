@@ -1,0 +1,14 @@
+FROM alpine:3.19
+
+COPY ./conf/run-mariadb.sh /tmp/mariadb-setup.sh
+COPY ./conf/mariadb-server.cnf /tmp/mariadb-server.cnf
+RUN chmod +x /tmp/mariadb-setup.sh
+
+RUN apk update && \
+	apk add --no-cache mariadb mariadb-server-utils && \
+	rm -rf /var/cache/apk/*
+
+EXPOSE 3306
+
+ENTRYPOINT [ "sh" ]
+CMD ["/tmp/mariadb-setup.sh"]
