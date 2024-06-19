@@ -6,7 +6,7 @@ services:
       - wordpress
     build: ./requirements/nginx
     container_name: "nginx"
-    image: "nginx"
+    image: "nginx:1.0"
     pull_policy: never
     ports:
       - "443:443"
@@ -22,7 +22,7 @@ services:
   mariadb:
     build: ./requirements/mariadb
     container_name: "mariadb"
-    image: "mariadb"
+    image: "mariadb:1.0"
     pull_policy: never
     volumes:
       - db:/var/lib/mysql
@@ -40,7 +40,7 @@ services:
       - mariadb
     build: ./requirements/wordpress
     container_name: wordpress
-    image: "wordpress"
+    image: "wordpress:1.0"
     pull_policy: never
     volumes:
       - wp:/var/www/html
@@ -64,11 +64,11 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/login/data/wp
+      device: /home/junssong/data/wp
   db:
     driver: local
     name: db
     driver_opts:
       type: none
       o: bind
-      device: /home/login/data/db
+      device: /home/junssong/data/db

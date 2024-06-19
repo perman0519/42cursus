@@ -4,7 +4,7 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
 	echo "[INFO] Create '/run/mysqld' directory."
 	mkdir -p /run/mysqld
 	chown -R mysql:mysql /run/mysqld
-	mariadb-install-db --user=$MYSQL_USER --datadir=/var/lib/mysql --basedir=/usr --rpm > /dev/null
+	mariadb-install-db --user=$MYSQL_USER --datadir=/var/lib/mysql --basedir=/usr --rpm
 
 	cat << EOF > /bootstrap_commands
 
