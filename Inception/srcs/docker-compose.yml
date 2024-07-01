@@ -1,5 +1,5 @@
 version: '3'
-
+  
 services:
   nginx:
     depends_on:
@@ -64,11 +64,11 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/junssong/data/wp
+      device: /Users/songjunsang/data/wp
   db:
     driver: local
     name: db
     driver_opts:
       type: none
       o: bind
-      device: /home/junssong/data/db
+      device: /Users/songjunsang/data/db
