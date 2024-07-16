@@ -1,2 +1,4 @@
-postres/
+postgres/*
+certs/
+
 

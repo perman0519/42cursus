@@ -1,0 +1,22 @@
+FROM python:3.11
+
+RUN mkdir /app
+WORKDIR /app
+COPY . .
+
+# COPY ./requirements.txt /app
+RUN pip install -r /app/requirements.txt
+
+WORKDIR /app/app
+
+RUN echo '#!/bin/bash\n\n\
+python manage.py makemigrations\n\
+python manage.py migrate\n\
+python manage.py collectstatic --noinput\n\
+gunicorn --bind 0.0.0.0:8000 --workers 3 --worker-class uvicorn.workers.UvicornWorker transcendence.asgi:application' > start.sh
+
+RUN chmod +x /app/app/start.sh
+
+EXPOSE 8000
+
+CMD ["/bin/sh", "-c", "/app/app/start.sh"]

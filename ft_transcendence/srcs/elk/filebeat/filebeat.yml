@@ -1,0 +1,18 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/nginx/access.log
+    - /var/log/nginx/error.log
+  fields:
+    log_type: nginx
+
+- type: log
+  enabled: true
+  paths:
+    - /app/logs/debug.log
+  fields:
+    log_type: django
+
+output.logstash:
+  hosts: ["logstash:5044"]  

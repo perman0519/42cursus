@@ -1,0 +1,21 @@
+cluster.name: "junssong-cluster"
+network.host: 0.0.0.0
+node.name: "node1"
+# 보안 설정
+xpack.security.enabled: false
+xpack.security.enrollment.enabled: false
+# # SSL/TLS 설정
+# xpack.security.transport.ssl.enabled: true
+# xpack.security.http.ssl.enabled: true
+# # 인증서 설정
+# xpack.security.transport.ssl.key: /usr/share/elasticsearch/config/certs/elasticsearch_key.pem
+# xpack.security.transport.ssl.certificate: /usr/share/elasticsearch/config/certs/elasticsearch_cert.pem
+# xpack.security.transport.ssl.certificate_authorities: ["/usr/share/elasticsearch/config/certs/elasticsearch_cert.pem"]
+# xpack.security.http.ssl.key: /usr/share/elasticsearch/config/certs/elasticsearch_key.pem
+# xpack.security.http.ssl.certificate: /usr/share/elasticsearch/config/certs/elasticsearch_cert.pem
+# xpack.security.http.ssl.certificate_authorities: ["/usr/share/elasticsearch/config/certs/elasticsearch_cert.pem"]
+# xpack.security.http.ssl.verification_mode: certificate
+# # 자동 구성 비활성화
+xpack.security.autoconfiguration.enabled: false
+xpack.security.transport.ssl.enabled: false
+xpack.security.http.ssl.enabled: false
