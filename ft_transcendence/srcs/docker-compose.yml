@@ -15,7 +15,7 @@ services:
     depends_on:
       - django
     networks:
-      - tscen
+      - pong
 
   postgresql:
     container_name: postgresql
@@ -34,7 +34,7 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - tscen
+      - pong
     env_file:
       - .env
 
@@ -51,10 +51,180 @@ services:
       postgresql:
         condition: service_healthy
     networks:
-      - tscen
+      - pong
     env_file:
       - .env
 
+############################################ ELK ############################################
+
+  setup:
+      profiles:
+        - setup
+      build:
+        context: setup/
+        args:
+          ELASTIC_VERSION: ${ELASTIC_VERSION}
+      init: true
+      volumes:
+        - ./setup/entrypoint.sh:/entrypoint.sh:ro,Z
+        - ./setup/lib.sh:/lib.sh:ro,Z
+        - ./setup/roles:/roles:ro,Z
+        # (!) CA certificate. Generate using the 'tls' service.
+        - ./tls/certs/ca/ca.crt:/ca.crt:ro,z
+      environment:
+        ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:-}
+        LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
+        KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
+        METRICBEAT_INTERNAL_PASSWORD: ${METRICBEAT_INTERNAL_PASSWORD:-}
+        FILEBEAT_INTERNAL_PASSWORD: ${FILEBEAT_INTERNAL_PASSWORD:-}
+        HEARTBEAT_INTERNAL_PASSWORD: ${HEARTBEAT_INTERNAL_PASSWORD:-}
+        MONITORING_INTERNAL_PASSWORD: ${MONITORING_INTERNAL_PASSWORD:-}
+        BEATS_SYSTEM_PASSWORD: ${BEATS_SYSTEM_PASSWORD:-}
+      networks:
+        - pong
+      depends_on:
+        - elasticsearch
+
+  elasticsearch:
+    build:
+      context: elasticsearch/
+      args:
+        ELASTIC_VERSION: ${ELASTIC_VERSION}
+    volumes:
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,Z
+      - elasticsearch:/usr/share/elasticsearch/data:Z
+      # (!) TLS certificates. Generate using the 'tls' service.
+      - ./tls/certs/ca/ca.crt:/usr/share/elasticsearch/config/ca.crt:ro,z
+      - ./tls/certs/elasticsearch/elasticsearch.crt:/usr/share/elasticsearch/config/elasticsearch.crt:ro,z
+      - ./tls/certs/elasticsearch/elasticsearch.key:/usr/share/elasticsearch/config/elasticsearch.key:ro,z
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      node.name: elasticsearch
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+      # Bootstrap password.
+      # Used to initialize the keystore during the initial startup of
+      # Elasticsearch. Ignored on subsequent runs.
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:-}
+      # Use single node discovery in order to disable production mode and avoid bootstrap checks.
+      # see: https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
+      discovery.type: single-node
+    networks:
+      - pong
+    restart: unless-stopped
+
+  logstash:
+    build:
+      context: logstash/
+      args:
+        ELASTIC_VERSION: ${ELASTIC_VERSION}
+    volumes:
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
+      # (!) CA certificate. Generate using the 'tls' service.
+      - ./tls/certs/ca/ca.crt:/usr/share/logstash/config/ca.crt:ro,z
+    ports:
+      - 5044:5044
+      - 50000:50000/tcp
+      - 50000:50000/udp
+      - 9600:9600
+    environment:
+      LS_JAVA_OPTS: -Xms256m -Xmx256m
+      LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
+    networks:
+      - pong
+    depends_on:
+      - elasticsearch
+    restart: unless-stopped
+
+  kibana:
+    build:
+      context: kibana/
+      args:
+        ELASTIC_VERSION: ${ELASTIC_VERSION}
+    volumes:
+      - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro,Z
+      # (!) TLS certificates. Generate using the 'tls' service.
+      - ./tls/certs/ca/ca.crt:/usr/share/kibana/config/ca.crt:ro,z
+      - ./tls/certs/kibana/kibana.crt:/usr/share/kibana/config/kibana.crt:ro,Z
+      - ./tls/certs/kibana/kibana.key:/usr/share/kibana/config/kibana.key:ro,Z
+    ports:
+      - 5601:5601
+    environment:
+      KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
+    networks:
+      - pong
+    depends_on:
+      - elasticsearch
+    restart: unless-stopped
+
+
+  filebeat:
+    build:
+      context: extensions/filebeat/
+      args:
+        ELASTIC_VERSION: ${ELASTIC_VERSION}
+    # Run as 'root' instead of 'filebeat' (uid 1000) to allow reading
+    # 'docker.sock' and the host's filesystem.
+    user: root
+    command:
+      # Log to stderr.
+      - -e
+      # Disable config file permissions checks. Allows mounting
+      # 'config/filebeat.yml' even if it's not owned by root.
+      # see: https://www.elastic.co/guide/en/beats/libbeat/current/config-file-permissions.html
+      - --strict.perms=false
+    volumes:
+      - ./extensions/filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro,Z
+      - ./logs/django:/var/log/django:ro
+      - ./logs/nginx:/var/log/nginx:ro
+      - type: bind
+        source: /var/lib/docker/containers
+        target: /var/lib/docker/containers
+        read_only: true
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+        read_only: true
+      # (!) CA certificate. Generate using the 'tls' service.
+      - ./tls/certs/ca/ca.crt:/usr/share/filebeat/ca.crt:ro,z
+    environment:
+      FILEBEAT_INTERNAL_PASSWORD: ${FILEBEAT_INTERNAL_PASSWORD:-}
+      BEATS_SYSTEM_PASSWORD: ${BEATS_SYSTEM_PASSWORD:-}
+    networks:
+      - pong
+    depends_on:
+      - elasticsearch
+      - logstash
+
+  dashboard-setup:
+    image: curlimages/curl
+    volumes:
+      - ./kibana/setup-dashboard.sh:/setup-dashboard.sh
+      - ./kibana/dashboard.ndjson:/dashboard.ndjson
+    command: ["/bin/sh", "/setup-dashboard.sh"]
+    depends_on:
+      - kibana
+    env_file:
+      - .env
+    networks:
+      - pong
+
+volumes:
+  postgres_data:
+    driver: local
+    name: postgres_data
+    driver_opts:
+      type: none
+      o: bind
+      device: ./postgres/
+  elasticsearch:
+
+networks:
+  pong:
+    name: pong
+    driver: bridge
   # elasticsearch:
   #   container_name: elasticsearch
   #   image: elasticsearch:8.14.2
@@ -110,7 +280,6 @@ services:
   #       - elasticsearch
   #     env_file:
   #       - .env
-
   # kibana:
   #   container_name: kibana
   #   image: kibana:8.14.2
@@ -133,20 +302,3 @@ services:
   #     networks:
   #       - tscen
 
-volumes:
-  postgres_data:
-    driver: local
-    name: postgres_data
-    driver_opts:
-      type: none
-      o: bind
-      device: ./postgres/
-  # es_data:
-  #   name: es_data
-  # shared_data:
-  #   name: shared_data
-
-networks:
-  tscen:
-    name: pong
-    driver: bridge

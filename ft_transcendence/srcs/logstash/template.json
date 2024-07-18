@@ -1,0 +1,8 @@
+{
+	"template": "nginx-*",
+	"mappings": {
+	  "properties": {
+		"url": { "type": "keyword" }
+	  }
+	}
+}
