@@ -7,17 +7,18 @@ COPY . .
 # COPY ./requirements.txt /app
 RUN pip install -r /app/requirements.txt
 
-WORKDIR /app/app
+WORKDIR /app/pong
 
 RUN echo '#!/bin/bash\n\n\
 python manage.py makemigrations\n\
 python manage.py makemigrations game\n\
+python manage.py makemigrations authentication\n\
 python manage.py migrate\n\
 python manage.py collectstatic --noinput\n\
-gunicorn --bind 0.0.0.0:8000 --workers 3 --worker-class uvicorn.workers.UvicornWorker transcendence.asgi:application' > start.sh
+gunicorn --bind 0.0.0.0:8000 --workers 3 --worker-class uvicorn.workers.UvicornWorker pong.asgi:application' > start.sh
 
-RUN chmod +x /app/app/start.sh
+RUN chmod +x /app/pong/start.sh
 
 EXPOSE 8000
 
-CMD ["/bin/sh", "-c", "/app/app/start.sh"]
+CMD ["/bin/sh", "-c", "/app/pong/start.sh"]
