@@ -2,4 +2,6 @@ certs/
 logs/
 .DS_Store
 .env
-
+postgres/
+pong_cache/
+__pycache__/

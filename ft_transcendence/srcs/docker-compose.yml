@@ -45,6 +45,7 @@ services:
       dockerfile: dockerfile
     volumes:
       - ./logs/django:/app/pong/logs
+      - django_data:/app/
     ports:
       - 8000:8000
     depends_on:
@@ -219,6 +220,13 @@ volumes:
       type: none
       o: bind
       device: ./postgres/
+  django_data:
+    driver: local
+    name: django_data
+    driver_opts:
+      type: none
+      o: bind
+      device: ./django/
   elasticsearch:
 
 networks:
