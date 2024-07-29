@@ -1,4 +1,4 @@
-NAME = inception
+NAME = pong
 
 all: $(NAME)
 
@@ -7,6 +7,10 @@ $(NAME):
 
 clean:
 	docker-compose -f srcs/docker-compose.yml down
+	rm -rf ./srcs/django/pong/pong_cache/
+	rm -rf ./srcs/postgres/*
+	docker volume rm -f django_data
+	docker volume rm -f postgres_data
 
 fclean:	clean
 	-@docker rmi $(shell docker images -q) || true
