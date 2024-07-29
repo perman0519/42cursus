@@ -1,7 +1,8 @@
 from django.urls import path
-from .game import game, tournament
+from . import game
+
 
 urlpatterns = [
-    path('game', game),
-    path('tournament', tournament),
+    path('game', game.GameView.as_view(), name='game'),
+    path('tournament', game.TournamentView.as_view(), name='tournament'),
 ]
