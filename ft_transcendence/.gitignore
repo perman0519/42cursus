@@ -5,3 +5,5 @@ logs/
 postgres/
 pong_cache/
 __pycache__/
+front/
+migrations/
