@@ -1,0 +1,6 @@
+[submodule "ft_transcendence/srcs/backend"]
+	path = ft_transcendence/srcs/backend
+	url = https://github.com/ft-transcendence-o/backend
+[submodule "ft_transcendence/srcs/frontend"]
+	path = ft_transcendence/srcs/frontend
+	url = https://github.com/ft-transcendence-o/frontend
