@@ -1,5 +1,5 @@
 NAME = libmylib.a
-NASM_FLAG = -f elf64 -g -F dwarf -Wa,--noexecstack -DPIE
+NASM_FLAG = -f macho64
 SRC_DIR = ./asm
 OBJ_DIR = ./obj
 SRCS1 = $(wildcard $(SRC_DIR)/*.asm)
@@ -7,7 +7,7 @@ OBJS1 = $(SRCS1:$(SRC_DIR)/%.asm=$(OBJ_DIR)/%.o)
 all : $(NAME)
 
 ${NAME} : $(OBJS1)
-		ar -rc -o $@ $^
+		ar -rcs $@ $^
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.asm
 	nasm $(NASM_FLAG) -o $@ $<

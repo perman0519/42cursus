@@ -8,6 +8,7 @@ extern size_t my_strlen(const char *str);  // 어셈블리 함수 선언
 extern ssize_t my_write(int fd, const void *buf, size_t count);  // 어셈블리 함수 선언
 extern int my_strcmp(const char *s1, const char *s2);
 extern char *my_strcpy(char *restrict dst, const char *restrict src);
+extern ssize_t my_read(int fildes, void *buf, size_t nbyte);
 
 int main() {
     const char *test_str = "Hetest_str2llo, wor\n";
@@ -22,5 +23,13 @@ int main() {
     my_strcpy(test3, test_str2);
     printf("%s", test_str2);
     printf("%s", test3);
+
+    ///////////////////////////////
+    // test my_read
+    printf("%ld\n", my_read(0, test3, 10));
+    my_write(1, test3, 10);
+    read(0, test3, 10);
+    printf("%s", test3);
+    
     return 0;
 }

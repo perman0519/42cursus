@@ -1,8 +1,8 @@
 section .text
-	global my_strlen
+	global _my_strlen
 
 ; size_t strlen(const char *s); rdi
-my_strlen:
+_my_strlen:
 	xor rax, rax
 
 strlen_loop:

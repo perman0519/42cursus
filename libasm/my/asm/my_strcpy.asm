@@ -1,8 +1,8 @@
 section .text
-    global my_strcpy
+    global _my_strcpy
 
 ; char *stpcpy(char *restrict dst, const char *restrict src);
-my_strcpy:
+_my_strcpy:
 	mov rax, rdi ; rax에 dst 포인터 복사
 	xor r8, r8 ; r8를 0으로 초기화 (인덱스)
 

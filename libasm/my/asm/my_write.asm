@@ -1,19 +1,19 @@
 
 section .text
-	extern __errno_location
-	global my_write
+	extern ___error
+	global _my_write
 
-; ssize_t my_write(int fd, const void *buff, size_t count);
-my_write:
-	mov rax, 1;
+; ssize_t _my_write(int fd, const void *buff, size_t count);
+_my_write:
+	mov rax, 0x2000004;
 	syscall
 	js write_fail
-	ret ; 에러코드를 밷음
+	ret
 
 write_fail:
 	neg rax
 	mov rdi, rax
-	call __errno_location
+	call ___error
 	mov [rax], edi
 	mov rax, -1
 	ret
