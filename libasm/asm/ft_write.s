@@ -1,4 +1,3 @@
-
 section .text
 	extern ___error
 	global _my_write
