@@ -7,11 +7,10 @@ section .text
 _my_read:
 	mov rax, 0x2000003
 	syscall
-	js read_fail
+	jc read_fail
 	ret
 
 read_fail:
-	neg rax
 	mov rdi, rax
 	call ___error
 	mov [rax], edi

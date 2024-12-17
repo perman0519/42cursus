@@ -20,24 +20,59 @@ int main() {
 	printf("strcmp %d\n", strcmp(test_str, test_str2));
 	printf("my_strcmp %d\n", my_strcmp(test_str, test_str2));
     strcpy(test3, test_str);
-    printf("%s", test3);
+    printf("test_str: %s", test_str);
+    printf("test3: %s", test3);
     my_strcpy(test3, test_str2);
-    printf("%s", test_str2);
-    printf("%s", test3);
+    printf("test_str2: %s", test_str2);
+    printf("test3: %s", test3);
 
-    ///////////////////////////////
-    // test my_read
-    printf("%ld\n", my_read(0, test3, 10));
-    my_write(1, test3, 10);
-    read(0, test3, 10);
-    printf("%s", test3);
+    // printf("write test\n");
+    // errno = 0;
+    // write(8888, "Hello, World!\n", 14);
+    // printf("errno: %d\n", errno);
+    // errno = 0;
+    // write(1, "Hello, World!\n", 14);
+    // printf("errno: %d\n", errno);
+    // printf("my_write test\n");
+    // errno = 0;
+    // my_write(8888, "Hello, World!\n", 14);
+    // printf("errno: %d\n", errno);
+    // errno = 0;
+    // my_write(1, "Hello, World!\n", 14);
+    // printf("errno: %d\n", errno);
+
+// //////////////////////////////
+    printf("read test\n");
+    errno = 0;
+    read(8888, test3, 14);
+    printf("errno: %d\n", errno);
+    errno = 0;
+    read(0, test3, 14);
+    printf("errno: %d\n", errno);
+    printf("my_read test\n");
+    errno = 0;
+    my_read(8888, test3, 14);
+    printf("errno: %d\n", errno);
+    errno = 0;
+    my_read(0, test3, 14);
+    printf("errno: %d\n", errno);
+
+    // ///////////////////////////////
+    // // test my_read
+    // printf("%ld\n", my_read(0, test3, 10));
+    // my_write(1, test3, 10);
+    // read(0, test3, 10);
+    // printf("%s", test3);
 
     //////////////////////////////
     // test my_strdup
+    printf("test strdup\n");
     char *test4 = strdup(test_str);
     printf("%s", test4);
-    test4 = my_strdup(test_str2);
-    printf("%s", test4);
+    printf("test my_strdup\n");
+    char *test5 = my_strdup(test_str);
+    printf("%s", test5);
+
     
     return 0;
 }

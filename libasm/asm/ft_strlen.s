@@ -1,5 +1,6 @@
 section .text
 	global _my_strlen
+	;length of string
 
 ; size_t strlen(const char *s); rdi
 _my_strlen:

@@ -1,33 +1,24 @@
-section .text
-    global _my_strdup
-    extern _my_strlen
-    extern _my_strcmp
-    extern _my_strcpy
-    extern _malloc
+section.text:
+	global _my_strdup
+	extern _my_strlen
+	extern _malloc
+	extern _my_strcpy
 
 _my_strdup:
-    push rbp
-    mov rbp, rsp
-    push r12
-    push r13
-    push r14
-    push r15
+	push	rdi
+	push	rdi
+	call	_my_strlen
+	inc		rax
+	mov		rdi, rax
+	call	_malloc
+	cmp    rax, 0
+	jz		_error
+	pop		rsi
+	mov		rdi, rax
+	call	_my_strcpy
+    pop     rax
+	ret
 
-    mov rdi, rdi
-    call _my_strlen
-    mov r12, rax
-    mov rdi, rdi
-    call _malloc
-    mov r13, rax
-    mov r14, rdi
-    mov r15, rsi
-    mov rdi, r13
-    mov rsi, r15
-    call _my_strcpy
-
-    pop r15
-    pop r14
-    pop r13
-    pop r12
-    pop rbp
-    ret
+_error:
+	xor    rax, rax
+	ret
