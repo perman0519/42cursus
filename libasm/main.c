@@ -36,7 +36,8 @@ int main() {
     // test my_strdup
     char *test4 = strdup(test_str);
     printf("%s", test4);
-    free(test4);
+    test4 = my_strdup(test_str2);
+    printf("%s", test4);
     
     return 0;
 }

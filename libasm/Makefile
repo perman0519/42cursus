@@ -1,5 +1,6 @@
 NAME = libasm.a
 TEST = test
+TEST_FILE = main.c
 NASM_FLAG = -f macho64
 SRC_DIR = ./asm
 OBJ_DIR = ./obj
@@ -12,7 +13,7 @@ ${NAME} : $(OBJS1)
 		ar -rcs $@ $^
 		mv $(NAME) $(LIB_DIR)
 
-${TEST} : $(LIB_DIR)/$(NAME)
+${TEST} : $(LIB_DIR)/$(NAME) $(TEST_FILE)
 		gcc -o $@ main.c -L$(LIB_DIR) -lasm
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.s
@@ -23,6 +24,7 @@ clean :
 
 fclean : clean
 	rm -rf $(LIB_DIR)/$(NAME)
+	rm -rf $(TEST)
 
 re : fclean all
 
