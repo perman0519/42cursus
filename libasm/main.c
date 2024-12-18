@@ -11,68 +11,81 @@ extern char *my_strcpy(char *restrict dst, const char *restrict src);
 extern ssize_t my_read(int fildes, void *buf, size_t nbyte);
 extern char * my_strdup(const char *s1);
 
-int main() {
-    const char *test_str = "Hetest_str2llo, wor\n";
-    const char *test_str2 = "qwerqwerqwer, wor\n";
-    char *test3 = malloc(sizeof(char) * 500);
-    size_t len = my_strlen(test_str);
-	my_write(1, (void *)test_str, len);
-	printf("strcmp %d\n", strcmp(test_str, test_str2));
-	printf("my_strcmp %d\n", my_strcmp(test_str, test_str2));
-    strcpy(test3, test_str);
-    printf("test_str: %s", test_str);
-    printf("test3: %s", test3);
-    my_strcpy(test3, test_str2);
-    printf("test_str2: %s", test_str2);
-    printf("test3: %s", test3);
+void my_write_test() {
+    printf("=================my_write_test=================\n");
+    size_t a = write(1, "Hello, World!\n", 14);
+    size_t b = my_write(1, "Hello, World!\n", 14);
+    a == b ? printf("Same\n") : printf("Different\n");
+    a = write(999, "Hello, World!\n", 14);
+    b = my_write(999, "Hello, World!\n", 14);
+    a == b ? printf("Same\n") : printf("Different\n");
+}
 
-    // printf("write test\n");
-    // errno = 0;
-    // write(8888, "Hello, World!\n", 14);
-    // printf("errno: %d\n", errno);
-    // errno = 0;
-    // write(1, "Hello, World!\n", 14);
-    // printf("errno: %d\n", errno);
-    // printf("my_write test\n");
-    // errno = 0;
-    // my_write(8888, "Hello, World!\n", 14);
-    // printf("errno: %d\n", errno);
-    // errno = 0;
-    // my_write(1, "Hello, World!\n", 14);
-    // printf("errno: %d\n", errno);
+void my_strlen_test() {
+    printf("=================my_strlen_test=================\n");
+    const char *str = "Hello, World!";
+    size_t a = strlen(str);
+    size_t b = my_strlen(str);
+    printf("a: %ld, b: %ld\n", a, b);
+    a == b ? printf("Same\n") : printf("Different\n");
+    const char *str2 = "Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!";
+    a = strlen(str2);
+    b = my_strlen(str2);
+    printf("a: %ld, b: %ld\n", a, b);
+    a == b ? printf("Same\n") : printf("Different\n");
+}
 
-// //////////////////////////////
-    printf("read test\n");
-    errno = 0;
-    read(8888, test3, 14);
-    printf("errno: %d\n", errno);
-    errno = 0;
-    read(0, test3, 14);
-    printf("errno: %d\n", errno);
-    printf("my_read test\n");
-    errno = 0;
-    my_read(8888, test3, 14);
-    printf("errno: %d\n", errno);
-    errno = 0;
-    my_read(0, test3, 14);
-    printf("errno: %d\n", errno);
-
-    // ///////////////////////////////
-    // // test my_read
-    // printf("%ld\n", my_read(0, test3, 10));
-    // my_write(1, test3, 10);
-    // read(0, test3, 10);
-    // printf("%s", test3);
-
-    //////////////////////////////
-    // test my_strdup
-    printf("test strdup\n");
-    char *test4 = strdup(test_str);
-    printf("%s", test4);
-    printf("test my_strdup\n");
-    char *test5 = my_strdup(test_str);
-    printf("%s", test5);
-
+void my_strcmp_test() {
+    printf("=================my_strcmp_test=================\n");
+    char *s1 = "Hello, World!";
+    char *s2 = "Hello, World!";
+    int a = strcmp(s1, s2);
+    int b = my_strcmp(s1, s2);
+    printf("a: %d, b: %d\n", a, b);
+    a == b ? printf("Same\n") : printf("Different\n");
     
+    s1 = "Hello, World!";
+    s2 = "Hello, World!Hello, World!";
+    a = strcmp(s1, s2);
+    b = my_strcmp(s1, s2);
+    printf("a: %d, b: %d\n", a, b);
+    a == b ? printf("Same\n") : printf("Different\n");
+
+    s1 = "Hello, World!Hello, World!";
+    s2 = "Hello, World!";
+    a = strcmp(s1, s2);
+    b = my_strcmp(s1, s2);
+    printf("a: %d, b: %d\n", a, b);
+    a == b ? printf("Same\n") : printf("Different\n");
+    
+    s1 = "Hello, Wqrld!";
+    s2 = "Hello, World!Hello, World!";
+    a = strcmp(s1, s2);
+    b = my_strcmp(s1, s2);
+    printf("a: %d, b: %d\n", a, b);
+    a == b ? printf("Same\n") : printf("Different\n");
+}
+
+void my_strcpy_test() {
+    printf("=================my_strcpy_test=================\n");
+    char *src = "Hello, World!";
+    char *dst = (char *)malloc(sizeof(char) * 14);
+    char *dst2 = (char *)malloc(sizeof(char) * 14);
+    char *a = strcpy(dst, src);
+    printf("a: %s, dst: %s\n", a, dst);
+    printf("a: %p, dst: %p\n", a, dst);
+
+    printf("%p\n", dst2);
+    char *b = my_strcpy(dst2, src);
+    printf("b: %s, dst: %s\n", b, dst2);
+    printf("b: %p, dst: %p\n", b, dst2);
+    a == b ? printf("Same\n") : printf("Different\n");
+}
+
+int main() {
+    // my_write_test();
+    // my_strlen_test();
+    // my_strcmp_test();
+    my_strcpy_test();
     return 0;
 }
