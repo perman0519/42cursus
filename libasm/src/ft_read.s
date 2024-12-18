@@ -12,6 +12,7 @@ _my_read:
 
 read_fail:
 	mov rdi, rax ; rdi = rax
-	call ___error ; errorno = rax
+	call ___error ; rax에 errno 주소 저장
+	mov [rax], edi ; rax 역참조로 errno에 rdi 저장
 	mov rax, -1
 	ret

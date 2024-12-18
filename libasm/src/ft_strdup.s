@@ -6,20 +6,27 @@ section.text:
 	extern _my_strcpy
 
 _my_strdup:
-	push rdi ; stack에 rd i 저장
-	push rdi ; stack에 rdi 저장
-	call _my_strlen ; rdi에 있는 문자열의 길이를 rax에 저장
-	inc rax ; null 문자 포함할 공간 확보
-	mov	 rdi, rax ; rdi에 문자열 길이 저장
-	call _malloc ; rax에 동적할당된 메모리 주소 저장
-	cmp rax, 0 ; 동적할당 실패 시
-	jz _error ; 에러 처리
-	pop rsi ; rsi에 문자열 주소 저장
-	mov rdi, rax ; rdi에 동적할당된 메모리 주소 저장
-	call _my_strcpy ; rsi에 있는 문자열을 rdi에 복사
-	pop rax ; rax에 문자열 주소 저장
-	ret
+	push rbp ; Prologue
+	mov rbp, rsp 
+	push rdi
+	call _my_strlen 
+	; call이 되면 가장 먼저 하는일 push 함수 종료후 실행할 명령어의 주소
+	; 그런데 c 라이브러리 함수는 기본적으로 16바이트 정렬된 스택을 가지고 실행이 된다고 전제가 됨(calling convention)
+	; 그렇기 때문에, call 이전에 홀수 번의 push로 8바이트 어긋나게 해야함
+	inc rax
+	mov rdi, rax
+	sub rsp, 8 ; 8바이트 어긋나게 하기 위해 rsp 8바이트를 예약
+	call _malloc
+	add rsp, 8 ; rsp를 원래대로 돌려놓음
+	test rax, rax
+	jz malloc_fail
+	pop rsi
+	mov rdi, rax
+	call _my_strcpy
+	pop rbp ; Epilogue
+	ret 
 
-_error:
-	xor    rax, rax
+malloc_fail:
+	pop rdi
+	pop rbp ; Epilogue
 	ret

@@ -16,7 +16,7 @@ $(OBJ_DIR)/%.o : $(SRC_DIR)/%.s
 	nasm $(NASM_FLAG) -o $@ $<
 
 ${TEST} : $(LIB_DIR)/$(NAME) $(TEST_FILE)
-		gcc -o $@ main.c -L$(LIB_DIR) -lasm
+		gcc -o $@ main.c -L$(LIB_DIR) -lasm -lc -nostartfiles
 
 clean :
 	rm -rf $(OBJS1)

@@ -5,6 +5,8 @@ section .text
 ; size_t strlen(const char *s); rdi
 _my_strlen:
 	xor rax, rax
+	push rbp
+	mov rbp, rsp
 
 strlen_loop:
 	cmp byte [rdi + rax], 0
@@ -13,4 +15,5 @@ strlen_loop:
 	jmp strlen_loop
 
 strlen_done:
+	pop rbp
 	ret

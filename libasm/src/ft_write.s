@@ -4,22 +4,18 @@ section .text
 
 ; ssize_t _my_write(int fd, const void *buff, size_t count);
 _my_write:
-	mov rax, 0x2000004;
 	push rbp
 	mov rbp, rsp
-	push rdx
+	mov rax, 0x2000004;
 	syscall
-	pop rdx
-	cmp rax, rdx
-	jne write_fail
-	xor rax, rax
+	jc write_fail
 	pop rbp
 	ret
 
 write_fail:
 	mov rdi, rax
-	call ___error
-	mov [rax], edi
+	call ___error ; 함수가 실행될때 이 다음 주소를 저장해야 함
+	mov [rax], rdi
 	mov rax, -1
 	pop rbp
 	ret
