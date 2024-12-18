@@ -11,8 +11,7 @@ _my_read:
 	ret
 
 read_fail:
-	mov rdi, rax
-	call ___error
-	mov [rax], edi
+	mov rdi, rax ; rdi = rax
+	call ___error ; errorno = rax
 	mov rax, -1
 	ret
