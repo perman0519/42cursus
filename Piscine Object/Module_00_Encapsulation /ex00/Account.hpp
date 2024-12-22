@@ -15,6 +15,6 @@ public:
     Account(int v = 0, int id = 0);
     ~Account();
 
-    const int getId() const;
-    const int getValue() const;
+    int getId() const;
+    int getValue() const;
 };

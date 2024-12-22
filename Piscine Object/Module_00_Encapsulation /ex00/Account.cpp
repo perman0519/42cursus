@@ -1,10 +1,10 @@
 #include "Account.hpp"
 
-Account::Account(int v, int id) : _value(v), _id(id) {}
+Account::Account(int v, int id) :  _id(id), _value(v) {}
 Account::~Account() {}
 
-const int Account::getId() const { return _id; }
-const int Account::getValue() const { return _value; }
+int Account::getId() const { return _id; }
+int Account::getValue() const { return _value; }
 
 void Account::deposit(double amount) { _value += amount; }
 int Account::withdraw(double amount) {

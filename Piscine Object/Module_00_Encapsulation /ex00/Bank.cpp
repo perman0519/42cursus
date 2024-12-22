@@ -5,55 +5,45 @@ using namespace std;
 int Bank::_accountIndex = 0;
 
 Bank::Bank(int liquidity) : _liquidity(liquidity) {}
+
 Bank::~Bank() {
-    for (auto account : clientAccounts) {
-        delete account;
+    for (int i = 0; i < (int)clientAccounts.size(); i++) {
+        delete clientAccounts[i];
     }
 }
 
 void Bank::createAccount(int value) {
-    clientAccounts.push_back(new Account(value, _accountIndex++));
+    double v = value * 0.95;
+    clientAccounts.push_back(new Account(v, _accountIndex++));
+    _liquidity += value;
 }
 
 void Bank::deleteAccount(int id) {
-    for (auto it = clientAccounts.begin(); it != clientAccounts.end(); it++) {
-        if ((*it)->getId() == id) {
-            delete *it;
-            clientAccounts.erase(it);
+    for (int i = 0; i < (int)clientAccounts.size(); i++) {
+        if (clientAccounts[i]->getId() == id) {
+            _liquidity -= clientAccounts[i]->getValue();
+            delete clientAccounts[i];
+            clientAccounts.erase(clientAccounts.begin() + i);
             return;
         }
     }
 }
 
 void Bank::displayAccounts() const {
-    for (auto account : clientAccounts) {
-        cout << "Account " << account->getId() << ": " << account->getValue() << endl;
+    cout << "--------------------------------" << endl;
+    cout << "Bank liquidity: " << _liquidity << endl;
+    for (int i = 0; i < (int)clientAccounts.size(); i++) {
+        cout << "Account " << clientAccounts[i]->getId() << ": " << clientAccounts[i]->getValue() << endl;
     }
-}
-
-void Bank::displayTotal() const {
-    int total = 0;
-    for (auto account : clientAccounts) {
-        total += account->getValue();
-    }
-    cout << "Total: " << total << endl;
-}
-
-void Bank::displayTotal(int id) const {
-    for (auto account : clientAccounts) {
-        if (account->getId() == id) {
-            cout << "Account " << account->getId() << ": " << account->getValue() << endl;
-            return;
-        }
-    }
-    cout << "Account not found" << endl;
+    cout << "--------------------------------" << endl;
 }
 
 void Bank::deposit(int id, double amount) {
-    for (auto account : clientAccounts) {
-        if (account->getId() == id) {
-            account->deposit(amount);
-            _liquidity -= amount;
+    for (int i = 0; i < (int)clientAccounts.size(); i++) {
+        double v = amount * 0.95;
+        if (clientAccounts[i]->getId() == id) {
+            clientAccounts[i]->deposit(v);
+            _liquidity -= v;
             return;
         }
     }
@@ -61,9 +51,9 @@ void Bank::deposit(int id, double amount) {
 }
 
 void Bank::withdraw(int id, double amount) {
-    for (auto account : clientAccounts) {
-        if (account->getId() == id) {
-            if (account->withdraw(amount) == 0) {
+    for (int i = 0; i < (int)clientAccounts.size(); i++) {
+        if (clientAccounts[i]->getId() == id) {
+            if (clientAccounts[i]->withdraw(amount) == 0) {
                 cout << "Not enough money" << endl;
                 return;
             }
@@ -75,12 +65,25 @@ void Bank::withdraw(int id, double amount) {
 }
 
 void Bank::Loans(int id, double amount) {
-    for (auto account : clientAccounts) {
-        if (account->getId() == id) {
-            account->deposit(amount);
+    if (amount > _liquidity * 0.9) {
+        cout << "Not enough liquidity" << endl;
+        return;
+    }
+    for (int i = 0; i < (int)clientAccounts.size(); i++) {
+        if (clientAccounts[i]->getId() == id) {
+            clientAccounts[i]->deposit(amount);
+            loans.insert(pair<int, double>(id, amount));
             _liquidity -= amount;
             return;
         }
     }
     cout << "Account not found" << endl;
+}
+
+void Bank::displayLoansList() const {
+    cout << "--------------------------------" << endl;
+    for (map<int, double>::const_iterator it = loans.begin(); it != loans.end(); it++) {
+        cout << "Account " << it->first << ": " << it->second << endl;
+    }
+    cout << "--------------------------------" << endl;
 }
