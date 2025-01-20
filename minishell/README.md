@@ -58,7 +58,8 @@ make
 ---
 
 ## 결과
-- 
+- <img width="844" alt="Screen Shot 2025-01-20 at 1 54 18 PM" src="https://github.com/user-attachments/assets/c3df0b99-129d-4de1-9a3f-18733a521c66" />
+
 
 ---
 
