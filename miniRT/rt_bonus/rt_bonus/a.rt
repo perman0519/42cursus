@@ -1,0 +1,26 @@
+A 0.5 255,255,255
+L 0,0,20 0.3 255,255,255
+C 0,0,0 0,0,-1 70
+# C 0,-500,1000 0,1,0 70
+
+# cy 0,0,0       -1,1,0      1 2         cl 255,0,0 0
+# pb 0,0,-7        4 2                    cl 0,0,255 0
+
+# pl 0,-10,0       0,1,0                  cl 0,0,255 0
+# pl 0,-20,0       0,1,0                  ck 255,255,255 0,0,0
+# pl 0,-20,0       0,1,0                  bp ./rt_bonus/xpm/bump_texture.xpm ./rt_bonus/xpm/bump_normal.xpm
+
+# sp 0,0,0 50 cl 255,0,0 0
+# sp 0,0,0 5 ck 255,255,255 0,0,0
+# sp 0,0,0    700       bp ./rt_bonus/xpm/bump_texture.xpm ./rt_bonus/xpm/bump_normal.xpm
+sp 0,0,-50  30  bp ./rt_bonus/xpm/2k_earth_daymap.xpm ./rt_bonus/xpm/2k_earth_normal_map.xpm
+# nsp 0,0,20  50  bp ./rt_bonus/xpm/8k_sun.xpm NULL
+# sp 0,0,1000  1000  ck 255,0,0 0,0,0
+# sp 0,0,-50    30      bp ./rt_bonus/xpm/moon_texture.xpm ./rt_bonus/xpm/moon_normal.xpm
+# sp 0,0,0    70      bp ./rt_bonus/xpm/2k_sun.xpm NULL
+nsp 0,0,0    20000       bp ./rt_bonus/xpm/8k_stars_milky_way.xpm NULL
+# sp 0,0,0    70      bp ./rt_bonus/xpm/lroc_color_poles_2k.xpm ./rt_bonus/xpm/moon_normal.xpm
+# sp 0,0,0    50      bp ./rt_bonus/xpm/moon_texture.xpm ./rt_bonus/xpm/moon_normal.xpm
+# pl 0,20,0               0,-1,0      cl 0,255,0 0
+# pl 20,0,0               -1,0,0      0,0,255
+# pl -20,-20,0               1,0,0      0,0,255
