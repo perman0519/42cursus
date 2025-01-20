@@ -1,5 +1,7 @@
 # miniRT
 
+<img width="715" alt="Screen Shot 2025-01-20 at 2 56 56 PM" src="https://github.com/user-attachments/assets/a18199eb-fdc8-4bb5-91d6-e9c0173c569f" />
+
 ## 개요
 - **설명**: miniRT는 C 언어와 miniLibX를 사용하여 간단한 레이 트레이싱 기반의 3D 그래픽을 구현하는 프로젝트입니다. 이 프로젝트를 통해 수학적/물리적 공식을 활용하여 컴퓨터 생성 이미지를 생성하는 기초를 배웁니다.
 - **목적**: 레이 트레이싱의 기본 개념을 이해하고, 간단한 3D 씬을 렌더링할 수 있는 프로그램을 구현합니다.
@@ -73,6 +75,9 @@ cy 50.0,0.0,20.6 0,0,1.0 14.2 21.42 10,0,255
 ---
 
 ## 결과
+<img width="714" alt="Screen Shot 2025-01-20 at 2 56 38 PM" src="https://github.com/user-attachments/assets/5b9ee619-c258-46cf-abd8-24f02f53d714" />
+<img width="703" alt="Screen Shot 2025-01-20 at 2 56 47 PM" src="https://github.com/user-attachments/assets/9af45eb2-e22e-4e47-bd52-5171b2b6d19c" />
+
 - **렌더링 화면**:
   - 씬에서 정의된 객체와 조명 효과를 창에 출력.
   - ESC 키를 눌러 창을 닫고 프로그램 종료.
