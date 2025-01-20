@@ -1,7 +1,0 @@
-A 0.5 255,255,255
-L 0,0,20 0.3 255,255,255
-L -51.601293,-0.316748,-162.028042 0.3 255,255,255
-C 6.235774,-1.645923,5.770661 -0.099786,0.090352,-0.990898 70
-
-sp 0,0,-50  30  bp ./rt_bonus/xpm/moon_texture.xpm ./rt_bonus/xpm/moon_normal.xpm
-nsp 0,0,0    20000       bp ./rt_bonus/xpm/8k_stars_milky_way.xpm NULL

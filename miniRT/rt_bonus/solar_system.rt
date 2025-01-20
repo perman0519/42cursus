@@ -2,19 +2,19 @@ A 0.2 255,255,255
 L 0,0,20 0.6 255,255,255
 # C 9000,80,0 0,0,-1 70
 
-C 8000,0,20000 0,0,-1 70
+C 0,0,-3000 0,0,1 70
 # 태양에서 지구 볼 때
-# C 19500,0,0 -1,0,0 70
+# C 700,0,36 0.999992,0.000000,0.004060 70
 # 지구에서 달 볼 떄
 # C 9088,53,-186 -0.862126,-0.038361,0.505239 70
-# C 700,0,0 1,0,0 70``
+# C 700,0,0 1,0,0 70
 
-nsp 0,0,0       10900  bp ./rt_bonus/xpm/2k_sun.xpm NULL
+nsp 0,0,0       900  bp ./rt_bonus/xpm/2k_sun.xpm NULL
 sp 0,600,0      50        bp ./rt_bonus/xpm/8k_mercury.xpm NULL
 sp -900,-300,0  50    bp ./rt_bonus/xpm/8k_venus.xpm NULL
 
-# sp 9000,0,0     100      bp ./rt_bonus/xpm/2k_earth_daymap.xpm ./rt_bonus/xpm/2k_earth_normal_map.xpm
-sp 20000,0,0     100      bp ./rt_bonus/xpm/2k_earth_daymap.xpm ./rt_bonus/xpm/2k_earth_normal_map.xpm
+sp 9000,0,0     100      bp ./rt_bonus/xpm/2k_earth_daymap.xpm ./rt_bonus/xpm/2k_earth_normal_map.xpm
+# sp 1100,0,0     100      bp ./rt_bonus/xpm/2k_earth_daymap.xpm ./rt_bonus/xpm/2k_earth_normal_map.xpm
 
 sp 1150,150,0   15     bp ./rt_bonus/xpm/8k_moon.xpm ./rt_bonus/xpm/moon_normal.xpm
 sp -1200,-800,0 100  bp ./rt_bonus/xpm/8k_mars.xpm NULL
@@ -22,9 +22,5 @@ sp -1500,1500,0 200  bp ./rt_bonus/xpm/8k_jupiter.xpm NULL
 sp -1600,-500,0 80   bp ./rt_bonus/xpm/8k_saturn.xpm NULL
 sp -1800,1800,0 80   bp ./rt_bonus/xpm/2k_uranus.xpm NULL
 
-# A 0,0,20 0.6 255,255,255
 
-
-nsp 7000,0,0    50000       bp ./rt_bonus/xpm/8k_stars_milky_way.xpm NULL
-
-# C 0,0,-3000 0,0,1 70
+nsp 0,0,5000    30000       bp ./rt_bonus/xpm/8k_stars_milky_way.xpm NULL

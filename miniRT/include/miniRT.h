@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junssong <junssong@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: junhapar <junhapar@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 11:21:27 by junhapar          #+#    #+#             */
-/*   Updated: 2024/03/24 15:43:08 by junssong         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:03:40 by junhapar         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@
 # define _INFINITY 100000
 
 /* Screen */
-# define WIN_WIDTH 1280
-# define WIN_HEIGHT 720
+# define WIN_WIDTH 720
+# define WIN_HEIGHT 480
 # define VIEWPOINT_W 2.0
 
 /* Object Number */
